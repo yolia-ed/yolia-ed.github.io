@@ -285,6 +285,108 @@
 
 
   
+    <article id="post-docker&amp;wordpress" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/15/docker&wordpress/">docker&amp;wordpress</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/15/docker&wordpress/" class="archive-article-date">
+  	<time datetime="2019-12-15T12:48:36.378Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、安装docker（此处用的是-CentOS-7-）"><a href="#一、安装docker（此处用的是-CentOS-7-）" class="headerlink" title="一、安装docker（此处用的是 CentOS 7 ）"></a><strong>一、安装docker</strong>（此处用的是 CentOS 7 ）</h4><p>可以直接访问菜鸟教程的docker安装。</p>
+<p>地址: <a href="https://www.runoob.com/docker/centos-docker-install.html" target="_blank" rel="noopener">https://www.runoob.com/docker/centos-docker-install.html</a></p>
+<h4 id="二、创建docker容器的配置文件"><a href="#二、创建docker容器的配置文件" class="headerlink" title="二、创建docker容器的配置文件"></a>二、创建docker容器的配置文件</h4><p>在一个文件夹中，创建一个（自定义）docker-compose.yml</p>
+<p>主要内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3.3&#39;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">   db:</span><br><span class="line">      image: mysql:5.7</span><br><span class="line">      volumes:</span><br><span class="line">        - db_data:&#x2F;var&#x2F;lib&#x2F;mysql</span><br><span class="line">      restart: always</span><br><span class="line">      environment:</span><br><span class="line">        MYSQL_ROOT_PASSWORD: somewordpress</span><br><span class="line">        MYSQL_DATABASE: wordpress</span><br><span class="line">        MYSQL_USER: wordpress</span><br><span class="line">        MYSQL_PASSWORD: wordpress</span><br><span class="line"></span><br><span class="line">   wordpress:</span><br><span class="line">      depends_on:</span><br><span class="line">        - db</span><br><span class="line">      image: wordpress:latest</span><br><span class="line">      ports:</span><br><span class="line">        - &quot;8000:80&quot;</span><br><span class="line">      restart: always</span><br><span class="line">      environment:</span><br><span class="line">        WORDPRESS_DB_HOST: db:3306</span><br><span class="line">        WORDPRESS_DB_USER: wordpress</span><br><span class="line">        WORDPRESS_DB_PASSWORD: wordpress</span><br><span class="line">        WORDPRESS_DB_NAME: wordpress</span><br><span class="line">volumes:</span><br><span class="line">     db_data: &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建完成后，切换到包含有此配置文件的文件夹目录下。</p>
+<p>输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>将会自动读取docker-compose.yml文件，去下载各种需要的东西。需要等待一段时间。</p>
+<p>完成之后可以使用命令：docker ps 查看正在docker运行的容器</p>
+<p>此时即可在浏览器中打开本地的8000端口（端口需要打开，否则无法访问）若服务器绑定了域名可以更改端口号为80:80，直接通过域名访问。</p>
+<p>PS：过程中可能会有些小问题，可通过搜索解决。（某些工具的安装、更新）</p>
+<p>例如：</p>
+<h4 id="问题1："><a href="#问题1：" class="headerlink" title="问题1："></a>问题1：</h4><p>xxx is not in the sudoers file.This incident will be reported</p>
+<p>解决方法：</p>
+<ol>
+<li><p>切换到root下。。。</p>
+<p>编辑sudoers文件</p>
+<p>vi /etc/sudoers</p>
+<p>找到这行 root ALL=(ALL) ALL,在他下面添加xxx ALL=(ALL) ALL (这里的xxx是你的用户名)</p>
+<p>可以sudoers添加下面四行中任意一条</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">youuser            ALL&#x3D;(ALL)              ALL</span><br><span class="line">%youuser           ALL&#x3D;(ALL)              ALL</span><br><span class="line">youuser            ALL&#x3D;(ALL)              NOPASSWD: ALL</span><br><span class="line">%youuser           ALL&#x3D;(ALL)              NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+
+<p>第一行:允许用户youuser执行sudo命令(需要输入密码).<br>第二行:允许用户组youuser里面的用户执行sudo命令(需要输入密码).<br>第三行:允许用户youuser执行sudo命令,并且在执行的时候不输入密码.<br>第四行:允许用户组youuser里面的用户执行sudo命令,并且在执行的时候不输入密码.</p>
+</li>
+<li><p>撤销sudoers文件写权限,命令:</p>
+<p>chmod u-w /etc/sudoers 这样普通用户就可以使用sudo了</p>
+</li>
+</ol>
+<h4 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h4><h5 id="docker-compose-command-not-found"><a href="#docker-compose-command-not-found" class="headerlink" title="docker-compose: command not found"></a>docker-compose: command not found</h5><h5 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h5><ol>
+<li><h5 id="安装python-pip"><a href="#安装python-pip" class="headerlink" title="安装python-pip"></a>安装python-pip</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install python-pip</span><br><span class="line"></span><br><span class="line">升级：pip install –upgrade pip</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install docker-compose</span><br><span class="line">待安装完成后，执行查询版本的命令，即可安装docker-compose</span><br><span class="line">docker-compose version</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="问题三："><a href="#问题三：" class="headerlink" title="问题三："></a>问题三：</h4><h5 id="Command-errored-out-with-exit-status-1-python-setup-py-egg-info-Check-the-。。。"><a href="#Command-errored-out-with-exit-status-1-python-setup-py-egg-info-Check-the-。。。" class="headerlink" title="Command errored out with exit status 1: python setup.py egg_info Check the 。。。"></a>Command errored out with exit status 1: python setup.py egg_info Check the 。。。</h5><h5 id="解决方法：-1"><a href="#解决方法：-1" class="headerlink" title="解决方法："></a>解决方法：</h5><p>使用“ pip install –upgrade setuptools”命令进行setuptools 版本升级。</p>
+<p>详情见： <a href="https://blog.csdn.net/qq_37189082/article/details/97658103" target="_blank" rel="noopener">https://blog.csdn.net/qq_37189082/article/details/97658103</a></p>
+<h4 id="另一种不写配置文件（docker-compose-yml）的搭建方法"><a href="#另一种不写配置文件（docker-compose-yml）的搭建方法" class="headerlink" title="另一种不写配置文件（docker-compose.yml）的搭建方法"></a>另一种不写配置文件（docker-compose.yml）的搭建方法</h4><h4 id="一、同样先安装docker-方法同上"><a href="#一、同样先安装docker-方法同上" class="headerlink" title="一、同样先安装docker 方法同上"></a><strong>一、</strong>同样先安装docker 方法同上</h4><h4 id="二、安装和启动"><a href="#二、安装和启动" class="headerlink" title="二、安装和启动"></a>二、安装和启动</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">获取相关镜像</span><br><span class="line">docker pull wordpress</span><br><span class="line">docker pull mysql:5.6</span><br><span class="line">启动mysql</span><br><span class="line">docker run -d --name my-mysql -e MYSQL_ROOT_PASSWORD&#x3D;111111 -p 3306:3306 mysql:5.6</span><br><span class="line">参数解释：</span><br><span class="line">docker run ：启动容器 </span><br><span class="line">-d：后台运行容器 </span><br><span class="line">–name my-mysql：指定容器的名字，本文设置为my-mysql </span><br><span class="line">-e MYSQL_ROOT_PASSWORD&#x3D;123456：指定容器的环境参数，此处初始化MySQL的root密码 </span><br><span class="line">-p 3306:3306：端口映射，这里将容器内的3306端口映射到docker宿主机的3306端口 </span><br><span class="line">mysql：镜像的名字，首先从docker宿主机本地加载，其次从dockerHub上加载</span><br><span class="line">启动wordpress</span><br><span class="line">docker run -d --name my-wordpress --link my-mysql:mysql -p 80:80 wordpress</span><br><span class="line">参数解释：</span><br><span class="line">docker run ：启动容器 </span><br><span class="line">-d：后台运行容器 </span><br><span class="line">–name my-wordpress：指定容器的名字，本文设置为my-wordpress </span><br><span class="line">–link my-mysql:mysql：容器关联，现在启动的容器内部可以通过mysql来访问my-mysql数据库的功能 </span><br><span class="line">-p 80:80：端口映射，这里将容器内的80端口映射到docker宿主机的80端口 </span><br><span class="line">wordpress：镜像的名字，首先从docker宿主机本地加载，其次从dockerHub上加载</span><br><span class="line">完成后浏览器直接访问地址。</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/15/docker&wordpress/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
