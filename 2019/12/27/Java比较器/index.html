@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: idea | Yolia</title>
+  <title>Java比较器 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/tags/idea/index.html">
+  <meta name="description" content="Java比较器——Comparable和Comparator">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java比较器">
+<meta property="og:url" content="http://yoursite.com/2019/12/27/Java%E6%AF%94%E8%BE%83%E5%99%A8/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="Java比较器——Comparable和Comparator">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-27T14:56:10.124Z">
+<meta property="article:modified_time" content="2019-12-27T14:55:30.325Z">
 <meta property="article:author" content="Yolia">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Comparable">
+<meta property="article:tag" content="Comparator">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
@@ -155,64 +160,226 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java比较器" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/24/idea%E6%8A%A5%E9%94%99/" class="archive-article-date">
-  	<time datetime="2019-12-24T00:31:22.426Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/24/idea%E6%8A%A5%E9%94%99/">idea报错</a>
+    <h1 class="article-title" itemprop="name">
+      Java比较器
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/12/27/Java%E6%AF%94%E8%BE%83%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2019-12-27T14:56:10.124Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-27</time>
+</a>
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">849字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+
+            
+        <!-- 添加完成 -->
+
+        
+      </header>
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java比较器——Comparable和Comparator"><a href="#Java比较器——Comparable和Comparator" class="headerlink" title="Java比较器——Comparable和Comparator"></a>Java比较器——Comparable和Comparator</h2><a id="more"></a>
+
+<p>Comparable 和 Comparator 接口都是为了对类进行比较，众所周知，诸如 Integer，double 等基本数据类型，java 可以对他们进行比较，而对于类的比较，需要明确指定出比较规则。</p>
+<h4 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h4><p>java 中为了统一比较规则的定义,提供了比较器 Comparable 接口，Comparable 可以被认为是一个内比较器。</p>
+<p>实现了 Comparable 接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable 接口的类如何比较，则依赖 compareTo 方法的实现。</p>
+<p>如果 add 进入一个Collection的对象想要 Collections 的 sort 方法帮你自动进行排序的话，那么这个对象必须实现Comparable 接口。</p>
+<p>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h4><p>Comparator 属于一种挽救的比较器支持,其主要的目的是解决一些没有使用 Comparable 排序的类的对象的排序操作，比如先前的设计没有考虑到 Person 类需要比较器的功能，后来又想对 Person 类进行排序处理，但又不能够去修改 Person 类的情况（也就代表无法实现 Comparable 接口）。这个时候，就可以使用Comparator来进行挽救。</p>
+<p>另一种情况就是对于实现了Comparable接口的对象，开发者认为其中的 compare To 方法中的比较方式并不是自己想要的那种比较方式，则可以实现Comparator接口。</p>
+<p>总的来说，实现Comparator接口的耦合性要弱一些（相对于实现Comparable接口来说）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注：在Arrays中存在另一种基于Comparator的排序处理：</span><br><span class="line">static &lt;T&gt; void sort(T[] a, Comparator&lt;? super T&gt; c) 根据指定的比较器引发的顺序对指定的对象数组进行排序.在java.util.Comparator里面最初只定义有一个排序的compare()方法 int compare(T o1, T o2) 比较其两个参数的顺序,但是后来持续发展,在JDK1.8之后有增加了许多static的方法.</span><br></pre></td></tr></table></figure>
+
+<p>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><p>java.lang.Comparable 是在类定义的时候实现的父接口,主要用于定义排序规则,里面只有一个compareTo() 的方法；java.util.Comparator 需要设置单独的比较器实现类来完成,提供有compare()方法。</p>
+<p>如果实现类没有实现Comparable接口，又想对两个类进行比较（或者实现类实现了Comparable接口，但是对compareTo方法内的比较算法不满意），那么可以实现Comparator接口，自定义一个比较器，写比较算法。</p>
+<p>实现Comparable接口的方式比实现Comparator接口的耦合性要强一些，如果要修改比较算法，要修改Comparable接口的实现类，而实现Comparator的类是在外部进行比较的，不需要对实现类有任何修改。因此：</p>
+<ul>
+<li>对于一些普通的数据类型（比如 String, Integer, Double…），它们默认实现了Comparable 接口，实现了 compareTo 方法，我们可以直接使用。</li>
+<li>而对于一些自定义类，它们可能在不同情况下需要实现不同的比较策略，我们可以新创建 Comparator 接口，然后使用特定的 Comparator 实现进行比较。</li>
+</ul>
+<p>对于排序的定义,如果不是必须的情况下,不建议使用Comparator,最好以实现Comparable为首选择</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">idea</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">error</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Comparable</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Comparator</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/27/Java%E6%AF%94%E8%BE%83%E5%99%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/12/26/%E9%9A%8F%E7%AC%94/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随笔</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -235,9 +402,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
