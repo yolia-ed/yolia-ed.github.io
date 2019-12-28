@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java比较器 | Yolia</title>
+  <title>设计模式-单例模式 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java比较器——Comparable和Comparator">
+  <meta name="description" content="单例模式——详细实现（饿汉式和懒汉式）定义在设计模式中，单例模式算是比较常见的一种设计模式，目的是保证一个类只能有一个实例，它会自行实例化并且为整个系统提供这个实例，可以避免频繁创建对象，节约内存。（保证一个类的对象在内存中的唯一性）。 使用场景 开发中常常要读取配置文件中的 某些数据，为此就需要通过创建这个配置文件对象去拿到其中的数据，如果在多处要用到这个配置对象，那就需要创建多个对象，这样会浪">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java比较器">
-<meta property="og:url" content="http://yoursite.com/2019/12/27/Java%E6%AF%94%E8%BE%83%E5%99%A8/index.html">
+<meta property="og:title" content="设计模式-单例模式">
+<meta property="og:url" content="http://yoursite.com/2019/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Java比较器——Comparable和Comparator">
+<meta property="og:description" content="单例模式——详细实现（饿汉式和懒汉式）定义在设计模式中，单例模式算是比较常见的一种设计模式，目的是保证一个类只能有一个实例，它会自行实例化并且为整个系统提供这个实例，可以避免频繁创建对象，节约内存。（保证一个类的对象在内存中的唯一性）。 使用场景 开发中常常要读取配置文件中的 某些数据，为此就需要通过创建这个配置文件对象去拿到其中的数据，如果在多处要用到这个配置对象，那就需要创建多个对象，这样会浪">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-27T14:56:10.124Z">
-<meta property="article:modified_time" content="2019-12-27T15:03:55.040Z">
+<meta property="article:published_time" content="2019-12-28T15:53:32.603Z">
+<meta property="article:modified_time" content="2019-12-28T15:53:07.555Z">
 <meta property="article:author" content="Yolia">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="Comparable">
-<meta property="article:tag" content="Comparator">
+<meta property="article:tag" content="设计模式，单例模式">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
@@ -160,20 +158,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java比较器" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-设计模式-单例模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java比较器
+      设计模式-单例模式
     </h1>
   
 
         
-        <a href="/2019/12/27/Java%E6%AF%94%E8%BE%83%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2019-12-27T14:56:10.124Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-27</time>
+        <a href="/2019/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2019-12-28T15:53:32.603Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-28</time>
 </a>
 
         <!-- 开始添加字数统计-->
@@ -183,7 +181,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">906字</span>
       </span>
     </span>
 
@@ -192,7 +190,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -207,31 +205,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Java比较器——Comparable和Comparator"><a href="#Java比较器——Comparable和Comparator" class="headerlink" title="Java比较器——Comparable和Comparator"></a>Java比较器——Comparable和Comparator</h2><a id="more"></a>
+        <h2 id="单例模式——详细实现（饿汉式和懒汉式）"><a href="#单例模式——详细实现（饿汉式和懒汉式）" class="headerlink" title="单例模式——详细实现（饿汉式和懒汉式）"></a>单例模式——详细实现（饿汉式和懒汉式）</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>在设计模式中，单例模式算是比较常见的一种设计模式，目的是保证一个类只能有一个实例，它会自行实例化并且为整个系统提供这个实例，可以避免频繁创建对象，节约内存。（保证一个类的对象在内存中的唯一性）。</p>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ol>
+<li><p>开发中常常要读取配置文件中的 某些数据，为此就需要通过创建这个配置文件对象去拿到其中的数据，如果在多处要用到这个配置对象，那就需要创建多个对象，这样会浪费大量内存。</p>
+</li>
+<li><p>如果两个不同的程序 A，B 都用到了这个配置文件中相同的一个数据，它们各自创建了配置文件的对象来拿到这个数据，若此时程序 A 修改了这个数据，那么这个时候，程序 B 是不知道 程序A那边改了数据，因为在堆里边A B分别创建的两个配置文件对象，它们的值是没有关联的。这时若想要B拿到A改完之后的数据，就需要使用单例模式。</p>
+<p><strong>总的说就是：</strong>多个程序都在操作同一个配置文件时，程序A操作后的结果，程序B要知道并继续基于A操作后的结果进行操作。前提是，数据都存储在配置文件对象中，要求A 和 B 操作的配置文件对象是同一个。</p>
+</li>
+</ol>
+<h4 id="单例模式实现思路"><a href="#单例模式实现思路" class="headerlink" title="单例模式实现思路"></a>单例模式实现思路</h4><ol>
+<li><p>问题：其他程序都可以通过new创建该类的对象。无法控制数量</p>
+<p>所以，不让其他程序new对象。</p>
+</li>
+<li><p>问题：其他程序莫得对象使用了？</p>
+<p>so，需要在本类中自己 new 一个本类对象。这样就可以不让别的程序 new ，自己 new，可以实现数量控制。</p>
+</li>
+<li><p>然后，对外提供其他程序获取该对象的方式就可以了。</p>
+</li>
+</ol>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ol>
+<li><p>不让其他程序 new 该类对象？</p>
+<p>可以将类中的构造函数私有化，不让其初始化即可。</p>
+</li>
+<li><p>让本类中 new 一个对象。</p>
+</li>
+<li><p>定义一个方法返回改对象。</p>
+</li>
+</ol>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Single</span></span>&#123;</span><br><span class="line">    <span class="comment">// 创建一个本类对象</span></span><br><span class="line">    <span class="comment">// 为了防止外界都可以通过Single.s也能拿到对象，所以需要将s私有化</span></span><br><span class="line">    <span class="comment">// 所以只能通过访问getInstance获得，为了可控。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single s = <span class="keyword">new</span> Single();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 构造函数私有化</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 定义一个方法返回该对象。让其他程序可以获得到。</span></span><br><span class="line">    <span class="comment">// 因为要获取此方法，所以必须通过类来直接调用，所以要用static，所以变量s也应该为静态。</span></span><br><span class="line">    <span class="comment">// 因为静态方法不能访问非静态成员</span></span><br><span class="line">    <span class="comment">// 之所以定义访问，就是为了可控。</span></span><br><span class="line">    <span class="comment">// 为了让此方法一定可以让外界访问到，进一步提升权限，加public，相应的类上也应该加。</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleDemo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Single s1 = Single.getInstance();</span><br><span class="line">        Single s1 = Single.getInstance();</span><br><span class="line">        System.out.println(s1==s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//结果：true</span></span><br></pre></td></tr></table></figure>
 
-<p>Comparable 和 Comparator 接口都是为了对类进行比较，众所周知，诸如 Integer，double 等基本数据类型，java 可以对他们进行比较，而对于类的比较，需要明确指定出比较规则。</p>
-<h4 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h4><p>java 中为了统一比较规则的定义,提供了比较器 Comparable 接口，Comparable 可以被认为是一个内比较器。</p>
-<p>实现了 Comparable 接口的类有一个特点，就是这些类是可以和自己比较的，至于具体和另一个实现了Comparable 接口的类如何比较，则依赖 compareTo 方法的实现。</p>
-<p>如果 add 进入一个Collection的对象想要 Collections 的 sort 方法帮你自动进行排序的话，那么这个对象必须实现Comparable 接口。</p>
-<p>举个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package com.yolia.temporary;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * @Author: yolia</span><br><span class="line"> * @Date: 2019&#x2F;12&#x2F;27 21:49</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Person implements Comparable&lt;Person&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public Person(String name, int age) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int compareTo(Person o) &#123;</span><br><span class="line">        return this.age - o.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Person&#123;&quot; +</span><br><span class="line">                &quot;name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &quot;, age&#x3D;&quot; + age +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DemoComparable &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Person[] people &#x3D; new Person[]&#123;new Person(&quot;哈哈&quot;, 12), new Person(&quot;呵呵&quot;, 14),</span><br><span class="line">        new Person(&quot;嘿嘿&quot;, 16), new Person(&quot;哦哦&quot;, 18)&#125;;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(people);</span><br><span class="line">        System.out.println(Arrays.toString(people));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">[Person&#123;name&#x3D;&#39;哈哈&#39;, age&#x3D;12&#125;, Person&#123;name&#x3D;&#39;呵呵&#39;, age&#x3D;14&#125;, Person&#123;name&#x3D;&#39;嘿嘿&#39;, age&#x3D;16&#125;, Person&#123;name&#x3D;&#39;哦哦&#39;, age&#x3D;18&#125;]</span><br></pre></td></tr></table></figure>
+<h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><p>在类初始化的时候就创建好对象，适用于对象不是很占内存的情景下</p>
+<h4 id="懒汉式（延迟加载方式）"><a href="#懒汉式（延迟加载方式）" class="headerlink" title="懒汉式（延迟加载方式）"></a>懒汉式（延迟加载方式）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="Comparator"><a href="#Comparator" class="headerlink" title="Comparator"></a>Comparator</h4><p>Comparator 属于一种挽救的比较器支持,其主要的目的是解决一些没有使用 Comparable 排序的类的对象的排序操作，比如先前的设计没有考虑到 Person 类需要比较器的功能，后来又想对 Person 类进行排序处理，但又不能够去修改 Person 类的情况（也就代表无法实现 Comparable 接口）。这个时候，就可以使用Comparator来进行挽救。</p>
-<p>另一种情况就是对于实现了Comparable接口的对象，开发者认为其中的 compare To 方法中的比较方式并不是自己想要的那种比较方式，则可以实现Comparator接口。</p>
-<p>总的来说，实现Comparator接口的耦合性要弱一些（相对于实现Comparable接口来说）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注：在Arrays中存在另一种基于Comparator的排序处理：</span><br><span class="line">static &lt;T&gt; void sort(T[] a, Comparator&lt;? super T&gt; c) 根据指定的比较器引发的顺序对指定的对象数组进行排序.在java.util.Comparator里面最初只定义有一个排序的compare()方法 int compare(T o1, T o2) 比较其两个参数的顺序,但是后来持续发展,在JDK1.8之后有增加了许多static的方法.</span><br></pre></td></tr></table></figure>
+<p>在使用的时候创建对象,适用于对象比较占内存的场景下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Single s = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="keyword">null</span>)</span><br><span class="line">            s = <span class="keyword">new</span> Single();</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>举个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">package com.yolia.temporary;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Comparator;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * @Author: yolia</span><br><span class="line"> * @Date: 2019&#x2F;12&#x2F;27 21:50</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Person1 &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public Person1(String name, int age) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Person&#123;&quot; +</span><br><span class="line">                &quot;name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &quot;, age&#x3D;&quot; + age +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person1Comparator implements Comparator&lt;Person1&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int compare(Person1 o1, Person1 o2) &#123;</span><br><span class="line">        return o1.getAge() - o2.getAge();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DemoComparator &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Person[] people &#x3D; new Person[]&#123;new Person(&quot;哈哈&quot;, 12), new Person(&quot;呵呵&quot;, 14),</span><br><span class="line">                new Person(&quot;嘿嘿&quot;, 16), new Person(&quot;哦哦&quot;, 18)&#125;;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(people);</span><br><span class="line">        System.out.println(Arrays.toString(people));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">[Person&#123;name&#x3D;&#39;哈哈&#39;, age&#x3D;12&#125;, Person&#123;name&#x3D;&#39;呵呵&#39;, age&#x3D;14&#125;, Person&#123;name&#x3D;&#39;嘿嘿&#39;, age&#x3D;16&#125;, Person&#123;name&#x3D;&#39;哦哦&#39;, age&#x3D;18&#125;]</span><br></pre></td></tr></table></figure>
 
-<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><p>java.lang.Comparable 是在类定义的时候实现的父接口,主要用于定义排序规则,里面只有一个compareTo() 的方法；java.util.Comparator 需要设置单独的比较器实现类来完成,提供有compare()方法。</p>
-<p>如果实现类没有实现Comparable接口，又想对两个类进行比较（或者实现类实现了Comparable接口，但是对compareTo方法内的比较算法不满意），那么可以实现Comparator接口，自定义一个比较器，写比较算法。</p>
-<p>实现Comparable接口的方式比实现Comparator接口的耦合性要强一些，如果要修改比较算法，要修改Comparable接口的实现类，而实现Comparator的类是在外部进行比较的，不需要对实现类有任何修改。因此：</p>
-<ul>
-<li>对于一些普通的数据类型（比如 String, Integer, Double…），它们默认实现了Comparable 接口，实现了 compareTo 方法，我们可以直接使用。</li>
-<li>而对于一些自定义类，它们可能在不同情况下需要实现不同的比较策略，我们可以新创建 Comparator 接口，然后使用特定的 Comparator 实现进行比较。</li>
-</ul>
-<p>对于排序的定义,如果不是必须的情况下,不建议使用Comparator,最好以实现Comparable为首选择</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
 
@@ -266,15 +300,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Comparable</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Comparator</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式，单例模式</a>
         		</li>
       		
 		</ul>
@@ -330,7 +356,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/27/Java%E6%AF%94%E8%BE%83%E5%99%A8/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -344,18 +370,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          设计模式-单例模式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/26/%E9%9A%8F%E7%AC%94/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">随笔</div>
+    <a href="/2019/12/27/Java%E6%AF%94%E8%BE%83%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java比较器</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -374,19 +391,6 @@
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java比较器——Comparable和Comparator"><span class="toc-number">1.</span> <span class="toc-text">Java比较器——Comparable和Comparator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Comparable"><span class="toc-number">1.0.1.</span> <span class="toc-text">Comparable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Comparator"><span class="toc-number">1.0.2.</span> <span class="toc-text">Comparator</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#总结："><span class="toc-number">1.0.2.1.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>
