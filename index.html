@@ -204,57 +204,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Java-反射机制"><a href="#Java-反射机制" class="headerlink" title="Java 反射机制"></a>Java 反射机制</h2><h4 id="1-什么是反射"><a href="#1-什么是反射" class="headerlink" title="1. 什么是反射"></a>1. 什么是反射</h4><p><strong>概述</strong>：Java 反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法。对于任意一个对象，都能够调用它的任意一个方法和属性。这种动态获取的信息以及动态调用对象的方法的功能称为 Java 的反射机制。实际上，我们创建的每一个类也都是对象，即类本身是 java.lang.Class 类的实例对象。这个实例对象称之为类对象，也就是 Class 对象。</p>
-<p>反射就是把 Java 类中的各种成分（成员变量、方法、构造方法、包等信息），利用反射技术可以对一个类进行解剖，把各各组成部分映射成一个个的 Java 对象。</p>
-<h4 id="2-Class-类"><a href="#2-Class-类" class="headerlink" title="2. Class 类"></a>2. Class 类</h4><p><strong>Java api 中对 Class 类是这样说的</strong>：Class 类的实例表示正在运行的 Java 应用程序中的类和接口。枚举是一种类，注释是一种接口。每个数组属于被映射为 Class 对象的一个类，所有具有相同元素类型和维数的数组都共享该 Class 对象。基本的 Java 类型（boolean、byte、char、short、int、long、float、和 double）和关键字 void 也表示为 Class 对象。（就是说 jvm 中有很多实例每个类都有该 Class 对象，包括基本数据类型）</p>
-<p>Class 没有公共构造方法。Class 对象是在加载类时由 Java 虚拟机以及通过调用类加载器中的 defineClass 方法自动构造的。</p>
-<h4 id="3-举个栗子"><a href="#3-举个栗子" class="headerlink" title="3. 举个栗子"></a>3. 举个栗子</h4><p>一般来说，我们使用某个类时必定知道它是什么类，是用来做什么的。于是我们直接对这个类进行实例化，之后使用这个对象进行操作。</p>
-<p>比如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person people = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">people.setAge(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(phone.getAge());</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出：10</span></span><br></pre></td></tr></table></figure>
-
-<p>而反射则是一开始并不知道我要初始化的类对象是什么，自然也就无法使用 new 关键字来创建对象了。</p>
-<p>这时候，我们可以使用 JDK 提供的反射 API 进行反射调用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(<span class="string">"com.yolia.reflect.Person"</span>);<span class="comment">//获取类的 Class 对象实例</span></span><br><span class="line"></span><br><span class="line">Method setAge = clazz.getMethod(<span class="string">"setAge"</span>, <span class="keyword">int</span><span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">//获取方法的 Method 对象</span></span><br><span class="line"></span><br><span class="line">Constructor constructor = clazz.getConstructor();<span class="comment">//获取 Constructor对象</span></span><br><span class="line"></span><br><span class="line">Object people = constructor.newInstance();<span class="comment">//用Constructor对象的newInstance获取反射类对象</span></span><br><span class="line"></span><br><span class="line">setAge.invoke(object, <span class="number">12</span>);<span class="comment">//用 invoke 调用方法</span></span><br><span class="line"></span><br><span class="line">Method getAge = clazz.getMethod(<span class="string">"getAge"</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(getAge.invoke(people));</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出：12</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-反射的使用"><a href="#4-反射的使用" class="headerlink" title="4. 反射的使用"></a>4. 反射的使用</h4><p>上面的栗子写了一些简单的使用，这里详细说说。</p>
-<h5 id="获取反射中的-Class-对象"><a href="#获取反射中的-Class-对象" class="headerlink" title="获取反射中的 Class 对象"></a>获取反射中的 Class 对象</h5><p>三种方法：</p>
-<ol>
-<li><p>使用 Class.forName 静态方法。Class  clazz = Class.forName(“xxx.xxx.xxx”);</p>
-<p>也就是当知道某类的全路径名时，可以使用此方法获取 Class 类对象。一般可能会抛出 ClassNotFoundException异常。也是比较常用的方法。</p>
-</li>
-<li><p>直接通过 类名.class 得到。因为任何数据类型（包括基本数据类型）都有一个“静态”的 class 属性。</p>
-<p>使用该方法需要在编译前知道操作的 Class。</p>
-</li>
-<li><p>通过任意对象（Object）调用 getClass() 方法。Object 类中的 getClass 方法，因为所有类都继承 Object 类。从而调用 Object 类来获取。</p>
-<p>比如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">"Hello"</span>);</span><br><span class="line">Class clazz = str.getClass();</span><br></pre></td></tr></table></figure>
-
-<p>一般是你传过来一个 Object 类型的对象，我不知道你具体是什么类，就用这种方法。</p>
-</li>
-</ol>
-<h5 id="注：在运行期间，一个类，只有一个-Class-对象产生。"><a href="#注：在运行期间，一个类，只有一个-Class-对象产生。" class="headerlink" title="注：在运行期间，一个类，只有一个 Class 对象产生。"></a>注：在运行期间，一个类，只有一个 Class 对象产生。</h5><p>一般常用第一种，第二种需要导入类的包，依赖太强，不导包就抛编译错误。第三种对象都有了还去反射没意义。</p>
-<h5 id="通过反射创建对象"><a href="#通过反射创建对象" class="headerlink" title="通过反射创建对象"></a>通过反射创建对象</h5><ol>
-<li><p>通过 Class 对象的 newInstance() 方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Person<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Person people = (Person)clazz.newInstance();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过 Constructor 对象的 newInstance() 方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Person<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"><span class="comment">//通过反射获取构造方法</span></span><br><span class="line">Constructor cons = clazz.getConstructor();</span><br><span class="line"><span class="comment">//通过构造方法创建对象</span></span><br><span class="line">Person people = (Person)cons.newInstance();</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h5 id="通过反射获取属性、方法"><a href="#通过反射获取属性、方法" class="headerlink" title="通过反射获取属性、方法"></a>通过反射获取属性、方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取 Class 对象</span></span><br><span class="line">Class clazz = Person<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"><span class="comment">//获取所有公有的字段</span></span><br><span class="line">Field[] fieldArray = clazz.getFields();</span><br><span class="line"><span class="comment">//使用 Class 对象的 getDeclaredFields() 方法可以获取包括私有属性在内的所有属性。</span></span><br><span class="line">fieldArray = clazz.getDeclaredFields();</span><br><span class="line"><span class="comment">//获取公共字段“**”并调用</span></span><br><span class="line">Field field = clazz.getField(<span class="string">"name"</span>);</span><br><span class="line"><span class="comment">//获取私有字段“**”并调用</span></span><br><span class="line">field = clazz.getDeclaredField(<span class="string">"phone"</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里使用另一种方法获取 Class 对象</span></span><br><span class="line">Class clazz = Class.forName(<span class="string">"com.yolia.Person"</span>);</span><br><span class="line"><span class="comment">//获取所有的公有方法</span></span><br><span class="line">clazz.getMethods();</span><br><span class="line"><span class="comment">//获取所有的方法，包括私有</span></span><br><span class="line">methodArrays = clazz.getDeclaredMethods();</span><br><span class="line"><span class="comment">//获取公有的xxx()方法</span></span><br><span class="line"><span class="comment">//这里 String.class 是因为方法有个String类型的参数</span></span><br><span class="line">Method m = clazz.getMethod(<span class="string">"xxx"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//获取私有的xxx()方法</span></span><br><span class="line">m = clazz.getDeclaredMethod(<span class="string">"xxx"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//获取main方法</span></span><br><span class="line">Method methodMain = clazz.getMethod(<span class="string">"main"</span>, String[]<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//调用main方法</span></span><br><span class="line"><span class="comment">//第一个参数，对象类型，因为方法是static静态的，所以为null可以，第二个参数是String数组，这里要注意在k1.4时是数组，jdk1.5之后是可变参数</span></span><br><span class="line"><span class="comment">//这里拆的时候将  new String[]&#123;"a","b","c"&#125; 拆成3个对象。。。所以需要将它强转。</span></span><br><span class="line">methodMain.invoke(<span class="keyword">null</span>, (Object)<span class="keyword">new</span> String[]&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;);<span class="comment">//方式一</span></span><br><span class="line">methodMain.invoke(<span class="keyword">null</span>, <span class="keyword">new</span> Object[]&#123;<span class="keyword">new</span> String[]&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;&#125;);<span class="comment">//方式二</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="5-new对象和反射得到对象的区别"><a href="#5-new对象和反射得到对象的区别" class="headerlink" title="5. new对象和反射得到对象的区别"></a>5. new对象和反射得到对象的区别</h4><p>在使用反射的时候，必须确保这个类已经加载并已经连接了。使用new的时候，这个类可以没有被加载，也可以已经被加载。</p>
-<p>new关键字可以调用任何public构造方法，而反射只能调用无参构造方法。</p>
-<p>new关键字是强类型的，效率相对较高。 反射是弱类型的，效率低。</p>
-<p>反射提供了一种更加灵活的方式创建对象，得到对象的信息。如Spring 中<a href="https://www.jianshu.com/p/0ce892b5ae5e" target="_blank" rel="noopener">AOP</a>等的使用，动态代理的使用，都是基于反射的。</p>
-
+        <h2 id="Java-反射机制"><a href="#Java-反射机制" class="headerlink" title="Java 反射机制"></a>Java 反射机制</h2>
+        
       
 
       
@@ -1052,14 +1003,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">error</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -1068,15 +1011,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">error</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">wordpress</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1089,6 +1036,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
