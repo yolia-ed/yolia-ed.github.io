@@ -16,7 +16,7 @@
 <meta property="og:description" content="关于 String 长度限制问题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-01T09:44:35.131Z">
-<meta property="article:modified_time" content="2020-01-01T10:11:41.871Z">
+<meta property="article:modified_time" content="2020-01-01T10:17:16.963Z">
 <meta property="article:author" content="Yolia">
 <meta property="article:tag" content="String">
 <meta name="twitter:card" content="summary">
@@ -93,7 +93,7 @@
 		        
 			</div>
       <!-- 网易云音乐插件 -->
-      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=228 height=86 src="//music.163.com/outchain/player?type=2&id=357126&auto=1&height=66"></iframe>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=228 height=86 src="//music.163.com/outchain/player?type=2&id=357126&auto=0&height=66"></iframe>
 		</nav>
 	</header>		
 </div>
@@ -207,7 +207,6 @@
       
         <h2 id="关于-String-长度限制问题"><a href="#关于-String-长度限制问题" class="headerlink" title="关于 String 长度限制问题"></a>关于 String 长度限制问题</h2><a id="more"></a>
 
-<hr>
 <p>对于字符串可以承受的最大长度，分为 2 个阶段，一个是编译期（也就是在代码中定义了一个 String 字符串），一个是运行期（程序运行过程中）</p>
 <h4 id="1-编译期String的长度限制"><a href="#1-编译期String的长度限制" class="headerlink" title="1. 编译期String的长度限制"></a>1. 编译期String的长度限制</h4><p><strong>问题：</strong>根据 String 源码，public String(char value[], int offset, int count) 的定义，count 是 int 类型的，所以 char value[] 中最多可以保存 Integer.MAX_VALUE 个，即 2147483647 个字符。</p>
 <p>但实际最多只能由 65534 个字符。</p>
