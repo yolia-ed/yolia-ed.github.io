@@ -16,7 +16,7 @@
 <meta property="og:description" content="如何在遍历集合的同时删除元素">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-03T16:44:06.308Z">
-<meta property="article:modified_time" content="2020-01-04T15:30:20.353Z">
+<meta property="article:modified_time" content="2020-01-04T16:35:20.164Z">
 <meta property="article:author" content="Yolia">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="ArrayList">
@@ -182,7 +182,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.8k字</span>
+        <span class="post-count">2.3k字</span>
       </span>
     </span>
 
@@ -191,7 +191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -273,7 +273,16 @@
 <p>可以看到，它只修改了 modCount，并没有对 expectedModCount 做任何操作。</p>
 <p>之所以会抛出 ConcurrentModificationException 异常,是因为我们的代码中使用了增强 for 循环，而在增强 for 循环中，集合遍历是通过 iterator 进行的，但是元素的 add/remove 却是直接使用的集合类自己的方法。这就导致 iterator 在遍历的时候，会发现有一个元素在自己不知道的情况下就被删除/添加了，就会抛出一个异常，用来提示用户，可能发生了并发修改。</p>
 <p>参考<a href="https://juejin.im/post/5c8717ad5188257dda56c381#heading-2" target="_blank" rel="noopener">这里</a></p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>在 foreach 循环中删除元素引起 ConcurrentModificationException 异常，是因为foreach其实是依赖了 while 循环和 Iterator实现的。集合遍历是通过 iterator 进行的，但是删除元素是使用了集合类自己的方法，比如 remove 方法，由 ArrayList 源码中的 remove 方法得知，调用这个 remove 方法会删除掉一个元素并导致 modCount 这个变量自增一次；而集合遍历的原理是调用iterator.next 方法，这个方法在 ArrayList 源码中首先会调用 checkForComodification 这个方法判断 modCount 和 expectedModCount 是否相等，若不想等就抛出 ConcurrentModificationException 异常，由于前边调用集合类自己的方法导致 modCount 自增一次，所以这里就会抛出异常。</p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>在 foreach 循环中删除元素引起 ConcurrentModificationException 异常，是因为foreach其实是依赖了 while 循环和 Iterator实现的。集合遍历是通过 iterator 进行的，但是删除元素是使用了集合类自己的方法，就拿 remove 方法来说，由 ArrayList 源码中的 remove 方法得知，调用这个 remove 方法会删除掉一个元素并导致 modCount 这个变量自增一次；而集合遍历的本质是使用Iterator，（迭代器的本质是先调用hasNext() 方法判断是否存在下一个元素，然后再使用 next() 方法取下一个元素）会用到iterator.next 方法，这个方法在 ArrayList 源码中首先会调用 checkForComodification 这个方法判断 modCount 和 expectedModCount 是否相等，若不想等就抛出 ConcurrentModificationException 异常，由于前边调用集合类自己的方法导致 modCount 自增一次，所以这里就会抛出异常。</p>
+<h4 id="再举个栗子"><a href="#再举个栗子" class="headerlink" title="再举个栗子"></a>再举个栗子</h4><p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代码 0</span></span><br><span class="line">List&lt;String&gt; arrayList1 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">arrayList1.add(<span class="string">"a"</span>);</span><br><span class="line">arrayList1.add(<span class="string">"b"</span>);</span><br><span class="line"><span class="keyword">for</span> (String s : arrayList1) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"a"</span>.equals(s)) &#123;</span><br><span class="line">        arrayList1.remove(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码 1</span></span><br><span class="line">List&lt;String&gt; arrayList2 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">arrayList2.add(<span class="string">"b"</span>);</span><br><span class="line">arrayList2.add(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">for</span> (String s : arrayList2) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"a"</span>.equals(s)) &#123;</span><br><span class="line">        arrayList2.remove(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//上述代码 0 的 remove 方法成功执行，代码 1 的 remove 方法运行抛出 ConcurrentModificationException异常。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>原因：</strong>因为代码 0 在 remove 元素 a 之后，它的 size (数组大小)变为了1，这里可以自行去程序里 debug 即可一目了然。然后 Itr 中的 cursor 变量由 0 变为 1，此时 cursor = size，循环结束，未进入到 next 方法中，所以不会抛异常，具体源码如下。</p>
+<p>而代码 1 在判断完第一个元素 b 之后（循环第一次），size 并不会改变大小，循环继续（cursor=1，size=2）；所以到了判断 a 的时候（循环第二次） ，remove 成功了（cursor=2，size=1），进入第三次循环，但是第三次循环的时候，程序执行到了 next 方法，之前的 remove 操作导致 ArrayList 的 modCount 值加 1，而 Itr 类中的 expectedModCount 保持不变，next 方法中判断 checkForComodification() ，所以就抛出了异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ArrayList 部分源码如下</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cursor;       <span class="comment">// index of next element to return</span></span><br><span class="line">    <span class="keyword">int</span> lastRet = -<span class="number">1</span>; <span class="comment">// index of last element returned; -1 if no such</span></span><br><span class="line">    <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line">    Itr() &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cursor != size;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        <span class="keyword">int</span> i = cursor;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= size)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">        Object[] elementData = ArrayList.<span class="keyword">this</span>.elementData;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= elementData.length)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">        cursor = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> (E) elementData[lastRet = i];</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -411,7 +420,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何在遍历集合的同时删除元素"><span class="toc-number">1.</span> <span class="toc-text">如何在遍历集合的同时删除元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-普通-for-循环"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 普通 for 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-foreach-删除后跳出循环"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. foreach 删除后跳出循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用迭代器"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 使用迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other"><span class="toc-number">1.0.4.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fail-fast"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">fail-fast</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#modCount-和-expectedModCount-是如何不相等的"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">modCount 和 expectedModCount 是如何不相等的</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结："><span class="toc-number">1.0.5.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何在遍历集合的同时删除元素"><span class="toc-number">1.</span> <span class="toc-text">如何在遍历集合的同时删除元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-普通-for-循环"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 普通 for 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-foreach-删除后跳出循环"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. foreach 删除后跳出循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用迭代器"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 使用迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other"><span class="toc-number">1.0.4.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fail-fast"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">fail-fast</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#modCount-和-expectedModCount-是如何不相等的"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">modCount 和 expectedModCount 是如何不相等的</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结："><span class="toc-number">1.0.5.</span> <span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#再举个栗子"><span class="toc-number">1.0.6.</span> <span class="toc-text">再举个栗子</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -548,6 +557,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ArrayList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -556,11 +573,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ArrayList</a>
+                <a href="javascript:void(0)" class="js-tag color3">反射</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,18 +585,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Comparator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">反射</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
@@ -592,11 +593,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
+                <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Comparator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,6 +622,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">单例模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
