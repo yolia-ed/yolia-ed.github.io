@@ -6,21 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ArrayList | Yolia</title>
+  <title>Java知识点 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何在遍历集合的同时删除元素">
+  <meta name="description" content="Java中为什么重写 hashcode 和 equals 方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ArrayList">
-<meta property="og:url" content="http://yoursite.com/2020/01/04/ArrayList/index.html">
+<meta property="og:title" content="Java知识点">
+<meta property="og:url" content="http://yoursite.com/2020/01/06/Java%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="如何在遍历集合的同时删除元素">
+<meta property="og:description" content="Java中为什么重写 hashcode 和 equals 方法">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-03T16:44:06.308Z">
-<meta property="article:modified_time" content="2020-01-04T16:35:20.164Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/yolia-ed/blog-Images/master/blog/Hash%E8%A1%A8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/yolia-ed/blog-Images/master/blog/Hash%E8%A1%A8-%E9%93%BE.png">
+<meta property="article:published_time" content="2020-01-06T15:48:56.187Z">
+<meta property="article:modified_time" content="2020-01-06T15:47:29.945Z">
 <meta property="article:author" content="Yolia">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="ArrayList">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yolia-ed/blog-Images/master/blog/Hash%E8%A1%A8.png">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -159,20 +161,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ArrayList" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java知识点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ArrayList
+      Java知识点
     </h1>
   
 
         
-        <a href="/2020/01/04/ArrayList/" class="archive-article-date">
-  	<time datetime="2020-01-03T16:44:06.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
+        <a href="/2020/01/06/Java%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2020-01-06T15:48:56.187Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-06</time>
 </a>
 
         <!-- 开始添加字数统计-->
@@ -182,7 +184,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2.3k字</span>
+        <span class="post-count">941字</span>
       </span>
     </span>
 
@@ -191,7 +193,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -214,75 +216,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="如何在遍历集合的同时删除元素"><a href="#如何在遍历集合的同时删除元素" class="headerlink" title="如何在遍历集合的同时删除元素"></a>如何在遍历集合的同时删除元素</h2><a id="more"></a>
+        <h2 id="Java中为什么重写-hashcode-和-equals-方法"><a href="#Java中为什么重写-hashcode-和-equals-方法" class="headerlink" title="Java中为什么重写 hashcode 和 equals 方法"></a>Java中为什么重写 hashcode 和 equals 方法</h2><a id="more"></a>
 
-<h4 id="1-普通-for-循环"><a href="#1-普通-for-循环" class="headerlink" title="1. 普通 for 循环"></a>1. 普通 for 循环</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若是从前往后遍历</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        arrayList.add(<span class="string">"aaa"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"ccc"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arrayList.get(i) == <span class="string">"bbb"</span>) &#123;</span><br><span class="line">                arrayList.remove(arrayList.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            System.out.println(arrayList.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">aaa bbb ccc</span><br></pre></td></tr></table></figure>
+<h5 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1. 哈希表"></a>1. 哈希表</h5><p>也叫散列表，是根据键（Key）而直接访问在内存存储位置的数据结构。也就是说，它通过计算一个关于键值的函数，将所需查询的数据映射到表中的一个位置来访问记录，这加快了查找速度，这个映射函数称作散列函数（Hash 函数），存放记录的数组称作散列表（哈希表）。</p>
+<p>这里假设一个 Hash 函数是 x*x%5，当然实际的 Hash 函数不可能这么简单，这里只是简单说明。而 Hash 表是一个长度是 11 的线性表。如果要放入 6，那它首先会对 6 用 Hash 函数计算，结果是 1，所以就把 6 放入到索引为 1 的位置。同样要放入 7 ，经过 Hash 函数计算，得到 4，那就将 7 放入索引是 4 的位置。草图如下：</p>
+<p><img src="https://raw.githubusercontent.com/yolia-ed/blog-Images/master/blog/Hash%E8%A1%A8.png" alt="Hash表"></p>
+<p>但哈希表存在 Hash 冲突的问题，也就是说，比如要放入 1 和 2 ，它们两个分别经过 Hash 函数计算后得到相同的 Hash 值，对此 Java 的 HashMap 采用了 ”链地址法“ 的解决方案。效果草图如下：</p>
+<p><img src="https://raw.githubusercontent.com/yolia-ed/blog-Images/master/blog/Hash%E8%A1%A8-%E9%93%BE.png" alt="Hash表-链"></p>
+<h5 id="2-为什么要重写"><a href="#2-为什么要重写" class="headerlink" title="2. 为什么要重写"></a>2. 为什么要重写</h5><p><strong>equals 方法：</strong></p>
+<p>没被重写过的 equals 方法是判断一个对象是否相等的方法。也就是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在上述代码中，循环跳过了第二个 “bbb”。</p>
-<p>开始的 arrayList 的 size 为 4，从索引 0 （i=0）开始，到 1 （i=1）的时候，发现条件相等然后删除掉了索引 1 中的 bbb，arrayList 的 size 就变为了 3，索引 1 这时候就指向了 第二个 bbb（也就是索引 2 的元素），然后到了 2（i=2），由于索引 1 已经遍历过了，并且指向了 第二个 bbb（相当于之前索引2 的 bbb 移动到了索引 1），相应的之前索引 3 也就移动到了现在索引 2 的位置，也就是正在遍历（i=2）的位置，然后遍历结束。</p>
-<p>所以说第二个元素 bbb 由于移动到了 索引 1 的位置而被跳过。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若是从后往前遍历，就可以避免元素移动造成的影响</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        arrayList.add(<span class="string">"aaa"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"ccc"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=arrayList.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arrayList.get(i) == <span class="string">"bbb"</span>) &#123;</span><br><span class="line">                arrayList.remove(arrayList.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            System.out.println(arrayList.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">aaa ccc</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-foreach-删除后跳出循环"><a href="#2-foreach-删除后跳出循环" class="headerlink" title="2. foreach 删除后跳出循环"></a>2. foreach 删除后跳出循环</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跳出循环主要是为了防止出现fail-fast</span></span><br><span class="line"><span class="keyword">for</span> (String str : stringList) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"aaa"</span>.equals(str)) &#123;</span><br><span class="line">        stringList.remove(str);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-使用迭代器"><a href="#3-使用迭代器" class="headerlink" title="3. 使用迭代器"></a>3. 使用迭代器</h4><p>若是想要在循环过程中删除元素，则需要使用迭代器自带的remove方法删除元素。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        arrayList.add(<span class="string">"aaa"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"ccc"</span>);</span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iterator = arrayList.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"bbb"</span>.equals(iterator.next())) &#123;</span><br><span class="line">                iterator.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            System.out.println(arrayList.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">aaa ccc</span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://juejin.im/post/5c6d1f08e51d457fbf5de648#heading-3" target="_blank" rel="noopener">这里</a></p>
-<h4 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h4><p>为什么使用 foreach 在循环中删除元素会引起fail-fast</p>
-<p>先看看错误示范：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        arrayList.add(<span class="string">"aaa"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"ccc"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (String str : arrayList) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"bbb"</span>.equals(str)) &#123;</span><br><span class="line">                arrayList.remove(str);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//将会报错：Exception in thread "main" java.util.ConcurrentModificationException</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>foreach 循环一般也被称为增强 for 循环。它的原理需要了解一下。将增强 for 循环代码编译后的 class 文件进行反编译（使用 jad 工具）可以知道，增强 for 循环其实是依赖了 while 循环和 Iterator实现的。</p>
-<p>而上述代码之所以会出现异常，是因为触发了一个 Java 集合的错误检测机制——fail-fast</p>
-<h5 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h5><p>fail-fast 即快速失败，它是 Java 集合的一种错误检测机制。当多个线程对集合（非 fail-safe 的集合类）进行结构上的改变的操作时，有可能产生 fail-fast 机制，这时候就会输出 ConcurrentModificationException（当方法检测到对象的并发修改，但不允许这种修改时就抛出该异常），即使不是多线程环境，如果单线程违反了规则，也有可能会抛出该异常。</p>
-<p>那在增强 for 循环中删除元素是如何违反规则的？</p>
-<p>下面将增强 for 循环这个语法糖进行解糖，得到如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;() &#123;&#123;</span><br><span class="line">        add(<span class="string">"aaa"</span>);</span><br><span class="line">        add(<span class="string">"bbb"</span>);</span><br><span class="line">        add(<span class="string">"bbb"</span>);</span><br><span class="line">        add(<span class="string">"ccc"</span>);</span><br><span class="line">    &#125;&#125;;</span><br><span class="line"></span><br><span class="line">    Iterator iterator = arrayList.iterator();</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!iterator.hasNext())</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        String list = (String)iterator.next();</span><br><span class="line">        <span class="keyword">if</span>(list.equals(<span class="string">"Hollis"</span>))</span><br><span class="line">            arrayList.remove(list);</span><br><span class="line">    &#125; <span class="keyword">while</span>(<span class="keyword">true</span>);</span><br><span class="line">    System.out.println(arrayList);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//运行后会抛出异常ConcurrentModificationException</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>通过异常堆栈（也就是下方的报错信息），可以知道异常发生在程序的这一行：Iterator.next 调用了 Iterator.checkForComodification 方法，而异常就是 checkForComodification 方法中抛出的。</p>
-<p>我们可以通过程序的 debug 发现，如果 remove 代码没有被执行过，iterator.next 这一行是一直没有报错的。抛异常的时机正是 remove 执行之后的那一次 next 方法的调用。</p>
-<p>直接看 checkForComodification 方法的代码，查看抛出异常的原因：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="modCount-和-expectedModCount-是如何不相等的"><a href="#modCount-和-expectedModCount-是如何不相等的" class="headerlink" title="modCount 和 expectedModCount 是如何不相等的"></a>modCount 和 expectedModCount 是如何不相等的</h5><p>首先我们查找源码，看看 modCount 和 expectedModCount 是什么。</p>
-<p>通过 ArrayList 的源码 846 行，可以找到下面的一段代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cursor;       <span class="comment">// index of next element to return</span></span><br><span class="line">    <span class="keyword">int</span> lastRet = -<span class="number">1</span>; <span class="comment">// index of last element returned; -1 if no such</span></span><br><span class="line">    <span class="keyword">int</span> expectedModCount = modCount;</span><br></pre></td></tr></table></figure>
-
-<p>由此可推断出，modCount 是 ArrayList 中的一个成员变量。表示该集合实际被修改的次数。</p>
-<p>expectedModCount 是 ArrayList 中的一个内部类——Itr 中的成员变量。表示这个迭代器期望该集合被修改的次数。其值是在 ArrayList.iterator 方法被调用的时候初始化的。只有通过迭代器对集合进行操作，该值才会改变。</p>
-<p>Itr 是一个 Iterator 的实现，使用 ArrayList.iterator 方法可以获取到的迭代器就是 Itr 类的实例，在源码中也可找到。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Iterator&lt;E&gt; <span class="title">iterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Itr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>通过查看 ArrayList 调用的 remove 源码，其中调用了 fastRemove</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</span><br><span class="line">            <span class="keyword">if</span> (elementData[index] == <span class="keyword">null</span>) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</span><br><span class="line">            <span class="keyword">if</span> (o.equals(elementData[index])) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
-
-<p>remove 方法的核心逻辑如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Private remove method that skips bounds checking and does not</span></span><br><span class="line"><span class="comment"> * return the value removed.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fastRemove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">int</span> numMoved = size - index - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (numMoved &gt; <span class="number">0</span>)</span><br><span class="line">        System.arraycopy(elementData, index+<span class="number">1</span>, elementData, index,</span><br><span class="line">                         numMoved);</span><br><span class="line">    elementData[--size] = <span class="keyword">null</span>; <span class="comment">// clear to let GC do its work</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>可以看到，它只修改了 modCount，并没有对 expectedModCount 做任何操作。</p>
-<p>之所以会抛出 ConcurrentModificationException 异常,是因为我们的代码中使用了增强 for 循环，而在增强 for 循环中，集合遍历是通过 iterator 进行的，但是元素的 add/remove 却是直接使用的集合类自己的方法。这就导致 iterator 在遍历的时候，会发现有一个元素在自己不知道的情况下就被删除/添加了，就会抛出一个异常，用来提示用户，可能发生了并发修改。</p>
-<p>参考<a href="https://juejin.im/post/5c8717ad5188257dda56c381#heading-2" target="_blank" rel="noopener">这里</a></p>
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>在 foreach 循环中删除元素引起 ConcurrentModificationException 异常，是因为foreach其实是依赖了 while 循环和 Iterator实现的。集合遍历是通过 iterator 进行的，但是删除元素是使用了集合类自己的方法，就拿 remove 方法来说，由 ArrayList 源码中的 remove 方法得知，调用这个 remove 方法会删除掉一个元素并导致 modCount 这个变量自增一次；而集合遍历的本质是使用Iterator，（迭代器的本质是先调用hasNext() 方法判断是否存在下一个元素，然后再使用 next() 方法取下一个元素）会用到iterator.next 方法，这个方法在 ArrayList 源码中首先会调用 checkForComodification 这个方法判断 modCount 和 expectedModCount 是否相等，若不想等就抛出 ConcurrentModificationException 异常，由于前边调用集合类自己的方法导致 modCount 自增一次，所以这里就会抛出异常。</p>
-<h4 id="再举个栗子"><a href="#再举个栗子" class="headerlink" title="再举个栗子"></a>再举个栗子</h4><p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代码 0</span></span><br><span class="line">List&lt;String&gt; arrayList1 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">arrayList1.add(<span class="string">"a"</span>);</span><br><span class="line">arrayList1.add(<span class="string">"b"</span>);</span><br><span class="line"><span class="keyword">for</span> (String s : arrayList1) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"a"</span>.equals(s)) &#123;</span><br><span class="line">        arrayList1.remove(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码 1</span></span><br><span class="line">List&lt;String&gt; arrayList2 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">arrayList2.add(<span class="string">"b"</span>);</span><br><span class="line">arrayList2.add(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">for</span> (String s : arrayList2) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">"a"</span>.equals(s)) &#123;</span><br><span class="line">        arrayList2.remove(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//上述代码 0 的 remove 方法成功执行，代码 1 的 remove 方法运行抛出 ConcurrentModificationException异常。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>原因：</strong>因为代码 0 在 remove 元素 a 之后，它的 size (数组大小)变为了1，这里可以自行去程序里 debug 即可一目了然。然后 Itr 中的 cursor 变量由 0 变为 1，此时 cursor = size，循环结束，未进入到 next 方法中，所以不会抛异常，具体源码如下。</p>
-<p>而代码 1 在判断完第一个元素 b 之后（循环第一次），size 并不会改变大小，循环继续（cursor=1，size=2）；所以到了判断 a 的时候（循环第二次） ，remove 成功了（cursor=2，size=1），进入第三次循环，但是第三次循环的时候，程序执行到了 next 方法，之前的 remove 操作导致 ArrayList 的 modCount 值加 1，而 Itr 类中的 expectedModCount 保持不变，next 方法中判断 checkForComodification() ，所以就抛出了异常。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ArrayList 部分源码如下</span></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Itr</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cursor;       <span class="comment">// index of next element to return</span></span><br><span class="line">    <span class="keyword">int</span> lastRet = -<span class="number">1</span>; <span class="comment">// index of last element returned; -1 if no such</span></span><br><span class="line">    <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line">    Itr() &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cursor != size;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        checkForComodification();</span><br><span class="line">        <span class="keyword">int</span> i = cursor;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= size)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</span><br><span class="line">        Object[] elementData = ArrayList.<span class="keyword">this</span>.elementData;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= elementData.length)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">        cursor = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> (E) elementData[lastRet = i];</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>== 对基本数据类型是比较值是否相等，对于引用数据类型比较内存地址是否相等。</p>
+<p>在我们的业务系统中判断对象有时候需要的不是一种严格意义上的相等，而是一种业务上的相等。所以需要重写。</p>
+<p><strong>hashcode 方法</strong></p>
+<p>没被重写过的 hashcode 方法是返回对象的内存地址。</p>
+<p>一般有这么规定，如果两个对象相等，则 hashcode 一定也是相同的；两个对象相等，对两个对象分别调用 equals 方法都返回true；而两个对象有相同的 hashcode 值，它们也不一定是相等的；所以若是覆盖了 equals 方法，则 hashcode 方法也必须被覆盖。</p>
+<p>如果只重写了 equals 方法而没有重写 hashCode 方法，那么这句话——”相等的对象一定具有相等的 hashCode”将会不成立。</p>
+<h5 id="3-规则"><a href="#3-规则" class="headerlink" title="3. 规则"></a>3. 规则</h5><p>通过 Java 文档中的 equals 方法描述，所有要实现自己的<code>equals()</code>方法都要遵守下面几个规则：</p>
+<p>自反性：对于任何对象x，<code>x.equals(x)</code>应该返回<code>true</code></p>
+<p>对称性：对于任何两个对象x和y，如果<code>x.equals(y)</code>返回<code>true</code>，那么<code>y.equals(x)</code>也应该返回<code>true</code></p>
+<p>传递性：对于多个对象x,y,z，如果<code>x.equals(y)</code>返回<code>true</code>,<code>y.equals(z)</code>返回<code>true</code>，那么<code>x.equals(z)</code>也应该返回<code>true</code></p>
+<p>一致性：对于两个非空对象x,y，在没有修改此对象的前提下，多次调用返回的结果应该相同</p>
+<p>对于任何非空的对象x，<code>x.equals(null)</code>都应该返回<code>false</code></p>
+<p><code>hashCode()</code>方法中也有一些规约</p>
+<ul>
+<li>如果对象在使用<code>equals</code>方法中进行比较的参数没有修改，那么多次调用一个对象的<code>hashCode()</code>方法返回的哈希值应该是相同的。</li>
+<li>如果两个对象通过<code>equals</code>方法比较是相等的，那么要求这两个对象的<code>hashCode</code>方法返回的值也应该是相等的。</li>
+<li>如果两个对象通过<code>equals</code>方法比较是不同的，那么也不要求这两个对象的<code>hashCode</code>方法返回的值是相同的。但是我们应该知道对于不同对象产生不同的哈希值对于哈希表(HashMap等等)能够提高性能。</li>
+</ul>
 
       
 
@@ -317,11 +279,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ArrayList</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -377,7 +335,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/04/ArrayList/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/06/Java%E7%9F%A5%E8%AF%86%E7%82%B9/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -391,18 +349,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/06/Java%E7%9F%A5%E8%AF%86%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java知识点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/03/HashMap%E9%81%8D%E5%8E%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HashMap遍历</div>
+    <a href="/2020/01/04/ArrayList/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ArrayList</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -421,19 +370,6 @@
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何在遍历集合的同时删除元素"><span class="toc-number">1.</span> <span class="toc-text">如何在遍历集合的同时删除元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-普通-for-循环"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 普通 for 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-foreach-删除后跳出循环"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. foreach 删除后跳出循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用迭代器"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 使用迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other"><span class="toc-number">1.0.4.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fail-fast"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">fail-fast</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#modCount-和-expectedModCount-是如何不相等的"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">modCount 和 expectedModCount 是如何不相等的</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结："><span class="toc-number">1.0.5.</span> <span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#再举个栗子"><span class="toc-number">1.0.6.</span> <span class="toc-text">再举个栗子</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>
