@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Yolia</title>
+  <title>Mybatis��־ | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="��ǰѧϰ����־��¼������">
+<meta name="keywords" content="Java,Mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis��־">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/mybatis日志/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="��ǰѧϰ����־��¼������">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-04T14:59:06.169Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
-<meta name="twitter:description" content="Yolia的博客">
+<meta name="twitter:title" content="Mybatis��־">
+<meta name="twitter:description" content="��ǰѧϰ����־��¼������">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -156,39 +158,321 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
+            <article id="post-mybatis日志" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mybatis��־
+    </h1>
+  
+
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/02/04/mybatis日志/" class="archive-article-date">
+  	<time datetime="2020-02-04T15:03:53.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">458字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+
             
-  
-  
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
+        <p>��ǰѧϰ����־��¼������</p>
+<a id="more"></a>
+
+<h3 id="1-mybatis�����"><a href="#1-mybatis�����" class="headerlink" title="1. mybatis�����"></a>1. mybatis�����</h3><ol>
+<li>����maven���̲���������</li>
+<li>����ʵ�����dao�Ľӿ�</li>
+<li>����Mybatis���������ļ�SqlMapConfig.xml</li>
+<li>����ӳ�������ļ�IUserDao.xml</li>
+</ol>
+<h3 id="2-�������ע������"><a href="#2-�������ע������" class="headerlink" title="2. �������ע������"></a>2. �������ע������</h3><ol>
+<li><p>����IUserDao.xml �� IUserDao.javaʱ������Ϊ�˺�����֮ǰ��֪ʶ����һ�¡�</p>
+<p>��Mybatis�����ѳ־ò�Ĳ����ӿ����ƺ�ӳ���ļ�Ҳ������Mapper</p>
+<p>���ԣ�IuserDao �� IUerMapper��һ����</p>
+</li>
+<li><p>���ɰ棩��idea�д���Ŀ¼��ʱ�����Ͱ��ǲ�һ����</p>
+<p>���ڴ���ʱ��com.yolia.dao���������ṹ</p>
+<p>Ŀ¼�ڴ���ʱ��com.yolia.dao��һ��Ŀ¼</p>
+</li>
+<li><p>mybatis��ӳ�������ļ�λ�ñ����dao�ӿڵİ��ṹ��ͬ</p>
+</li>
+<li><p>ӳ�������ļ���mapper��ǩnamespace���Ե�ȡֵ������dao�ӿڵ�ȫ�޶�����</p>
+</li>
+<li><p>ӳ�������ļ��Ĳ������ã�select����id���Ե�ȡֵ������dao�ӿڵķ�����</p>
+<p> �����������345��֮�������ڿ����о�������дdao��ʵ���ࡣ</p>
+<h3 id="3-mybatis���U�����"><a href="#3-mybatis���U�����" class="headerlink" title="3. mybatis���Ű�����"></a>3. mybatis���Ű�����</h3></li>
+<li><p>��ȡ�����ļ�</p>
+</li>
+<li><p>����SqlSessionFactory����</p>
+</li>
+<li><p>����SqlSession</p>
+</li>
+<li><p>����Dao�ӿڵĴ������</p>
+</li>
+<li><p>ִ��dao�еķ���</p>
+</li>
+<li><p>�ͷ���Դ</p>
+<p> ע�����<br> ��Ҫ������ӳ�������и�֪mabatisҪ��װ���ĸ�ʵ������<br> ���õķ�ʽ��ָ��ʵ�����ȫ�޶�����</p>
+<p> mybatis����ע������Ű�����<br> ��IUserDao.xml�������dao�ӿڵķ�����ʹ��@Selectע�⣬����ָ��SQL���<br> ͬʱ��Ҫ��SqlMapConfig.xml�е�mapper����ʱ��ʹ��class����ָ��dao�ӿڵ�ȫ�޶�����<br>��ȷ��<br>������ʵ�ʿ����У�����Խ��Խ�ã����Զ��ǲ��ò�дdaoʵ����ķ�ʽ��<br>������ʹ��XML����ע�����á�<br>����Mybatis����֧��дdaoʵ����ġ�</p>
+</li>
+</ol>
+<p>�Զ���Mybatis�ķ�����<br>mybatis��ʹ�ô���dao�ķ�ʽʵ����ɾ�Ĳ�ʱ��ʲô���أ�<br>ֻ�������£�<br>��һ�������������<br>�ڶ����ڴ�������е���selectList</p>
+<p>����pojo����<br>Mybatisʹ��ognl���ʽ���������ֶε�ֵ��#{}����${}�����е�ֵΪpojo��������<br>OGNL���ʽ��<br>Object    Graphic    Navigation    Language<br>����    ͼ    ����        ����</p>
+<pre><code>����ͨ�������ȡֵ��������ȡ���ݡ���д���ϰ�get��ʡ���ˡ�
+���磺���ǻ�ȡ�û�������
+    ���е�д����user.getUsername();
+    OGNL���ʽд����user.username
+mybatis��Ϊʲô��ֱ��дusername��������user.�أ�
+    ��Ϊ��parameterType���Ѿ��ṩ������������࣬���Դ�ʱ����Ҫд������</code></pre><p>�����е��ֶ��������ݿ��е��ֶ�������Ӧ    �磺��userSex-&gt;���ݿ�sex</p>
+<p>keyProperty��Ӧ��Ӧ�������е��ֶ���   keyColumn��Ӧ��Ӧ�������ݿ��е��ֶ���</p>
+<p>��ѯ�����п�ʹ�����ַ�����<br>1.�޸�sql���    �磺sex as userSex<br>2.�������    ��ѯ�����������ʵ������������Ķ�Ӧ��ϵ</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"userMap"</span> <span class="attr">type</span>=<span class="string">"com.yolia.domain.User"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--�����ֶεĶ�Ӧ--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"userId"</span> <span class="attr">column</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--�������ֶεĶ�Ӧ--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"userSex"</span> <span class="attr">column</span>=<span class="string">"sex"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;select id=&quot;findAll&quot; resultMap=&quot;userMap&quot;&gt;</code></pre><hr>
+<h3 id="1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���"><a href="#1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���" class="headerlink" title="1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���"></a>1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���</h3><p>mybatis�����ӳ�ʹ�ü�����</p>
+<p>mybatis������Ƶķ���</p>
+<hr>
+<h5 id="���ӳأ�"><a href="#���ӳأ�" class="headerlink" title="���ӳأ�"></a>���ӳأ�</h5><p>������ʵ�ʿ����ж���ʹ�����ӳء�</p>
+<p>��Ϊ�����Լ������ǻ�ȡ���������ĵ�ʱ�䡣</p>
+<h5 id="mybatis�е����ӳأ�"><a href="#mybatis�е����ӳأ�" class="headerlink" title="mybatis�е����ӳأ�"></a>mybatis�е����ӳأ�</h5><p>mybatis���ӳ��ṩ��3�ַ�ʽ�����ã�</p>
+<p>���õ�λ�ã�</p>
+<p>�������ļ�SqlMapConfig.xml�е�dataSource��ǩ��type���Ծ��Ǳ�ʾ���ú������ӳط�ʽ��</p>
+<p>type���Ե�ȡֵ:</p>
+<ul>
+<li>POOLED     ���ô�ͳ��javax.sql.DataSource�淶�е����ӳأ�mybatis������Թ淶��ʵ�֡�</li>
+</ul>
+<ul>
+<li>UNPOOLED     ���ô�ͳ�Ļ�ȡ���ӵķ�ʽ����ȻҲʵ����javax.sql.DataSource�ӿڣ����ǲ�û��</li>
+</ul>
+<p>ʹ�óص�˼�롣</p>
+<ul>
+<li>JNDI        ���÷������ṩ��JNDI����ʵ�֣�����ȡDataSource���󣬲�ͬ�ķ����������õ�</li>
+</ul>
+<p>DataSource�ǲ�һ����<strong>��ע�⣺�������web����maven��war���̣��ǲ���ʹ�õġ�����һ����ʹ�õ���</strong></p>
+<p><strong>tomcat���������������ӳؾ���dbcp���ӳ�</strong>��</p>
+<h5 id="mybatis�е�����"><a href="#mybatis�е�����" class="headerlink" title="mybatis�е�����"></a>mybatis�е�����</h5><p>ʲô������</p>
+<p>������Ĵ�����ACID</p>
+<p>�����Ǹ����Ի������3������</p>
+<p>����취�����ָ��뼶��</p>
+<p>����ͨ��sqlsession�����commit������rollback����ʵ��������ύ�ͻع�</p>
+<p>mybatis�Զ��ύ��������ã�sqlSessionFactory.openSession(true);//�ֶ������������ύ</p>
+<p>��ʽ��Ϊ�Զ��ύ���������ã�ִ��һ�����ʱ�õ���</p>
+<h3 id="2-mybatis����XML���oK�̬SQL���ʹ��-���u���"><a href="#2-mybatis����XML���oK�̬SQL���ʹ��-���u���" class="headerlink" title="2.mybatis����XML���õĶ�̬SQL���ʹ��    ���ü���"></a>2.mybatis����XML���õĶ�̬SQL���ʹ��    ���ü���</h3><p>mappers�����ļ��еļ�����ǩ��</p>
+<if>
+
+<where>
+
+<foreach>
+
+<sql>
+
+<h3 id="3-mybatis�еK�����-����Ӧ��"><a href="#3-mybatis�еK�����-����Ӧ��" class="headerlink" title="3.mybatis�еĶ�����                ����Ӧ��"></a>3.mybatis�еĶ�����                ����Ӧ��</h3><ul>
+<li><p>һ�Զ�</p>
+<ul>
+<li>һ���û������¶�������������������ͬһ���û����û��Ͷ�������һ�Զ�</li>
+</ul>
+</li>
+<li><p>���һ</p>
+<ul>
+<li>�������û����Ƕ��һ</li>
+</ul>
+</li>
+<li><p>һ��һ</p>
+<ul>
+<li>һ����ֻ����һ�����֤�ţ�һ�����֤��ֻ������һ���ˣ��˺����֤�ž���һ��һ</li>
+</ul>
+</li>
+<li><p>��Զ�</p>
+<ul>
+<li>һ��ѧ�����Ա������ʦ�̹���һ����ʦ�����ж��ѧ������ʦ��ѧ��֮����Ƕ�Զ�</li>
+</ul>
+</li>
+</ul>
+<p>������</p>
+<p>����ó�ÿһ������������ֻ������һ���û�������Mybatis�ͰѶ��һ������һ��һ</p>
+<h5 id="mybatis�еK���ѯ��"><a href="#mybatis�еK���ѯ��" class="headerlink" title="mybatis�еĶ���ѯ��"></a>mybatis�еĶ���ѯ��</h5><ul>
+<li><p>ʾ�����û����˻�</p>
+<p>һ���û������ж���˻�</p>
+<p>һ���˻�ֻ������һ���û�������˻�Ҳ��������ͬһ���û���</p>
+</li>
+<li><p>����</p>
+<ol>
+<li><p>�������ű��û����˻���</p>
+<p>���û�����˻���֮��߱�һ�Զ�Ĺ�ϵ����Ҫʹ��������˻��������</p>
+</li>
+<li><p>��������ʵ���ࣺ�û�ʵ������˻�ʵ����</p>
+<p>���û����˻���ʵ���������ֳ���һ�Զ�Ĺ�ϵ</p>
+</li>
+<li><p>�������������ļ�</p>
+<p>�û��������ļ�</p>
+<p>�˻��������ļ�</p>
+</li>
+<li><p>ʵ������</p>
+<p>�����ǲ�ѯ�û�ʱ������ͬʱ�õ��û������������˻���Ϣ</p>
+<p>�����ǲ�ѯ�˻�ʱ������ͬʱ�õ��˻��µ������û���Ϣ</p>
+</li>
+</ol>
+</li>
+<li><p>ʾ�����û��ͽ�ɫ</p>
+<p>һ���û������ж����ɫ</p>
+<p>һ����ɫ���Ը������û�</p>
+</li>
+<li><p>���裺</p>
+<ol>
+<li><p>�������ű��û�����ɫ��</p>
+<p>���û���ͽ�ɫ����ж�Զ�Ĺ�ϵ����Ҫʹ���м���м���а������Ե����������м�����������</p>
+</li>
+<li><p>��������ʵ���ࣺ�û�ʵ����ͽ�ɫʵ����</p>
+<p>���û��ͽ�ɫ��ʵ���������ֳ�����Զ�Ĺ�ϵ</p>
+<p>���԰����Է�һ����������</p>
+</li>
+<li><p>�������������ļ�</p>
+<p>�û��������ļ�</p>
+<p>��ɫ�������ļ�</p>
+</li>
+<li><p>ʵ�����ã�</p>
+<p>�����ǲ�ѯ�û�ʱ������ͬʱ�õ��û��������Ľ�ɫ��Ϣ</p>
+<p>�����ǲ�ѯ��ɫʱ������ͬʱ�õ���ɫ����������û���Ϣ</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="1-Mybatis�е��ӳټ���"><a href="#1-Mybatis�е��ӳټ���" class="headerlink" title="1.Mybatis�е��ӳټ���"></a>1.Mybatis�е��ӳټ���</h3><p>���⣺��һ�Զ��У���������һ���û�������100���˻�</p>
+<ul>
+<li><p>�ڲ�ѯ�û���ʱ��Ҫ��Ҫ�ѹ������˻��������</p>
+</li>
+<li><p>�ڲ�ѯ�˻���ʱ��Ҫ��Ҫ�ѹ������û��������</p>
+<p>�ڲ�ѯ�û�ʱ���û��µ��˻���ϢӦ���ǣ�ʲôʱ��ʹ�ã�ʲôʱ���ѯ�ġ�</p>
+<p>�ڲ�ѯ�˻�ʱ���˻��������û���ϢӦ���������˻���ѯʱһ���ѯ������</p>
+</li>
+</ul>
+<ul>
+<li><p>ʲô���ӳټ���</p>
+<p>������ʹ������ʱ�ŷ����ѯ�����õ�ʱ�򲻲�ѯ��������أ������أ�</p>
+</li>
+<li><p>ʲô����������</p>
+<p>�����ò��ã�ֻҪһ���÷��������Ϸ����ѯ��</p>
+</li>
+</ul>
+<p>�ڶ�Ӧ�����ֱ��ϵ�У�һ�Զ࣬���һ��һ��һ����Զ�</p>
+<ul>
+<li>һ�Զ࣬��Զࣺͨ����������Ƕ��ǲ����ӳټ��ء�</li>
+<li>���һ��һ��һ��ͨ����������Ƕ��ǲ����������ء�</li>
+</ul>
+<h3 id="2-Mybatis�еL���"><a href="#2-Mybatis�еL���" class="headerlink" title="2.Mybatis�еĻ���"></a>2.Mybatis�еĻ���</h3><ul>
+<li><p>ʲô�ǻ���</p>
+<p>�������ڴ��е���ʱ���ݡ�</p>
+</li>
+<li><p>Ϊʲôʹ�û���</p>
+<p>���ٺ����ݿ�Ľ������������ִ��Ч�ʡ�</p>
+</li>
+<li><p>ʲô����������ʹ�û��棬ʲô�������ݲ���ʹ�û���</p>
+<ol>
+<li><p>�����ڻ��棺</p>
+<p>������ѯ���Ҳ������ı�ġ�</p>
+<p>���ݵ���ȷ�������ս��Ӱ�첻��ġ�</p>
+</li>
+<li><p>�������ڻ��棺</p>
+<p>�����ı������</p>
+<p>���ݵ���ȷ�������ս��Ӱ��ܴ��</p>
+<p>���磺��Ʒ�Ŀ�棬���еĻ��ʣ����е��Ƽۡ�</p>
+</li>
+</ol>
+</li>
+<li><p>Mybatis�е�һ������Ͷ�������</p>
+<ol>
+<li><p>һ�����棺</p>
+<p>��ָ����Mybatis��SqlSession����Ļ��档</p>
+<p>������ִ�в�ѯ֮�󣬲�ѯ�Ľ����ͬʱ���뵽SqlSessionΪ�����ṩһ�������С�</p>
+<p>������Ľṹ��һ��Map���������ٴβ�ѯͬ�������ݣ�mybatis����ȥsqlsession�в�ѯ�Ƿ��У��еĻ�ֱ���ó����á�</p>
+<p>��SqlSession������ʧʱ��mybatis��һ������Ҳ����ʧ�ˡ�</p>
+<h5 id="������SqlSession���޸g���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档"><a href="#������SqlSession���޸g���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档" class="headerlink" title="������SqlSession���޸ģ���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档"></a>������SqlSession���޸ģ���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档</h5></li>
+<li><p>�������棺</p>
+<p>��ָ����Mybatis��SqlSessionFactory����Ļ��档��ͬһ��SqlSessionFactory���󴴽���SqlSession�����仺�档</p>
+<p>���������ʹ�ò��裺</p>
+<ol>
+<li>��Mybatis���֧�ֶ������棨��SqlMapConfig.xml�����ã�</li>
+<li>�õ�ǰ��ӳ���ļ�֧�ֶ������棨��IUserDao.xml�����ã�</li>
+<li>�õ�ǰ�Ĳ���֧�ֶ������棨��select��ǩ�����ã�</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-Mybatis�е�ע�⿪��"><a href="#3-Mybatis�е�ע�⿪��" class="headerlink" title="3.Mybatis�е�ע�⿪��"></a>3.Mybatis�е�ע�⿪��</h3><ul>
+<li>�����</li>
+<li>����CRUD����������Dao��ʽ��</li>
+<li>����ѯ����</li>
+<li>���������</li>
+</ul>
+</sql></foreach></where></if>
       
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
-    <div class="archives">
+    <div class="article-info article-info-index">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/04/ArrayList/" class="archive-article-date">
-  	<time datetime="2020-01-03T16:44:06.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/ArrayList/">ArrayList</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,148 +480,156 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/03/HashMap遍历/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:59:20.777Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/03/HashMap遍历/">HashMap遍历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/04/mybatis日志/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
 
-<a href="/2020/01/02/HashMap/" class="archive-article-date">
-  	<time datetime="2020-01-02T15:24:04.408Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
-</a>
+  
+<nav id="article-nav">
+  
+    <a href="/2020/02/04/springmvc日志/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringMVC日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/29/关于线程池/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于线程池</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/02/HashMap/">HashMap</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis�����"><span class="toc-number">1.</span> <span class="toc-text">1. mybatis�����</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-�������ע������"><span class="toc-number">2.</span> <span class="toc-text">2. �������ע������</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis���U�����"><span class="toc-number">3.</span> <span class="toc-text">3. mybatis���Ű�����</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���"><span class="toc-number">4.</span> <span class="toc-text">1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#���ӳأ�"><span class="toc-number">4.0.1.</span> <span class="toc-text">���ӳأ�</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�е����ӳأ�"><span class="toc-number">4.0.2.</span> <span class="toc-text">mybatis�е����ӳأ�</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�е�����"><span class="toc-number">4.0.3.</span> <span class="toc-text">mybatis�е�����</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mybatis����XML���oK�̬SQL���ʹ��-���u���"><span class="toc-number">5.</span> <span class="toc-text">2.mybatis����XML���õĶ�̬SQL���ʹ��    ���ü���</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis�еK�����-����Ӧ��"><span class="toc-number">6.</span> <span class="toc-text">3.mybatis�еĶ�����                ����Ӧ��</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�еK���ѯ��"><span class="toc-number">6.0.1.</span> <span class="toc-text">mybatis�еĶ���ѯ��</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Mybatis�е��ӳټ���"><span class="toc-number">7.</span> <span class="toc-text">1.Mybatis�е��ӳټ���</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Mybatis�еL���"><span class="toc-number">8.</span> <span class="toc-text">2.Mybatis�еĻ���</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#������SqlSession���޸g���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档"><span class="toc-number">8.0.1.</span> <span class="toc-text">������SqlSession���޸ģ���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Mybatis�е�ע�⿪��"><span class="toc-number">9.</span> <span class="toc-text">3.Mybatis�е�ע�⿪��</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+        
+    </div>
+</aside>
 
-<a href="/2020/01/01/关于String长度/" class="archive-article-date">
-  	<time datetime="2020-01-01T09:44:35.131Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
 
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/01/关于String长度/">关于String长度</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-      
-    </div></section>
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
+  
+
+  <!--gitalk-->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '451ac59cbef1f20b0629',
+    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
+    repo: 'yolia-ed.github.io',
+    owner: 'yolia-ed',
+    admin: 'yolia-ed',
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+
   
 
 
@@ -374,8 +666,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

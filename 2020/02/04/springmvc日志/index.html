@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Yolia</title>
+  <title>SpringMVC日志 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="以前的学习日志。。。">
+<meta name="keywords" content="Java,SpringMVC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringMVC日志">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/springmvc日志/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="以前的学习日志。。。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-04T15:02:07.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
-<meta name="twitter:description" content="Yolia的博客">
+<meta name="twitter:title" content="SpringMVC日志">
+<meta name="twitter:description" content="以前的学习日志。。。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -156,39 +158,235 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
+            <article id="post-springmvc日志" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpringMVC日志
+    </h1>
+  
+
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/02/04/springmvc日志/" class="archive-article-date">
+  	<time datetime="2020-02-04T15:03:54.162Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.7k字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+</div>
+
             
-  
-  
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
+        <p>以前的学习日志。。。</p>
+<a id="more"></a>
+
+<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><ol>
+<li><p>RequestParam注解</p>
+<p>作用：把请求中指定控制器的参数给控制器中的形参赋值。参数上的注解</p>
+<p>属性：</p>
+<ul>
+<li><p>value：请求参数中的名称</p>
+</li>
+<li><p>required：请求参数中是否必须提供此参数。默认值：true。</p>
+<p>表示必须提供，如果不提供将报错。</p>
+</li>
+</ul>
+</li>
+<li><p>RequestBody注解</p>
+<p>作用：用于获取请求体内容。直接使用得到是key = value&amp;key = value…结构的数据。</p>
+<p>get请求方式不适用。参数上的注解</p>
+<p>属性：</p>
+<ul>
+<li>required：是否必须有请求体。默认值是：true。当取值为true时，get请求方式会报错。如果取值为false，get请求得到是null。</li>
+</ul>
+</li>
+<li><p>PathVariable注解</p>
+<p>作用：拥有绑定url中的占位符的。例如：url中有/delete/{id}，{id}就是占位符</p>
+<p>属性：</p>
+<ul>
+<li>value：指定url中的占位符名称</li>
+</ul>
+<p>Restful风格的URL</p>
+<ul>
+<li><p>请求路径一样，可以根据不同的请求方式去执行后台的不同方法</p>
+</li>
+<li><p>restful风格的URL优点</p>
+<p>结构清晰、符合标准、易于理解、扩展方便</p>
+</li>
+</ul>
+</li>
+<li><p>RequestHeader</p>
+<p>作用：用于获取请求消息头。</p>
+<p>属性：</p>
+<ul>
+<li>value：提供消息头名称</li>
+<li>required：是否必须有此消息头</li>
+</ul>
+<p>（不常用）</p>
+</li>
+<li><p>CookieValue注解</p>
+<p>作用：用于把指定cookie名称的值传入控制器方法参数</p>
+<p>属性：</p>
+<ul>
+<li>value：指定cookie的名称</li>
+<li>required：是否必须有此cookie</li>
+</ul>
+</li>
+<li><p>ModelAttribute注解</p>
+<p>作用：</p>
+<p>SpringMVC4.3版本以后加入的。用于修饰方法和参数。</p>
+<p>出现在方法上，表示当前方法会在控制器的方法执行之前，先执行。它可以修饰没有返回值的方法，也可以修饰有具体返回值的方法。</p>
+<p>属性：</p>
+<ul>
+<li>value：用于获取数据的key。key可以是POJO的属性名称，也可以是map结构的key。</li>
+</ul>
+<p>应用场景：</p>
+<p>当表单提交数据不是完整的实体类数据时，保证没有提交数据的字段使用数据库对象原来的数据。</p>
+<p>例如：</p>
+<p>我们在编辑一个用户时，用户有一个创建信息字段，该字段的值是不允许被修改的。在提交表单数据是肯定没有此字段的内容，一旦更新会把该字段内容置为null，此时就可以使用此注解解决问题。</p>
+</li>
+<li><p>SessionAttributes注解</p>
+<p>作用：用于多次执行控制器方法间的参数共享。</p>
+<p>属性：</p>
+<ul>
+<li>value：用于指定存入的属性名称</li>
+<li>type：用于指定存入的数据类型</li>
+</ul>
+</li>
+</ol>
+<p>响应之返回值是String类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/testString"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testString</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//模拟从数据库中查找出User对象</span></span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setUsername(<span class="string">"haha"</span>);</span><br><span class="line">    user.setPassword(<span class="string">"123"</span>);</span><br><span class="line">    user.setAge(<span class="number">20</span>);</span><br><span class="line">    <span class="comment">//model对象</span></span><br><span class="line">    model.addAttribute(<span class="string">"user"</span>, user);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//jsp页面可以使用表达式表现出来。需设置isELIgnored="false"才可以使用此表达式。在&lt;%@ page......中设置</span></span><br><span class="line">$&#123;user.username&#125;</span><br><span class="line">$&#123;user.password&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应之返回值是Void类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/testVoid"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testVoid</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	<span class="comment">//编写请求转发的程序</span></span><br><span class="line">	request.getRequestDispatcher(<span class="string">"/WEB-INF/pages/success.jsp"</span>).forword(request, response);</span><br><span class="line">	<span class="comment">//重定向</span></span><br><span class="line">    <span class="comment">//************重定向不能访问到WEB-INF下的目录 只能webapp下*******</span></span><br><span class="line">	response.sendRedirect(request.getContextPath() + <span class="string">"/xxx.jsp"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置中文乱码</span></span><br><span class="line">    response.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">    response.setContextType(<span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//直接会进行响应</span></span><br><span class="line">    response.getWriter().print(<span class="string">"hello"</span>);</span><br><span class="line">    <span class="comment">//************直接响应不能访问到WEB-INF下的目录 只能webapp下*******</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span>;<span class="comment">//不让后边代码继续执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应之返回值是ModelAndView</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/testModelAndView"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">testModelAndView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//创建ModelAndView对象</span></span><br><span class="line">    ModelAndView mv = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//模拟从数据库中查找出User对象</span></span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setUsername(<span class="string">"haha"</span>);</span><br><span class="line">    user.setPassword(<span class="string">"123"</span>);</span><br><span class="line">    user.setAge(<span class="number">20</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//把user对象存储到mv对象中，底层也会把user对象存入到request域对象中</span></span><br><span class="line">    mv.addObject(<span class="string">"user"</span>, user);</span><br><span class="line">    <span class="comment">//跳转到哪个页面</span></span><br><span class="line">    mv.setViewName(<span class="string">"success"</span>);<span class="comment">//使用的是视图解析器</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> mv;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$&#123;user.username&#125;</span><br><span class="line">$&#123;user.password&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应之使用forward和redirect进行页面跳转</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/testForwardOrRedirecy"</span>)</span><br><span class="line"><span class="comment">//使用关键字的方式进行转发或者重定向</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testForwardOrRedirecy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//请求的转发</span></span><br><span class="line">    <span class="comment">//无法使用视图解析器，所以需要自定义路径</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"forward:/WEB-INF/pages/success.jsp"</span>;</span><br><span class="line">    <span class="comment">//或者还可以这样：重定向 自定义路径</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:index.jsp"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应json数据之过滤静态资源</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">前端控制器，哪些资源不拦截。（一般会拦截js目录下的静态资源）</span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">mapping</span>=<span class="string">"/js/"</span> <span class="attr">location</span>=<span class="string">"/js/**"</span>/&gt;</span>	js</span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">mapping</span>=<span class="string">"/images/"</span> <span class="attr">location</span>=<span class="string">"/images/**"</span>/&gt;</span>	images</span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">mapping</span>=<span class="string">"/CSS/"</span> <span class="attr">location</span>=<span class="string">"/CSS/**"</span>/&gt;</span>	CSS</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//RequestBody注解可以把User转换成json数据传给客户端</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span> <span class="function">User <span class="title">testAjax</span><span class="params">(@RequestBody User user)</span> </span>&#123;&#125;</span><br><span class="line"><span class="comment">//客户端发送Ajax的请求，传的是json字符串，后端把json字符串封装到user对象中</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h4><ul>
+<li><p>文件上传的必要前提</p>
+<ol>
+<li><p>form表单的enctype取值必须是：multipart/from-data</p>
+<p>（默认值是：application/x-www-form-urlencoded）</p>
+<p>enctype：是表单请求正文的类型</p>
+</li>
+<li><p>method属性取值必须是post</p>
+</li>
+<li><p>提供一个文件选择域<input type="file"></p>
+</li>
+</ol>
+</li>
+<li><p>借助第三方组件实现文件上传</p>
+<p>使用Commons-fileupload组件实现上传，需要导入该组件相应的支持jar包：</p>
+<p>Commons-fileupload和commons-io。commons-io不属于文件上传组件的开发jar文件，但</p>
+<p>Commons-fileupload组件从1.1版本开始，它工作时需要commons-io包的支持。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置文件解析器对象，要求id名称必须是multipartResolver --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--上传文件的大小(字节)此处为10*1024*1024  10M--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"10485760"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>跨服务器文件上传需要的jar包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.jersey<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jersey-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.jersey<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jersey-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.18.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">图片服务器的 配置下web.xml</span><br><span class="line">是默认只读  不能保存的 所以需要修改tomcat conf下的web.xml</span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>default<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.apache.catalina.servlets.DefaultServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>debug<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>0<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>readonly<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>listings<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line">也就是添加readonly为false</span><br><span class="line"></span><br><span class="line">目标文件夹webapp下的uploads最好放个空文件  以便于编译进target种  否则需要在target再新建文件夹</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="SpringMVC的异常处理"><a href="#SpringMVC的异常处理" class="headerlink" title="SpringMVC的异常处理"></a>SpringMVC的异常处理</h4><ol>
+<li><p>异常处理思路</p>
+<p>Controller调用service，service调用dao，异常都是向上抛出的，最终有DispatcherServlet找异常处理器进行异常的处理。</p>
+<ul>
+<li><p>编写自定义异常类（做提示信息的）</p>
+</li>
+<li><p>编写异常处理器</p>
+</li>
+<li><p>配置异常处理器（跳转到提示页面）</p>
+<table>
+<thead>
+<tr>
+<th align="left">选中一段代码</th>
+<th>ctrl alt + T</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">作用</td>
+<td>选择if/while/…等嵌套语句</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ol>
+
       
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
-    <div class="archives">
+    <div class="article-info article-info-index">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/04/ArrayList/" class="archive-article-date">
-  	<time datetime="2020-01-03T16:44:06.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/ArrayList/">ArrayList</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,148 +394,156 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/03/HashMap遍历/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:59:20.777Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/03/HashMap遍历/">HashMap遍历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/04/springmvc日志/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
 
-<a href="/2020/01/02/HashMap/" class="archive-article-date">
-  	<time datetime="2020-01-02T15:24:04.408Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
-</a>
+  
+<nav id="article-nav">
+  
+    <a href="/2020/02/04/spring日志/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Spring日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/04/mybatis日志/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mybatis��־</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/02/HashMap/">HashMap</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用注解"><span class="toc-number">1.</span> <span class="toc-text">常用注解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件上传"><span class="toc-number">2.</span> <span class="toc-text">文件上传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringMVC的异常处理"><span class="toc-number">3.</span> <span class="toc-text">SpringMVC的异常处理</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+        
+    </div>
+</aside>
 
-<a href="/2020/01/01/关于String长度/" class="archive-article-date">
-  	<time datetime="2020-01-01T09:44:35.131Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
 
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/01/关于String长度/">关于String长度</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-      
-    </div></section>
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
+  
+
+  <!--gitalk-->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '451ac59cbef1f20b0629',
+    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
+    repo: 'yolia-ed.github.io',
+    owner: 'yolia-ed',
+    admin: 'yolia-ed',
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+
   
 
 
@@ -374,8 +580,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
