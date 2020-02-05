@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Yolia</title>
+  <title>Mybatis��־ | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="��ǰѧϰ����־��¼������">
+<meta name="keywords" content="Java,Mybatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yolia">
+<meta property="og:title" content="Mybatis��־">
 <meta property="og:url" content="http://yoursite.com/2020/02/04/mybatis日志/index.html">
 <meta property="og:site_name" content="Yolia">
 <meta property="og:description" content="��ǰѧϰ����־��¼������">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-04T15:26:37.998Z">
+<meta property="og:updated_time" content="2020-02-05T05:03:05.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
+<meta name="twitter:title" content="Mybatis��־">
 <meta name="twitter:description" content="��ǰѧϰ����־��¼������">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
@@ -160,10 +161,61 @@
             <article id="post-mybatis日志" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mybatis��־
+    </h1>
+  
+
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/02/04/mybatis日志/" class="archive-article-date">
+  	<time datetime="2020-02-04T15:03:53.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">459字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+
+            
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p>��ǰѧϰ����־��¼������</p>
+        <p>��ǰѧϰ����־��¼������</p>
 <a id="more"></a>
 
 <h3 id="1-mybatis�����"><a href="#1-mybatis�����" class="headerlink" title="1. mybatis�����"></a>1. mybatis�����</h3><ol>
@@ -214,32 +266,29 @@
 <p>��ѯ�����п�ʹ�����ַ�����<br>1.�޸�sql���    �磺sex as userSex<br>2.�������    ��ѯ�����������ʵ������������Ķ�Ӧ��ϵ</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"userMap"</span> <span class="attr">type</span>=<span class="string">"com.yolia.domain.User"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--�����ֶεĶ�Ӧ--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"userId"</span> <span class="attr">column</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--�������ֶεĶ�Ӧ--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"userSex"</span> <span class="attr">column</span>=<span class="string">"sex"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findAll&quot; resultMap=&quot;userMap&quot;&gt;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findAll&quot; resultMap=&quot;userMap&quot;&gt;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���"><a href="#1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���" class="headerlink" title="1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���"></a>1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���</h3><p>mybatis�����ӳ�ʹ�ü�����</p>
-<p>mybatis������Ƶķ���</p>
+<h3 id="1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���"><a href="#1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���" class="headerlink" title="1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���"></a>1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���</h3><p>  mybatis�����ӳ�ʹ�ü�����</p>
+<p>  mybatis������Ƶķ���</p>
 <hr>
-<h5 id="���ӳأ�"><a href="#���ӳأ�" class="headerlink" title="���ӳأ�"></a>���ӳأ�</h5><p>������ʵ�ʿ����ж���ʹ�����ӳء�</p>
-<p>��Ϊ�����Լ������ǻ�ȡ���������ĵ�ʱ�䡣</p>
-<h5 id="mybatis�е����ӳأ�"><a href="#mybatis�е����ӳأ�" class="headerlink" title="mybatis�е����ӳأ�"></a>mybatis�е����ӳأ�</h5><p>mybatis���ӳ��ṩ��3�ַ�ʽ�����ã�</p>
-<p>���õ�λ�ã�</p>
-<p>�������ļ�SqlMapConfig.xml�е�dataSource��ǩ��type���Ծ��Ǳ�ʾ���ú������ӳط�ʽ��</p>
-<p>type���Ե�ȡֵ:</p>
+<h5 id="���ӳأ�"><a href="#���ӳأ�" class="headerlink" title="���ӳأ�"></a>���ӳأ�</h5><p>  ������ʵ�ʿ����ж���ʹ�����ӳء�</p>
+<p>  ��Ϊ�����Լ������ǻ�ȡ���������ĵ�ʱ�䡣</p>
+<h5 id="mybatis�е����ӳأ�"><a href="#mybatis�е����ӳأ�" class="headerlink" title="mybatis�е����ӳأ�"></a>mybatis�е����ӳأ�</h5><p>  mybatis���ӳ��ṩ��3�ַ�ʽ�����ã�</p>
+<p>  ���õ�λ�ã�</p>
+<p>  �������ļ�SqlMapConfig.xml�е�dataSource��ǩ��type���Ծ��Ǳ�ʾ���ú������ӳط�ʽ��</p>
+<p>  type���Ե�ȡֵ:</p>
 <ul>
 <li><p>POOLED     ���ô�ͳ��javax.sql.DataSource�淶�е����ӳأ�mybatis������Թ淶��ʵ�֡�</p>
 </li>
 <li><p>UNPOOLED     ���ô�ͳ�Ļ�ȡ���ӵķ�ʽ����ȻҲʵ����javax.sql.DataSource�ӿڣ����ǲ�û��</p>
-</li>
-</ul>
 <p>ʹ�óص�˼�롣</p>
-<ul>
-<li>JNDI        ���÷������ṩ��JNDI����ʵ�֣�����ȡDataSource���󣬲�ͬ�ķ����������õ�</li>
-</ul>
+</li>
+<li><p>JNDI        ���÷������ṩ��JNDI����ʵ�֣�����ȡDataSource���󣬲�ͬ�ķ����������õ�</p>
 <p>DataSource�ǲ�һ����<strong>��ע�⣺�������web����maven��war���̣��ǲ���ʹ�õġ�����һ����ʹ�õ���</strong></p>
-<p><strong>tomcat���������������ӳؾ���dbcp���ӳ�</strong>��</p>
 </li>
 </ul>
+<p>  <strong>tomcat���������������ӳؾ���dbcp���ӳ�</strong>��</p>
 <h5 id="mybatis�е�����"><a href="#mybatis�е�����" class="headerlink" title="mybatis�е�����"></a>mybatis�е�����</h5><p>  ʲô������</p>
 <p>  ������Ĵ�����ACID</p>
 <p>  �����Ǹ����Ի������3������</p>
@@ -420,6 +469,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -514,6 +578,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis�����"><span class="toc-number">1.</span> <span class="toc-text">1. mybatis�����</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-�������ע������"><span class="toc-number">2.</span> <span class="toc-text">2. �������ע������</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis���U�����"><span class="toc-number">3.</span> <span class="toc-text">3. mybatis���Ű�����</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���"><span class="toc-number">4.</span> <span class="toc-text">1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#���ӳأ�"><span class="toc-number">4.0.1.</span> <span class="toc-text">���ӳأ�</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�е����ӳأ�"><span class="toc-number">4.0.2.</span> <span class="toc-text">mybatis�е����ӳأ�</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�е�����"><span class="toc-number">4.0.3.</span> <span class="toc-text">mybatis�е�����</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mybatis����XML���oK�̬SQL���ʹ��-���u���"><span class="toc-number">5.</span> <span class="toc-text">2.mybatis����XML���õĶ�̬SQL���ʹ��    ���ü���</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis�еK�����-����Ӧ��"><span class="toc-number">6.</span> <span class="toc-text">3.mybatis�еĶ�����                ����Ӧ��</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�еK���ѯ��"><span class="toc-number">6.0.1.</span> <span class="toc-text">mybatis�еĶ���ѯ��</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Mybatis�е��ӳټ���"><span class="toc-number">7.</span> <span class="toc-text">1.Mybatis�е��ӳټ���</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Mybatis�еL���"><span class="toc-number">8.</span> <span class="toc-text">2.Mybatis�еĻ���</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#������SqlSession���޸g���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档"><span class="toc-number">8.0.1.</span> <span class="toc-text">������SqlSession���޸ģ���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Mybatis�е�ע�⿪��"><span class="toc-number">9.</span> <span class="toc-text">3.Mybatis�е�ע�⿪��</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -679,7 +756,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,7 +768,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,7 +780,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
