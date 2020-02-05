@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Mybatis��־ | Yolia</title>
+  <title>Mybatis日志 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="��ǰѧϰ����־��¼������">
+  <meta name="description" content="以前学习的日志记录。。。">
 <meta name="keywords" content="Java,Mybatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mybatis��־">
-<meta property="og:url" content="http://yoursite.com/2020/02/04/mybatis日志/index.html">
+<meta property="og:title" content="Mybatis日志">
+<meta property="og:url" content="http://yoursite.com/2020/02/05/mybatis日志/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="��ǰѧϰ����־��¼������">
+<meta property="og:description" content="以前学习的日志记录。。。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-05T05:03:05.071Z">
+<meta property="og:updated_time" content="2020-02-05T05:15:45.094Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mybatis��־">
-<meta name="twitter:description" content="��ǰѧϰ����־��¼������">
+<meta name="twitter:title" content="Mybatis日志">
+<meta name="twitter:description" content="以前学习的日志记录。。。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Mybatis��־
+      Mybatis日志
     </h1>
   
 
@@ -177,8 +177,8 @@
         </span>
 
 
-<a href="/2020/02/04/mybatis日志/" class="archive-article-date">
-  	<time datetime="2020-02-04T15:03:53.875Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-04</time>
+<a href="/2020/02/05/mybatis日志/" class="archive-article-date">
+  	<time datetime="2020-02-05T05:14:09.894Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
 </a>
 
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">459字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -198,7 +198,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -215,230 +215,230 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>��ǰѧϰ����־��¼������</p>
+        <p>以前学习的日志记录。。。</p>
 <a id="more"></a>
 
-<h3 id="1-mybatis�����"><a href="#1-mybatis�����" class="headerlink" title="1. mybatis�����"></a>1. mybatis�����</h3><ol>
-<li>����maven���̲���������</li>
-<li>����ʵ�����dao�Ľӿ�</li>
-<li>����Mybatis���������ļ�SqlMapConfig.xml</li>
-<li>����ӳ�������ļ�IUserDao.xml</li>
+<h3 id="1-mybatis环境搭建"><a href="#1-mybatis环境搭建" class="headerlink" title="1. mybatis环境搭建"></a>1. mybatis环境搭建</h3><ol>
+<li>创建maven工程并导入坐标</li>
+<li>创建实体类和dao的接口</li>
+<li>创建Mybatis的著配置文件SqlMapConfig.xml</li>
+<li>创建映射配置文件IUserDao.xml</li>
 </ol>
-<h3 id="2-�������ע������"><a href="#2-�������ע������" class="headerlink" title="2. �������ע������"></a>2. �������ע������</h3><ol>
-<li><p>����IUserDao.xml �� IUserDao.javaʱ������Ϊ�˺�����֮ǰ��֪ʶ����һ�¡�</p>
-<p>��Mybatis�����ѳ־ò�Ĳ����ӿ����ƺ�ӳ���ļ�Ҳ������Mapper</p>
-<p>���ԣ�IuserDao �� IUerMapper��һ����</p>
+<h3 id="2-环境搭建的注意事项"><a href="#2-环境搭建的注意事项" class="headerlink" title="2. 环境搭建的注意事项"></a>2. 环境搭建的注意事项</h3><ol>
+<li><p>创建IUserDao.xml 和 IUserDao.java时名称是为了和我们之前的知识保持一致。</p>
+<p>在Mybatis中它把持久层的操作接口名称和映射文件也叫做：Mapper</p>
+<p>所以：IuserDao 和 IUerMapper是一样的</p>
 </li>
-<li><p>���ɰ棩��idea�д���Ŀ¼��ʱ�����Ͱ��ǲ�һ����</p>
-<p>���ڴ���ʱ��com.yolia.dao���������ṹ</p>
-<p>Ŀ¼�ڴ���ʱ��com.yolia.dao��һ��Ŀ¼</p>
+<li><p>（旧版）在idea中创建目录的时候，它和包是不一样的</p>
+<p>包在创建时：com.yolia.dao它是三级结构</p>
+<p>目录在创建时：com.yolia.dao是一级目录</p>
 </li>
-<li><p>mybatis��ӳ�������ļ�λ�ñ����dao�ӿڵİ��ṹ��ͬ</p>
+<li><p>mybatis的映射配置文件位置必须和dao接口的包结构相同</p>
 </li>
-<li><p>ӳ�������ļ���mapper��ǩnamespace���Ե�ȡֵ������dao�ӿڵ�ȫ�޶�����</p>
+<li><p>映射配置文件的mapper标签namespace属性的取值必须是dao接口的全限定类名</p>
 </li>
-<li><p>ӳ�������ļ��Ĳ������ã�select����id���Ե�ȡֵ������dao�ӿڵķ�����</p>
-<p>�����������345��֮�������ڿ����о�������дdao��ʵ���ࡣ</p>
+<li><p>映射配置文件的操作配置（select），id属性的取值必须是dao接口的方法名</p>
+<p>当我们遵从了345点之后，我们在开发中就无需再写dao的实现类。</p>
+<h3 id="3-mybatis入门案例："><a href="#3-mybatis入门案例：" class="headerlink" title="3. mybatis入门案例："></a>3. mybatis入门案例：</h3></li>
+<li><p>读取配置文件</p>
 </li>
-</ol>
-<h3 id="3-mybatis���U�����"><a href="#3-mybatis���U�����" class="headerlink" title="3. mybatis���Ű�����"></a>3. mybatis���Ű�����</h3><ol>
-<li><p>��ȡ�����ļ�</p>
+<li><p>创建SqlSessionFactory工厂</p>
 </li>
-<li><p>����SqlSessionFactory����</p>
+<li><p>创建SqlSession</p>
 </li>
-<li><p>����SqlSession</p>
+<li><p>创建Dao接口的代理对象</p>
 </li>
-<li><p>����Dao�ӿڵĴ������</p>
+<li><p>执行dao中的方法</p>
 </li>
-<li><p>ִ��dao�еķ���</p>
-</li>
-<li><p>�ͷ���Դ</p>
-<p>ע�����<br>��Ҫ������ӳ�������и�֪mabatisҪ��װ���ĸ�ʵ������<br>���õķ�ʽ��ָ��ʵ�����ȫ�޶�����</p>
-<p>mybatis����ע������Ű�����<br>��IUserDao.xml�������dao�ӿڵķ�����ʹ��@Selectע�⣬����ָ��SQL���<br>ͬʱ��Ҫ��SqlMapConfig.xml�е�mapper����ʱ��ʹ��class����ָ��dao�ӿڵ�ȫ�޶�����<br>��ȷ��<br>������ʵ�ʿ����У�����Խ��Խ�ã����Զ��ǲ��ò�дdaoʵ����ķ�ʽ��<br>������ʹ��XML����ע�����á�<br>����Mybatis����֧��дdaoʵ����ġ�</p>
+<li><p>释放资源</p>
+<p>注意事项：<br>不要忘记在映射配置中告知mabatis要封装到哪个实体类中<br>配置的方式：指定实体类的全限定类名</p>
+<p>mybatis基于注解的入门案例：<br>把IUserDao.xml溢出，在dao接口的方法上使用@Select注解，并且指定SQL语句<br>同时需要在SqlMapConfig.xml中的mapper配置时，使用class属性指定dao接口的全限定类名<br>明确：<br>我们在实际开发中，都是越简单越好，所以都是采用不写dao实现类的方式。<br>不管是使用XML还是注解配置。<br>但是Mybatis它是支持写dao实现类的。</p>
 </li>
 </ol>
-<p>�Զ���Mybatis�ķ�����<br>mybatis��ʹ�ô���dao�ķ�ʽʵ����ɾ�Ĳ�ʱ��ʲô���أ�<br>ֻ�������£�<br>��һ�������������<br>�ڶ����ڴ�������е���selectList</p>
-<p>����pojo����<br>Mybatisʹ��ognl���ʽ���������ֶε�ֵ��#{}����${}�����е�ֵΪpojo��������<br>OGNL���ʽ��<br>Object    Graphic    Navigation    Language<br>����    ͼ    ����        ����</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">����ͨ�������ȡֵ��������ȡ���ݡ���д���ϰ�get��ʡ���ˡ�</span><br><span class="line">���磺���ǻ�ȡ�û�������</span><br><span class="line">	���е�д����user.getUsername();</span><br><span class="line">	OGNL���ʽд����user.username</span><br><span class="line">mybatis��Ϊʲô��ֱ��дusername��������user.�أ�</span><br><span class="line">	��Ϊ��parameterType���Ѿ��ṩ������������࣬���Դ�ʱ����Ҫд������</span><br></pre></td></tr></table></figure>
+<p>  自定义Mybatis的分析：<br>  mybatis在使用代理dao的方式实现增删改查时做什么事呢？<br>  只有两件事：<br>  第一：创建代理对象<br>  第二：在代理对象中调用selectList</p>
+<p>  传递pojo对象<br>  Mybatis使用ognl表达式解析对象字段的值，#{}或者${}括号中的值为pojo属性名称<br>  OGNL表达式：<br>  Object    Graphic    Navigation    Language<br>  对象    图    导航        语言</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">它是通过对象的取值方法来获取数据。在写法上把get给省略了。</span><br><span class="line">比如：我们获取用户的名称</span><br><span class="line">	类中的写法：user.getUsername();</span><br><span class="line">	OGNL表达式写法：user.username</span><br><span class="line">mybatis中为什么能直接写username，而不用user.呢：</span><br><span class="line">	因为在parameterType中已经提供了属性所属的类，所以此时不需要写对象名</span><br></pre></td></tr></table></figure>
 
-<p>�����е��ֶ��������ݿ��е��ֶ�������Ӧ    �磺��userSex-&gt;���ݿ�sex</p>
-<p>keyProperty��Ӧ��Ӧ�������е��ֶ���   keyColumn��Ӧ��Ӧ�������ݿ��е��ֶ���</p>
-<p>��ѯ�����п�ʹ�����ַ�����<br>1.�޸�sql���    �磺sex as userSex<br>2.�������    ��ѯ�����������ʵ������������Ķ�Ӧ��ϵ</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"userMap"</span> <span class="attr">type</span>=<span class="string">"com.yolia.domain.User"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--�����ֶεĶ�Ӧ--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"userId"</span> <span class="attr">column</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--�������ֶεĶ�Ӧ--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"userSex"</span> <span class="attr">column</span>=<span class="string">"sex"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>  若类中的字段名和数据库中的字段名不对应    如：类userSex-&gt;数据库sex</p>
+<p>  keyProperty对应的应该是类中的字段名   keyColumn对应的应该是数据库中的字段名</p>
+<p>  查询操作中可使用两种方法：<br>  1.修改sql语句    如：sex as userSex<br>  2.添加配置    查询结果的列名和实体类的属性名的对应关系</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"userMap"</span> <span class="attr">type</span>=<span class="string">"com.yolia.domain.User"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--主键字段的对应--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"userId"</span> <span class="attr">column</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--非主键字段的对应--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"userSex"</span> <span class="attr">column</span>=<span class="string">"sex"</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;findAll&quot; resultMap=&quot;userMap&quot;&gt;</span><br></pre></td></tr></table></figure>
 
+<h3 id="1-mybatis中的连接池以及事务控制-原理部分了解，应用部分会用"><a href="#1-mybatis中的连接池以及事务控制-原理部分了解，应用部分会用" class="headerlink" title="1.mybatis中的连接池以及事务控制        原理部分了解，应用部分会用"></a>1.mybatis中的连接池以及事务控制        原理部分了解，应用部分会用</h3><p>mybatis中连接池使用及分析</p>
+<p>mybatis事务控制的分析</p>
 <hr>
-<h3 id="1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���"><a href="#1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���" class="headerlink" title="1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���"></a>1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���</h3><p>  mybatis�����ӳ�ʹ�ü�����</p>
-<p>  mybatis������Ƶķ���</p>
-<hr>
-<h5 id="���ӳأ�"><a href="#���ӳأ�" class="headerlink" title="���ӳأ�"></a>���ӳأ�</h5><p>  ������ʵ�ʿ����ж���ʹ�����ӳء�</p>
-<p>  ��Ϊ�����Լ������ǻ�ȡ���������ĵ�ʱ�䡣</p>
-<h5 id="mybatis�е����ӳأ�"><a href="#mybatis�е����ӳأ�" class="headerlink" title="mybatis�е����ӳأ�"></a>mybatis�е����ӳأ�</h5><p>  mybatis���ӳ��ṩ��3�ַ�ʽ�����ã�</p>
-<p>  ���õ�λ�ã�</p>
-<p>  �������ļ�SqlMapConfig.xml�е�dataSource��ǩ��type���Ծ��Ǳ�ʾ���ú������ӳط�ʽ��</p>
-<p>  type���Ե�ȡֵ:</p>
+<h5 id="连接池："><a href="#连接池：" class="headerlink" title="连接池："></a>连接池：</h5><p>我们在实际开发中都会使用连接池。</p>
+<p>因为它可以减少我们获取连接所消耗的时间。</p>
+<h5 id="mybatis中的连接池："><a href="#mybatis中的连接池：" class="headerlink" title="mybatis中的连接池："></a>mybatis中的连接池：</h5><p>mybatis连接池提供了3种方式的配置：</p>
+<p>配置的位置：</p>
+<p>主配置文件SqlMapConfig.xml中的dataSource标签，type属性就是表示采用何种连接池方式。</p>
+<p>type属性的取值:</p>
 <ul>
-<li><p>POOLED     ���ô�ͳ��javax.sql.DataSource�淶�е����ӳأ�mybatis������Թ淶��ʵ�֡�</p>
-</li>
-<li><p>UNPOOLED     ���ô�ͳ�Ļ�ȡ���ӵķ�ʽ����ȻҲʵ����javax.sql.DataSource�ӿڣ����ǲ�û��</p>
-<p>ʹ�óص�˼�롣</p>
-</li>
-<li><p>JNDI        ���÷������ṩ��JNDI����ʵ�֣�����ȡDataSource���󣬲�ͬ�ķ����������õ�</p>
-<p>DataSource�ǲ�һ����<strong>��ע�⣺�������web����maven��war���̣��ǲ���ʹ�õġ�����һ����ʹ�õ���</strong></p>
-</li>
+<li>POOLED     采用传统的javax.sql.DataSource规范中的连接池，mybatis中有针对规范的实现。</li>
 </ul>
-<p>  <strong>tomcat���������������ӳؾ���dbcp���ӳ�</strong>��</p>
-<h5 id="mybatis�е�����"><a href="#mybatis�е�����" class="headerlink" title="mybatis�е�����"></a>mybatis�е�����</h5><p>  ʲô������</p>
-<p>  ������Ĵ�����ACID</p>
-<p>  �����Ǹ����Ի������3������</p>
-<p>  ����취�����ָ��뼶��</p>
-<p>  ����ͨ��sqlsession�����commit������rollback����ʵ��������ύ�ͻع�</p>
-<p>  mybatis�Զ��ύ��������ã�sqlSessionFactory.openSession(true);//�ֶ������������ύ</p>
-<p>  ��ʽ��Ϊ�Զ��ύ���������ã�ִ��һ�����ʱ�õ���</p>
-<h3 id="2-mybatis����XML���oK�̬SQL���ʹ��-���u���"><a href="#2-mybatis����XML���oK�̬SQL���ʹ��-���u���" class="headerlink" title="2.mybatis����XML���õĶ�̬SQL���ʹ��    ���ü���"></a>2.mybatis����XML���õĶ�̬SQL���ʹ��    ���ü���</h3><p>  mappers�����ļ��еļ�����ǩ��</p>
-  <if>
+<ul>
+<li>UNPOOLED     采用传统的获取连接的方式，虽然也实现了javax.sql.DataSource接口，但是并没有</li>
+</ul>
+<p>使用池的思想。</p>
+<ul>
+<li>JNDI        采用服务器提供的JNDI技术实现，来获取DataSource对象，不同的服务器所能拿到</li>
+</ul>
+<p>DataSource是不一样的<strong>。注意：如果不是web或者maven的war工程，是不能使用的。我们一般是使用的是</strong></p>
+<p><strong>tomcat服务器，采用连接池就是dbcp连接池</strong>。</p>
+<h5 id="mybatis中的事务："><a href="#mybatis中的事务：" class="headerlink" title="mybatis中的事务："></a>mybatis中的事务：</h5><p>什么是事务</p>
+<p>事务的四大特性ACID</p>
+<p>不考虑隔离性会产生的3个问题</p>
+<p>解决办法：四种隔离级别</p>
+<p>它是通过sqlsession对象的commit方法和rollback方法实现事务的提交和回滚</p>
+<p>mybatis自动提交事务的设置：sqlSessionFactory.openSession(true);//手动将它的事务提交</p>
+<p>方式改为自动提交。（不常用，执行一条语句时用到）</p>
+<h3 id="2-mybatis基于XML配置的动态SQL语句使用-会用即可"><a href="#2-mybatis基于XML配置的动态SQL语句使用-会用即可" class="headerlink" title="2.mybatis基于XML配置的动态SQL语句使用    会用即可"></a>2.mybatis基于XML配置的动态SQL语句使用    会用即可</h3><p>mappers配置文件中的几个标签：</p>
+<if>
 
-  <where>
+<where>
 
-  <foreach>
+<foreach>
 
-  <sql>
+<sql>
 
-<h3 id="3-mybatis�еK�����-����Ӧ��"><a href="#3-mybatis�еK�����-����Ӧ��" class="headerlink" title="3.mybatis�еĶ�����                ����Ӧ��"></a>3.mybatis�еĶ�����                ����Ӧ��</h3><ul>
-<li><p>һ�Զ�</p>
+<h3 id="3-mybatis中的多表操作-掌握应用"><a href="#3-mybatis中的多表操作-掌握应用" class="headerlink" title="3.mybatis中的多表操作                掌握应用"></a>3.mybatis中的多表操作                掌握应用</h3><ul>
+<li><p>一对多</p>
 <ul>
-<li>һ���û������¶�������������������ͬһ���û����û��Ͷ�������һ�Զ�</li>
+<li>一个用户可以下多个订单，多个订单属于同一个用户，用户和订单就是一对多</li>
 </ul>
 </li>
-<li><p>���һ</p>
+<li><p>多对一</p>
 <ul>
-<li>�������û����Ƕ��һ</li>
+<li>订单和用户就是多对一</li>
 </ul>
 </li>
-<li><p>һ��һ</p>
+<li><p>一对一</p>
 <ul>
-<li>һ����ֻ����һ�����֤�ţ�һ�����֤��ֻ������һ���ˣ��˺����֤�ž���һ��һ</li>
+<li>一个人只能有一个身份证号，一个身份证号只能属于一个人，人和身份证号就是一对一</li>
 </ul>
 </li>
-<li><p>��Զ�</p>
+<li><p>多对多</p>
 <ul>
-<li>һ��ѧ�����Ա������ʦ�̹���һ����ʦ�����ж��ѧ������ʦ��ѧ��֮����Ƕ�Զ�</li>
+<li>一个学生可以被多个老师教过，一个老师可以有多个学生，老师和学生之间就是多对多</li>
 </ul>
-<p>������</p>
-<p>����ó�ÿһ������������ֻ������һ���û�������Mybatis�ͰѶ��һ������һ��һ</p>
 </li>
 </ul>
-<h5 id="mybatis�еK���ѯ��"><a href="#mybatis�еK���ѯ��" class="headerlink" title="mybatis�еĶ���ѯ��"></a>mybatis�еĶ���ѯ��</h5><ul>
-<li><p>ʾ�����û����˻�</p>
-<p>һ���û������ж���˻�</p>
-<p>һ���˻�ֻ������һ���û�������˻�Ҳ��������ͬһ���û���</p>
+<p>特例：</p>
+<p>如果拿出每一个订单，他都只能属于一个用户。所以Mybatis就把多对一看成了一对一</p>
+<h5 id="mybatis中的多表查询："><a href="#mybatis中的多表查询：" class="headerlink" title="mybatis中的多表查询："></a>mybatis中的多表查询：</h5><ul>
+<li><p>示例：用户和账户</p>
+<p>一个用户可以有多个账户</p>
+<p>一个账户只能属于一个用户（多个账户也可以属于同一个用户）</p>
 </li>
-<li><p>����</p>
+<li><p>步骤</p>
 <ol>
-<li><p>�������ű��û����˻���</p>
-<p>���û�����˻���֮��߱�һ�Զ�Ĺ�ϵ����Ҫʹ��������˻��������</p>
+<li><p>建立两张表：用户表，账户表</p>
+<p>让用户表和账户表之间具备一对多的关系：需要使用外键在账户表中添加</p>
 </li>
-<li><p>��������ʵ���ࣺ�û�ʵ������˻�ʵ����</p>
-<p>���û����˻���ʵ���������ֳ���һ�Զ�Ĺ�ϵ</p>
+<li><p>建立两个实体类：用户实体类和账户实体类</p>
+<p>让用户和账户的实体类能体现出来一对多的关系</p>
 </li>
-<li><p>�������������ļ�</p>
-<p>�û��������ļ�</p>
-<p>�˻��������ļ�</p>
+<li><p>建立两个配置文件</p>
+<p>用户的配置文件</p>
+<p>账户的配置文件</p>
 </li>
-<li><p>ʵ������</p>
-<p>�����ǲ�ѯ�û�ʱ������ͬʱ�õ��û������������˻���Ϣ</p>
-<p>�����ǲ�ѯ�˻�ʱ������ͬʱ�õ��˻��µ������û���Ϣ</p>
+<li><p>实现配置</p>
+<p>当我们查询用户时，可以同时得到用户下所包含的账户信息</p>
+<p>当我们查询账户时，可以同时得到账户下的所属用户信息</p>
 </li>
 </ol>
 </li>
-<li><p>ʾ�����û��ͽ�ɫ</p>
-<p>һ���û������ж����ɫ</p>
-<p>һ����ɫ���Ը������û�</p>
+<li><p>示例：用户和角色</p>
+<p>一个用户可以有多个角色</p>
+<p>一个角色可以赋予多个用户</p>
 </li>
-<li><p>���裺</p>
+<li><p>步骤：</p>
 <ol>
-<li><p>�������ű��û�����ɫ��</p>
-<p>���û���ͽ�ɫ����ж�Զ�Ĺ�ϵ����Ҫʹ���м���м���а������Ե����������м�����������</p>
+<li><p>建立两张表：用户表，角色表</p>
+<p>让用户表和角色表具有多对多的关系。需要使用中间表，中间表中包含各自的主键，在中间表中是外键。</p>
 </li>
-<li><p>��������ʵ���ࣺ�û�ʵ����ͽ�ɫʵ����</p>
-<p>���û��ͽ�ɫ��ʵ���������ֳ�����Զ�Ĺ�ϵ</p>
-<p>���԰����Է�һ����������</p>
+<li><p>建立两个实体类：用户实体类和角色实体类</p>
+<p>让用户和角色的实体类能体现出来多对多的关系</p>
+<p>各自包含对方一个集合引用</p>
 </li>
-<li><p>�������������ļ�</p>
-<p>�û��������ļ�</p>
-<p>��ɫ�������ļ�</p>
+<li><p>建立两个配置文件</p>
+<p>用户的配置文件</p>
+<p>角色的配置文件</p>
 </li>
-<li><p>ʵ�����ã�</p>
-<p>�����ǲ�ѯ�û�ʱ������ͬʱ�õ��û��������Ľ�ɫ��Ϣ</p>
-<p>�����ǲ�ѯ��ɫʱ������ͬʱ�õ���ɫ����������û���Ϣ</p>
-</li>
-</ol>
-<h3 id="1-Mybatis�е��ӳټ���"><a href="#1-Mybatis�е��ӳټ���" class="headerlink" title="1.Mybatis�е��ӳټ���"></a>1.Mybatis�е��ӳټ���</h3><p>���⣺��һ�Զ��У���������һ���û�������100���˻�</p>
-</li>
-<li><p>�ڲ�ѯ�û���ʱ��Ҫ��Ҫ�ѹ������˻��������</p>
-</li>
-<li><p>�ڲ�ѯ�˻���ʱ��Ҫ��Ҫ�ѹ������û��������</p>
-<p>�ڲ�ѯ�û�ʱ���û��µ��˻���ϢӦ���ǣ�ʲôʱ��ʹ�ã�ʲôʱ���ѯ�ġ�</p>
-<p>�ڲ�ѯ�˻�ʱ���˻��������û���ϢӦ���������˻���ѯʱһ���ѯ������</p>
-</li>
-<li><p>ʲô���ӳټ���</p>
-<p>������ʹ������ʱ�ŷ����ѯ�����õ�ʱ�򲻲�ѯ��������أ������أ�</p>
-</li>
-<li><p>ʲô����������</p>
-<p>�����ò��ã�ֻҪһ���÷��������Ϸ����ѯ��</p>
-<p>�ڶ�Ӧ�����ֱ��ϵ�У�һ�Զ࣬���һ��һ��һ����Զ�</p>
-</li>
-<li><p>һ�Զ࣬��Զࣺͨ����������Ƕ��ǲ����ӳټ��ء�</p>
-</li>
-<li><p>���һ��һ��һ��ͨ����������Ƕ��ǲ����������ء�</p>
-<h3 id="2-Mybatis�еL���"><a href="#2-Mybatis�еL���" class="headerlink" title="2.Mybatis�еĻ���"></a>2.Mybatis�еĻ���</h3></li>
-<li><p>ʲô�ǻ���</p>
-<p>�������ڴ��е���ʱ���ݡ�</p>
-</li>
-<li><p>Ϊʲôʹ�û���</p>
-<p>���ٺ����ݿ�Ľ������������ִ��Ч�ʡ�</p>
-</li>
-<li><p>ʲô����������ʹ�û��棬ʲô�������ݲ���ʹ�û���</p>
-<ol>
-<li><p>�����ڻ��棺</p>
-<p>������ѯ���Ҳ������ı�ġ�</p>
-<p>���ݵ���ȷ�������ս��Ӱ�첻��ġ�</p>
-</li>
-<li><p>�������ڻ��棺</p>
-<p>�����ı������</p>
-<p>���ݵ���ȷ�������ս��Ӱ��ܴ��</p>
-<p>���磺��Ʒ�Ŀ�棬���еĻ��ʣ����е��Ƽۡ�</p>
+<li><p>实现配置：</p>
+<p>当我们查询用户时，可以同时得到用户所包含的角色信息</p>
+<p>当我们查询角色时，可以同时得到角色的所赋予的用户信息</p>
 </li>
 </ol>
 </li>
-<li><p>Mybatis�е�һ������Ͷ�������</p>
+</ul>
+<h3 id="1-Mybatis中的延迟加载"><a href="#1-Mybatis中的延迟加载" class="headerlink" title="1.Mybatis中的延迟加载"></a>1.Mybatis中的延迟加载</h3><p>问题：在一对多中，当我们有一个用户，它有100个账户</p>
+<ul>
+<li><p>在查询用户的时候，要不要把关联的账户查出来？</p>
+</li>
+<li><p>在查询账户的时候，要不要把关联的用户查出来？</p>
+<p>在查询用户时，用户下的账户信息应该是，什么时候使用，什么时候查询的。</p>
+<p>在查询账户时，账户的所属用户信息应该是随着账户查询时一起查询出来。</p>
+</li>
+<li><p>什么是延迟加载</p>
+<p>在真正使用数据时才发起查询，不用的时候不查询。按需加载（懒加载）</p>
+</li>
+<li><p>什么是立即加载</p>
+<p>不管用不用，只要一调用方法，马上发起查询。</p>
+</li>
+</ul>
+<p>在对应的四种表关系中：一对多，多对一，一对一，多对多</p>
+<ul>
+<li>一对多，多对多：通常情况下我们都是采用延迟加载。</li>
+<li>多对一，一对一：通常情况下我们都是采用立即加载。</li>
+</ul>
+<h3 id="2-Mybatis中的缓存"><a href="#2-Mybatis中的缓存" class="headerlink" title="2.Mybatis中的缓存"></a>2.Mybatis中的缓存</h3><ul>
+<li><p>什么是缓存</p>
+<p>存在于内存中的临时数据。</p>
+</li>
+<li><p>为什么使用缓存</p>
+<p>减少和数据库的交互次数，提高执行效率。</p>
+</li>
+<li><p>什么样的数据能使用缓存，什么样的数据不能使用缓存</p>
 <ol>
-<li><p>һ�����棺</p>
-<p>��ָ����Mybatis��SqlSession����Ļ��档</p>
-<p>������ִ�в�ѯ֮�󣬲�ѯ�Ľ����ͬʱ���뵽SqlSessionΪ�����ṩһ�������С�</p>
-<p>������Ľṹ��һ��Map���������ٴβ�ѯͬ�������ݣ�mybatis����ȥsqlsession�в�ѯ�Ƿ��У��еĻ�ֱ���ó����á�</p>
-<p>��SqlSession������ʧʱ��mybatis��һ������Ҳ����ʧ�ˡ�</p>
-<h5 id="������SqlSession���޸g���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档"><a href="#������SqlSession���޸g���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档" class="headerlink" title="������SqlSession���޸ģ���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档"></a>������SqlSession���޸ģ���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档</h5></li>
-<li><p>�������棺</p>
-<p>��ָ����Mybatis��SqlSessionFactory����Ļ��档��ͬһ��SqlSessionFactory���󴴽���SqlSession�����仺�档</p>
-<p>���������ʹ�ò��裺</p>
+<li><p>适用于缓存：</p>
+<p>经常查询并且不经常改变的。</p>
+<p>数据的正确与否对最终结果影响不大的。</p>
+</li>
+<li><p>不适用于缓存：</p>
+<p>经常改变的数据</p>
+<p>数据的正确与否对最终结果影响很大的</p>
+<p>例如：商品的库存，银行的汇率，股市的牌价。</p>
+</li>
+</ol>
+</li>
+<li><p>Mybatis中的一级缓存和二级缓存</p>
 <ol>
-<li>��Mybatis���֧�ֶ������棨��SqlMapConfig.xml�����ã�</li>
-<li>�õ�ǰ��ӳ���ļ�֧�ֶ������棨��IUserDao.xml�����ã�</li>
-<li>�õ�ǰ�Ĳ���֧�ֶ������棨��select��ǩ�����ã�</li>
+<li><p>一级缓存：</p>
+<p>它指的是Mybatis中SqlSession对象的缓存。</p>
+<p>当我们执行查询之后，查询的结果会同时存入到SqlSession为我们提供一块区域中。</p>
+<p>该区域的结构是一个Map。当我们再次查询同样的数据，mybatis会先去sqlsession中查询是否有，有的话直接拿出来用。</p>
+<p>当SqlSession对象消失时，mybatis的一级缓存也就消失了。</p>
+<h5 id="当调用SqlSession的修改，添加，删除，commit（），close（）等方法时，就会清空一级缓存。"><a href="#当调用SqlSession的修改，添加，删除，commit（），close（）等方法时，就会清空一级缓存。" class="headerlink" title="当调用SqlSession的修改，添加，删除，commit（），close（）等方法时，就会清空一级缓存。"></a>当调用SqlSession的修改，添加，删除，commit（），close（）等方法时，就会清空一级缓存。</h5></li>
+<li><p>二级缓存：</p>
+<p>它指的是Mybatis中SqlSessionFactory对象的缓存。由同一个SqlSessionFactory对象创建的SqlSession共享其缓存。</p>
+<p>二级缓存的使用步骤：</p>
+<ol>
+<li>让Mybatis框架支持二级缓存（在SqlMapConfig.xml中配置）</li>
+<li>让当前的映射文件支持二级缓存（在IUserDao.xml中配置）</li>
+<li>让当前的操作支持二级缓存（在select标签中配置）</li>
 </ol>
 </li>
 </ol>
-<h3 id="3-Mybatis�е�ע�⿪��"><a href="#3-Mybatis�е�ע�⿪��" class="headerlink" title="3.Mybatis�е�ע�⿪��"></a>3.Mybatis�е�ע�⿪��</h3></li>
-<li><p>�����</p>
 </li>
-<li><p>����CRUD����������Dao��ʽ��</p>
-</li>
-<li><p>����ѯ����</p>
-</li>
-<li><p>���������</p>
-</li>
+</ul>
+<h3 id="3-Mybatis中的注解开发"><a href="#3-Mybatis中的注解开发" class="headerlink" title="3.Mybatis中的注解开发"></a>3.Mybatis中的注解开发</h3><ul>
+<li>环境搭建</li>
+<li>单表CRUD操作（代理Dao方式）</li>
+<li>多表查询操作</li>
+<li>缓存的配置</li>
 </ul>
 </sql></foreach></where></if>
       
@@ -534,7 +534,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/04/mybatis日志/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/05/mybatis日志/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -548,18 +548,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/04/springmvc日志/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          SpringMVC日志
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/29/关于线程池/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于线程池</div>
+    <a href="/2020/02/04/spring日志/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring日志</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -586,7 +577,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis�����"><span class="toc-number">1.</span> <span class="toc-text">1. mybatis�����</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-�������ע������"><span class="toc-number">2.</span> <span class="toc-text">2. �������ע������</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis���U�����"><span class="toc-number">3.</span> <span class="toc-text">3. mybatis���Ű�����</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis�е����ӳ��Լ��������-ԭ�����˽⣬Ӧ�o��ֻ���"><span class="toc-number">4.</span> <span class="toc-text">1.mybatis�е����ӳ��Լ��������        ԭ�����˽⣬Ӧ�ò��ֻ���</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#���ӳأ�"><span class="toc-number">4.0.1.</span> <span class="toc-text">���ӳأ�</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�е����ӳأ�"><span class="toc-number">4.0.2.</span> <span class="toc-text">mybatis�е����ӳأ�</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�е�����"><span class="toc-number">4.0.3.</span> <span class="toc-text">mybatis�е�����</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mybatis����XML���oK�̬SQL���ʹ��-���u���"><span class="toc-number">5.</span> <span class="toc-text">2.mybatis����XML���õĶ�̬SQL���ʹ��    ���ü���</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis�еK�����-����Ӧ��"><span class="toc-number">6.</span> <span class="toc-text">3.mybatis�еĶ�����                ����Ӧ��</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis�еK���ѯ��"><span class="toc-number">6.0.1.</span> <span class="toc-text">mybatis�еĶ���ѯ��</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Mybatis�е��ӳټ���"><span class="toc-number">7.</span> <span class="toc-text">1.Mybatis�е��ӳټ���</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Mybatis�еL���"><span class="toc-number">8.</span> <span class="toc-text">2.Mybatis�еĻ���</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#������SqlSession���޸g���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档"><span class="toc-number">8.0.1.</span> <span class="toc-text">������SqlSession���޸ģ���ӣ�ɾ����commit������close�����ȷ���ʱ���ͻ����һ�����档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Mybatis�е�ע�⿪��"><span class="toc-number">9.</span> <span class="toc-text">3.Mybatis�е�ע�⿪��</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis环境搭建"><span class="toc-number">1.</span> <span class="toc-text">1. mybatis环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-环境搭建的注意事项"><span class="toc-number">2.</span> <span class="toc-text">2. 环境搭建的注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis入门案例："><span class="toc-number">3.</span> <span class="toc-text">3. mybatis入门案例：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-mybatis中的连接池以及事务控制-原理部分了解，应用部分会用"><span class="toc-number">4.</span> <span class="toc-text">1.mybatis中的连接池以及事务控制        原理部分了解，应用部分会用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#连接池："><span class="toc-number">4.0.1.</span> <span class="toc-text">连接池：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis中的连接池："><span class="toc-number">4.0.2.</span> <span class="toc-text">mybatis中的连接池：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis中的事务："><span class="toc-number">4.0.3.</span> <span class="toc-text">mybatis中的事务：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-mybatis基于XML配置的动态SQL语句使用-会用即可"><span class="toc-number">5.</span> <span class="toc-text">2.mybatis基于XML配置的动态SQL语句使用    会用即可</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mybatis中的多表操作-掌握应用"><span class="toc-number">6.</span> <span class="toc-text">3.mybatis中的多表操作                掌握应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis中的多表查询："><span class="toc-number">6.0.1.</span> <span class="toc-text">mybatis中的多表查询：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Mybatis中的延迟加载"><span class="toc-number">7.</span> <span class="toc-text">1.Mybatis中的延迟加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Mybatis中的缓存"><span class="toc-number">8.</span> <span class="toc-text">2.Mybatis中的缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#当调用SqlSession的修改，添加，删除，commit（），close（）等方法时，就会清空一级缓存。"><span class="toc-number">8.0.1.</span> <span class="toc-text">当调用SqlSession的修改，添加，删除，commit（），close（）等方法时，就会清空一级缓存。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Mybatis中的注解开发"><span class="toc-number">9.</span> <span class="toc-text">3.Mybatis中的注解开发</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -752,11 +743,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,11 +767,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
             
             <div class="clearfix"></div>
