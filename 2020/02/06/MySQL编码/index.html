@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: hexo | Yolia</title>
+  <title>关于MySQL使用的编码 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/tags/hexo/index.html">
+  <meta name="description" content="MySQL 的“utf8”实际上不是真正的 UTF-8。">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于MySQL使用的编码">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/MySQL编码/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="MySQL 的“utf8”实际上不是真正的 UTF-8。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-06T14:47:04.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
-<meta name="twitter:description" content="Yolia的博客">
+<meta name="twitter:title" content="关于MySQL使用的编码">
+<meta name="twitter:description" content="MySQL 的“utf8”实际上不是真正的 UTF-8。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -156,61 +158,266 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MySQL编码" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2019" class="archive-year">2019</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/12/22/搭建个人博客-hexo/" class="archive-article-date">
-  	<time datetime="2019-12-22T09:25:41.687Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/22/搭建个人博客-hexo/">搭建个人博客-hexo</a>
+    <h1 class="article-title" itemprop="name">
+      关于MySQL使用的编码
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/02/06/MySQL编码/" class="archive-article-date">
+  	<time datetime="2020-02-06T14:47:24.166Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-06</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.3k字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
+
+            
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>MySQL 的“utf8”实际上不是真正的 UTF-8。</strong></p>
+<a id="more"></a>
+
+<p>“utf8”只支持每个字符最多三个字节，而真正的 UTF-8 是每个字符最多四个字节。</p>
+<p>MySQL 一直没有修复这个 bug，他们在 2010 年发布了一个叫作“utf8mb4”的字符集，绕过了这个问题。</p>
+<p>当然，他们并没有对新的字符集广而告之（可能是因为这个 bug 让他们觉得很尴尬），以致于现在网络上仍然在建议开发者使用“utf8”，但这些建议都是错误的。</p>
+<p>简单概括如下：</p>
+<ul>
+<li>MySQL 的“utf8mb4”是真正的“UTF-8”。</li>
+<li>MySQL 的“utf8”是一种“专属的编码”，它能够编码的 Unicode 字符并不多。</li>
+</ul>
+<p>我要在这里澄清一下：所有在使用“utf8”的 MySQL 和 MariaDB 用户都应该改用“utf8mb4”，永远都不要再使用“utf8”。</p>
+<h1 id="什么是编码？什么是-UTF-8？"><a href="#什么是编码？什么是-UTF-8？" class="headerlink" title="什么是编码？什么是 UTF-8？"></a>什么是编码？什么是 UTF-8？</h1><p>我们都知道，计算机使用 0 和 1 来存储文本。比如字符“C”被存成“01000011”，那么计算机在显示这个字符时需要经过两个步骤：</p>
+<ol>
+<li>计算机读取“01000011”，得到数字 67，因为 67 被编码成“01000011”。</li>
+<li>计算机在 Unicode 字符集中查找 67，找到了“C”。</li>
+</ol>
+<p>同样的：</p>
+<ol>
+<li>我的电脑将“C”映射成 Unicode 字符集中的 67。</li>
+<li>我的电脑将 67 编码成“01000011”，并发送给 Web 服务器。</li>
+</ol>
+<p>几乎所有的网络应用都使用了 Unicode 字符集，因为没有理由使用其他字符集。</p>
+<p>Unicode 字符集包含了上百万个字符。最简单的编码是 UTF-32，每个字符使用 32 位。这样做最简单，因为一直以来，计算机将 32 位视为数字，而计算机最在行的就是处理数字。但问题是，这样太浪费空间了。</p>
+<p>UTF-8 可以节省空间，在 UTF-8 中，字符“C”只需要 8 位，一些不常用的字符，比如“”需要 32 位。其他的字符可能使用 16 位或 24 位。一篇类似本文这样的文章，如果使用 UTF-8 编码，占用的空间只有 UTF-32 的四分之一左右。</p>
+<p>MySQL 的“utf8”字符集与其他程序不兼容，它所谓的“”，可能真的是一坨……</p>
+<h1 id="MySQL-简史"><a href="#MySQL-简史" class="headerlink" title="MySQL 简史"></a>MySQL 简史</h1><p>为什么 MySQL 开发者会让“utf8”失效？我们或许可以从提交日志中寻找答案。</p>
+<p>MySQL 从 4.1 版本开始支持 UTF-8，也就是 2003 年，而今天使用的 UTF-8 标准（RFC 3629）是随后才出现的。</p>
+<p>旧版的 UTF-8 标准（RFC 2279）最多支持每个字符 6 个字节。2002 年 3 月 28 日，MySQL 开发者在第一个 MySQL 4.1 预览版中使用了 RFC 2279。</p>
+<p>同年 9 月，他们对 MySQL 源代码进行了一次调整：“UTF8 现在最多只支持 3 个字节的序列”。</p>
+<p>是谁提交了这些代码？他为什么要这样做？这个问题不得而知。在迁移到 Git 后（MySQL 最开始使用的是 BitKeeper），MySQL 代码库中的很多提交者的名字都丢失了。2003 年 9 月的邮件列表中也找不到可以解释这一变更的线索。</p>
+<p>不过我可以试着猜测一下。</p>
+<p>2002 年，MySQL 做出了一个决定：如果用户可以保证数据表的每一行都使用相同的字节数，那么 MySQL 就可以在性能方面来一个大提升。为此，用户需要将文本列定义为“CHAR”，每个“CHAR”列总是拥有相同数量的字符。如果插入的字符少于定义的数量，MySQL 就会在后面填充空格，如果插入的字符超过了定义的数量，后面超出部分会被截断。</p>
+<p>MySQL 开发者在最开始尝试 UTF-8 时使用了每个字符 6 个字节，CHAR(1) 使用 6 个字节，CHAR(2) 使用 12 个字节，并以此类推。</p>
+<p>应该说，他们最初的行为才是正确的，可惜这一版本一直没有发布。但是文档上却这么写了，而且广为流传，所有了解 UTF-8 的人都认同文档里写的东西。</p>
+<p>不过很显然，MySQL 开发者或厂商担心会有用户做这两件事：</p>
+<ol>
+<li>使用 CHAR 定义列（在现在看来，CHAR 已经是老古董了，但在那时，在 MySQL 中使用 CHAR 会更快，不过从 2005 年以后就不是这样子了）。</li>
+<li>将 CHAR 列的编码设置为“utf8”。</li>
+</ol>
+<p>我的猜测是 MySQL 开发者本来想帮助那些希望在空间和速度上双赢的用户，但他们搞砸了“utf8”编码。</p>
+<p>所以结果就是没有赢家。那些希望在空间和速度上双赢的用户，当他们在使用“utf8”的 CHAR 列时，实际上使用的空间比预期的更大，速度也比预期的慢。而想要正确性的用户，当他们使用“utf8”编码时，却无法保存像“”这样的字符。</p>
+<p>在这个不合法的字符集发布了之后，MySQL 就无法修复它，因为这样需要要求所有用户重新构建他们的数据库。最终，MySQL 在 2010 年重新发布了“utf8mb4”来支持真正的 UTF-8。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/06/MySQL编码/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-      
-      
-    </div></section>
+
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/05/mybatis日志/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mybatis日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  <!--gitalk-->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '451ac59cbef1f20b0629',
+    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
+    repo: 'yolia-ed.github.io',
+    owner: 'yolia-ed',
+    admin: 'yolia-ed',
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+
   
 
 
@@ -247,9 +454,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
