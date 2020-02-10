@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>HashMap遍历 | Yolia</title>
+  <title>Archives: 2020 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于HashMap的遍历方式">
-<meta name="keywords" content="Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HashMap遍历">
-<meta property="og:url" content="http://yoursite.com/2020/01/03/HashMap遍历/index.html">
+  <meta name="description" content="Yolia的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yolia">
+<meta property="og:url" content="http://yoursite.com/archives/2020/page/3/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="关于HashMap的遍历方式">
+<meta property="og:description" content="Yolia的博客">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-07T16:09:28.862Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HashMap遍历">
-<meta name="twitter:description" content="关于HashMap的遍历方式">
+<meta name="twitter:title" content="Yolia">
+<meta name="twitter:description" content="Yolia的博客">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -158,252 +156,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-HashMap遍历" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      HashMap遍历
+  
+    
+    
+      
+      
+  <section class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2020" class="archive-year">2020</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+
+<a href="/2020/01/01/关于String长度/" class="archive-article-date">
+  	<time datetime="2020-01-01T09:44:35.131Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/01/关于String长度/">关于String长度</a>
     </h1>
   
 
-        
-        
-  <!-- 不蒜子统计 -->
-  <span class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-
-<a href="/2020/01/03/HashMap遍历/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:59:20.777Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-
-
-        <!-- 开始添加字数统计-->
-        
-            <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">637字</span>
-      </span>
-    </span>
-
-  <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
-      </span>
-    </span>
-</div>
-
-            
-        <!-- 添加完成 -->
-
-        
-
-
-      </header>
-
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于HashMap的遍历方式"><a href="#关于HashMap的遍历方式" class="headerlink" title="关于HashMap的遍历方式"></a>关于HashMap的遍历方式</h2><a id="more"></a>
-
-<h4 id="1-for-直接遍历-key"><a href="#1-for-直接遍历-key" class="headerlink" title="1. for 直接遍历 key"></a>1. for 直接遍历 key</h4><p>采用 for 遍历 key 值，然后通过 key 去获取 hashmap 中的数据。（普遍使用，二次取值）</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//遍历方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getKey</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.keySet 遍历 key 和 value："</span>);</span><br><span class="line">    <span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Key: "</span> + key + <span class="string">"  Value: "</span> + map.get(key));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法调用</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    map.put(<span class="string">"1"</span>, <span class="string">"value1"</span>);</span><br><span class="line">    map.put(<span class="string">"2"</span>, <span class="string">"value2"</span>);</span><br><span class="line">    map.put(<span class="string">"3"</span>, <span class="string">"value3"</span>);</span><br><span class="line">    map.put(<span class="string">"4"</span>, <span class="string">"value4"</span>);</span><br><span class="line">    map.put(<span class="string">"5"</span>, <span class="string">"value5"</span>);</span><br><span class="line">    map.put(<span class="string">"6"</span>, <span class="string">"value6"</span>);</span><br><span class="line">    map.put(<span class="string">"7"</span>, <span class="string">"value7"</span>);</span><br><span class="line">    map.put(<span class="string">"8"</span>, <span class="string">"value8"</span>);</span><br><span class="line">    System.out.println(<span class="string">"######################### start #####################"</span>);</span><br><span class="line">    getForValue(map);</span><br><span class="line">    System.out.println(<span class="string">"######################### end #####################"</span>);</span><br><span class="line">    System.exit(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.keySet 遍历 key 和 value：</span><br><span class="line">Key: <span class="number">1</span>  Value: value1</span><br><span class="line">Key: <span class="number">2</span>  Value: value2</span><br><span class="line">Key: <span class="number">3</span>  Value: value3</span><br><span class="line">Key: <span class="number">4</span>  Value: value4</span><br><span class="line">Key: <span class="number">5</span>  Value: value5</span><br><span class="line">Key: <span class="number">6</span>  Value: value6</span><br><span class="line">Key: <span class="number">7</span>  Value: value7</span><br><span class="line">Key: <span class="number">8</span>  Value: value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-迭代器-while"><a href="#2-迭代器-while" class="headerlink" title="2. 迭代器 + while"></a>2. 迭代器 + while</h4><p>采用 Iterator 把 hashmap 中的数据放到迭代器中，然后用 while 循环把迭代器中的数据都读下来。</p>
-<p>代码如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getIterator</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.entrySet 使用 iterator 遍历 key 和 value："</span>);</span><br><span class="line">    Iterator maplist = map.entrySet().iterator();</span><br><span class="line">    <span class="keyword">while</span> (maplist.hasNext()) &#123;</span><br><span class="line">        Map.Entry&lt;String, String&gt; entry = (Map.Entry&lt;String, String&gt;) maplist.next();</span><br><span class="line">        System.out.println(<span class="string">"Key: "</span> + entry.getKey() + <span class="string">"  Value: "</span> + entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法调用依旧如同上面，修改方法名即可</span></span><br><span class="line">结果：</span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.entrySet 使用 iterator 遍历 key 和 value：</span><br><span class="line">Key: <span class="number">1</span>  Value: value1</span><br><span class="line">Key: <span class="number">2</span>  Value: value2</span><br><span class="line">Key: <span class="number">3</span>  Value: value3</span><br><span class="line">Key: <span class="number">4</span>  Value: value4</span><br><span class="line">Key: <span class="number">5</span>  Value: value5</span><br><span class="line">Key: <span class="number">6</span>  Value: value6</span><br><span class="line">Key: <span class="number">7</span>  Value: value7</span><br><span class="line">Key: <span class="number">8</span>  Value: value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-for-循环遍历数据"><a href="#3-for-循环遍历数据" class="headerlink" title="3. for 循环遍历数据"></a>3. for 循环遍历数据</h4><p>采用 for 循环遍历 hashmap 中的数据。</p>
-<p>使用方便，数据量小的时候好用，如果数据量大会非常消耗性能。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getFor</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.entrySet 遍历 key 和 value"</span>);</span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : map.entrySet()) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Key: "</span> + entry.getKey() + <span class="string">" Value: "</span> + entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法调用后，结果如下：</span></span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.entrySet 遍历 key 和 value</span><br><span class="line">Key: <span class="number">1</span> Value: value1</span><br><span class="line">Key: <span class="number">2</span> Value: value2</span><br><span class="line">Key: <span class="number">3</span> Value: value3</span><br><span class="line">Key: <span class="number">4</span> Value: value4</span><br><span class="line">Key: <span class="number">5</span> Value: value5</span><br><span class="line">Key: <span class="number">6</span> Value: value6</span><br><span class="line">Key: <span class="number">7</span> Value: value7</span><br><span class="line">Key: <span class="number">8</span> Value: value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-for-循环遍历-value"><a href="#4-for-循环遍历-value" class="headerlink" title="4. for 循环遍历 value"></a>4. for 循环遍历 value</h4><p>采用 for 循环遍历 value，但这种方式不能获取 key 值。</p>
-<p>如果只显示 value 值可以采用这种方式。开发中相对比较少用。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getForValue</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.values() 遍历所有的 value，但不能遍历 key"</span>);</span><br><span class="line">    <span class="keyword">for</span> (String v : map.values()) &#123;</span><br><span class="line">        System.out.println(<span class="string">"The Value is "</span> + v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结果如下：</span></span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.values() 遍历所有的 value，但不能遍历 key</span><br><span class="line">The Value is value1</span><br><span class="line">The Value is value2</span><br><span class="line">The Value is value3</span><br><span class="line">The Value is value4</span><br><span class="line">The Value is value5</span><br><span class="line">The Value is value6</span><br><span class="line">The Value is value7</span><br><span class="line">The Value is value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/03/HashMap遍历/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/01/04/ArrayList/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ArrayList
-        
-      </div>
-    </a>
+      
+      
+    </div></section>
   
   
-    <a href="/2020/01/02/HashMap/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HashMap</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  <!--gitalk-->
-  
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-<div id="gitalk-container"></div>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: '451ac59cbef1f20b0629',
-    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
-    repo: 'yolia-ed.github.io',
-    owner: 'yolia-ed',
-    admin: 'yolia-ed',
-    id: document.title
-  })
-  gitalk.render('gitalk-container')
-</script>
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2020/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><a class="page-number" href="/archives/2020/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -440,8 +251,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

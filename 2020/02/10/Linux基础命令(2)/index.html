@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>HashMap遍历 | Yolia</title>
+  <title>Linux基础命令(2) | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于HashMap的遍历方式">
-<meta name="keywords" content="Java">
+  <meta name="description" content="Centos7查看磁盘、cpu、内存使用情况。">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HashMap遍历">
-<meta property="og:url" content="http://yoursite.com/2020/01/03/HashMap遍历/index.html">
+<meta property="og:title" content="Linux基础命令(2)">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/Linux基础命令(2)/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="关于HashMap的遍历方式">
+<meta property="og:description" content="Centos7查看磁盘、cpu、内存使用情况。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-07T16:09:28.862Z">
+<meta property="og:updated_time" content="2020-02-10T15:17:07.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HashMap遍历">
-<meta name="twitter:description" content="关于HashMap的遍历方式">
+<meta name="twitter:title" content="Linux基础命令(2)">
+<meta name="twitter:description" content="Centos7查看磁盘、cpu、内存使用情况。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -158,14 +158,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-HashMap遍历" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux基础命令(2)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      HashMap遍历
+      Linux基础命令(2)
     </h1>
   
 
@@ -177,8 +177,8 @@
         </span>
 
 
-<a href="/2020/01/03/HashMap遍历/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:59:20.777Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
+<a href="/2020/02/10/Linux基础命令(2)/" class="archive-article-date">
+  	<time datetime="2020-02-10T15:11:50.459Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
 </a>
 
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">637字</span>
+        <span class="post-count">249字</span>
       </span>
     </span>
 
@@ -198,7 +198,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">1分</span>
       </span>
     </span>
 </div>
@@ -215,26 +215,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于HashMap的遍历方式"><a href="#关于HashMap的遍历方式" class="headerlink" title="关于HashMap的遍历方式"></a>关于HashMap的遍历方式</h2><a id="more"></a>
+        <p>Centos7查看磁盘、cpu、内存使用情况。</p>
+<a id="more"></a>
 
-<h4 id="1-for-直接遍历-key"><a href="#1-for-直接遍历-key" class="headerlink" title="1. for 直接遍历 key"></a>1. for 直接遍历 key</h4><p>采用 for 遍历 key 值，然后通过 key 去获取 hashmap 中的数据。（普遍使用，二次取值）</p>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//遍历方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getKey</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.keySet 遍历 key 和 value："</span>);</span><br><span class="line">    <span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Key: "</span> + key + <span class="string">"  Value: "</span> + map.get(key));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查看内存使用情况</p>
+<pre><code>free -m</code></pre><p>查看cpu使用情况</p>
+<pre><code>top #查看进程运行情况</code></pre><p>查看磁盘以及分区情况</p>
+<pre><code>df -h </code></pre><p>查看网络情况</p>
+<pre><code>ifconfig</code></pre><p>查看端口使用情况</p>
+<pre><code>#1.方法一
+lsof -i:端口号
 
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法调用</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    map.put(<span class="string">"1"</span>, <span class="string">"value1"</span>);</span><br><span class="line">    map.put(<span class="string">"2"</span>, <span class="string">"value2"</span>);</span><br><span class="line">    map.put(<span class="string">"3"</span>, <span class="string">"value3"</span>);</span><br><span class="line">    map.put(<span class="string">"4"</span>, <span class="string">"value4"</span>);</span><br><span class="line">    map.put(<span class="string">"5"</span>, <span class="string">"value5"</span>);</span><br><span class="line">    map.put(<span class="string">"6"</span>, <span class="string">"value6"</span>);</span><br><span class="line">    map.put(<span class="string">"7"</span>, <span class="string">"value7"</span>);</span><br><span class="line">    map.put(<span class="string">"8"</span>, <span class="string">"value8"</span>);</span><br><span class="line">    System.out.println(<span class="string">"######################### start #####################"</span>);</span><br><span class="line">    getForValue(map);</span><br><span class="line">    System.out.println(<span class="string">"######################### end #####################"</span>);</span><br><span class="line">    System.exit(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.keySet 遍历 key 和 value：</span><br><span class="line">Key: <span class="number">1</span>  Value: value1</span><br><span class="line">Key: <span class="number">2</span>  Value: value2</span><br><span class="line">Key: <span class="number">3</span>  Value: value3</span><br><span class="line">Key: <span class="number">4</span>  Value: value4</span><br><span class="line">Key: <span class="number">5</span>  Value: value5</span><br><span class="line">Key: <span class="number">6</span>  Value: value6</span><br><span class="line">Key: <span class="number">7</span>  Value: value7</span><br><span class="line">Key: <span class="number">8</span>  Value: value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
+#2.方法二
+netstat -apn|grep 端口号
 
-<h4 id="2-迭代器-while"><a href="#2-迭代器-while" class="headerlink" title="2. 迭代器 + while"></a>2. 迭代器 + while</h4><p>采用 Iterator 把 hashmap 中的数据放到迭代器中，然后用 while 循环把迭代器中的数据都读下来。</p>
-<p>代码如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getIterator</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.entrySet 使用 iterator 遍历 key 和 value："</span>);</span><br><span class="line">    Iterator maplist = map.entrySet().iterator();</span><br><span class="line">    <span class="keyword">while</span> (maplist.hasNext()) &#123;</span><br><span class="line">        Map.Entry&lt;String, String&gt; entry = (Map.Entry&lt;String, String&gt;) maplist.next();</span><br><span class="line">        System.out.println(<span class="string">"Key: "</span> + entry.getKey() + <span class="string">"  Value: "</span> + entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法调用依旧如同上面，修改方法名即可</span></span><br><span class="line">结果：</span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.entrySet 使用 iterator 遍历 key 和 value：</span><br><span class="line">Key: <span class="number">1</span>  Value: value1</span><br><span class="line">Key: <span class="number">2</span>  Value: value2</span><br><span class="line">Key: <span class="number">3</span>  Value: value3</span><br><span class="line">Key: <span class="number">4</span>  Value: value4</span><br><span class="line">Key: <span class="number">5</span>  Value: value5</span><br><span class="line">Key: <span class="number">6</span>  Value: value6</span><br><span class="line">Key: <span class="number">7</span>  Value: value7</span><br><span class="line">Key: <span class="number">8</span>  Value: value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-for-循环遍历数据"><a href="#3-for-循环遍历数据" class="headerlink" title="3. for 循环遍历数据"></a>3. for 循环遍历数据</h4><p>采用 for 循环遍历 hashmap 中的数据。</p>
-<p>使用方便，数据量小的时候好用，如果数据量大会非常消耗性能。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getFor</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.entrySet 遍历 key 和 value"</span>);</span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : map.entrySet()) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Key: "</span> + entry.getKey() + <span class="string">" Value: "</span> + entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法调用后，结果如下：</span></span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.entrySet 遍历 key 和 value</span><br><span class="line">Key: <span class="number">1</span> Value: value1</span><br><span class="line">Key: <span class="number">2</span> Value: value2</span><br><span class="line">Key: <span class="number">3</span> Value: value3</span><br><span class="line">Key: <span class="number">4</span> Value: value4</span><br><span class="line">Key: <span class="number">5</span> Value: value5</span><br><span class="line">Key: <span class="number">6</span> Value: value6</span><br><span class="line">Key: <span class="number">7</span> Value: value7</span><br><span class="line">Key: <span class="number">8</span> Value: value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-for-循环遍历-value"><a href="#4-for-循环遍历-value" class="headerlink" title="4. for 循环遍历 value"></a>4. for 循环遍历 value</h4><p>采用 for 循环遍历 value，但这种方式不能获取 key 值。</p>
-<p>如果只显示 value 值可以采用这种方式。开发中相对比较少用。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getForValue</span><span class="params">(Map&lt;String, String&gt; map)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"通过 Map.values() 遍历所有的 value，但不能遍历 key"</span>);</span><br><span class="line">    <span class="keyword">for</span> (String v : map.values()) &#123;</span><br><span class="line">        System.out.println(<span class="string">"The Value is "</span> + v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结果如下：</span></span><br><span class="line">######################### start #####################</span><br><span class="line">通过 Map.values() 遍历所有的 value，但不能遍历 key</span><br><span class="line">The Value is value1</span><br><span class="line">The Value is value2</span><br><span class="line">The Value is value3</span><br><span class="line">The Value is value4</span><br><span class="line">The Value is value5</span><br><span class="line">The Value is value6</span><br><span class="line">The Value is value7</span><br><span class="line">The Value is value8</span><br><span class="line">######################### end #####################</span><br></pre></td></tr></table></figure>
-
+#3.方法三
+ps -au|grep 端口号</code></pre><h5 id="other："><a href="#other：" class="headerlink" title="other："></a>other：</h5><p>1、开放端口</p>
+<p><strong>firewall-cmd –zone=public –add-port=5672/tcp –permanent</strong>   # 开放5672端口</p>
+<p><strong>firewall-cmd –zone=public –remove-port=5672/tcp –permanent</strong>  #关闭5672端口</p>
+<p><strong>firewall-cmd –reload</strong>   # 配置立即生效</p>
+<p>2、查看防火墙所有开放的端口</p>
+<p><strong>firewall-cmd –zone=public –list-ports</strong></p>
+<p>3.、关闭防火墙</p>
+<p>如果要开放的端口太多，嫌麻烦，可以关闭防火墙，安全性自行评估</p>
+<p><strong>systemctl stop firewalld.service</strong></p>
+<p>4、查看防火墙状态</p>
+<p> <strong>firewall-cmd –state</strong></p>
+<p>5、查看监听的端口</p>
+<p><strong>netstat -lnpt</strong></p>
+<p>6、检查端口被哪个进程占用</p>
+<p><strong>netstat -lnpt |grep 5672</strong></p>
+<p>7、查看进程的详细信息</p>
+<p><strong>ps 6832</strong></p>
+<p>8、中止进程</p>
+<p><strong>kill -9 6832</strong></p>
 
       
 
@@ -269,7 +283,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -325,7 +339,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/03/HashMap遍历/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/10/Linux基础命令(2)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,18 +353,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/04/ArrayList/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ArrayList
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/02/HashMap/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HashMap</div>
+    <a href="/2020/02/08/Linux基础命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux基础命令</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -369,6 +374,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#other："><span class="toc-number">1.</span> <span class="toc-text">other：</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
