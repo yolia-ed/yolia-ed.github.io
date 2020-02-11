@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yolia">
 <meta property="og:description" content="如何在遍历集合的同时删除元素">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-15T09:21:59.516Z">
+<meta property="og:updated_time" content="2020-02-11T15:37:14.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArrayList">
 <meta name="twitter:description" content="如何在遍历集合的同时删除元素">
@@ -215,7 +215,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="如何在遍历集合的同时删除元素"><a href="#如何在遍历集合的同时删除元素" class="headerlink" title="如何在遍历集合的同时删除元素"></a>如何在遍历集合的同时删除元素</h2><a id="more"></a>
+        <p>如何在遍历集合的同时删除元素</p>
+<a id="more"></a>
 
 <h4 id="1-普通-for-循环"><a href="#1-普通-for-循环" class="headerlink" title="1. 普通 for 循环"></a>1. 普通 for 循环</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//若是从前往后遍历</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        arrayList.add(<span class="string">"aaa"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"bbb"</span>);</span><br><span class="line">        arrayList.add(<span class="string">"ccc"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arrayList.get(i) == <span class="string">"bbb"</span>) &#123;</span><br><span class="line">                arrayList.remove(arrayList.get(i));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">            System.out.println(arrayList.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">aaa bbb ccc</span><br></pre></td></tr></table></figure>
 
@@ -414,7 +415,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何在遍历集合的同时删除元素"><span class="toc-number">1.</span> <span class="toc-text">如何在遍历集合的同时删除元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-普通-for-循环"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 普通 for 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-foreach-删除后跳出循环"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. foreach 删除后跳出循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用迭代器"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 使用迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other"><span class="toc-number">1.0.4.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fail-fast"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">fail-fast</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#modCount-和-expectedModCount-是如何不相等的"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">modCount 和 expectedModCount 是如何不相等的</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结："><span class="toc-number">1.0.5.</span> <span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#再举个栗子"><span class="toc-number">1.0.6.</span> <span class="toc-text">再举个栗子</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-普通-for-循环"><span class="toc-number">1.</span> <span class="toc-text">1. 普通 for 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-foreach-删除后跳出循环"><span class="toc-number">2.</span> <span class="toc-text">2. foreach 删除后跳出循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用迭代器"><span class="toc-number">3.</span> <span class="toc-text">3. 使用迭代器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other"><span class="toc-number">4.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fail-fast"><span class="toc-number">4.1.</span> <span class="toc-text">fail-fast</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#modCount-和-expectedModCount-是如何不相等的"><span class="toc-number">4.2.</span> <span class="toc-text">modCount 和 expectedModCount 是如何不相等的</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结："><span class="toc-number">5.</span> <span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#再举个栗子"><span class="toc-number">6.</span> <span class="toc-text">再举个栗子</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -580,10 +581,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
@@ -596,7 +593,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,15 +609,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
