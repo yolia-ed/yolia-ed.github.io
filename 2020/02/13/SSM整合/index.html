@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Comparable | Yolia</title>
+  <title>SSM整合 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/tags/Comparable/index.html">
+  <meta name="description" content="Java SSM 框架整合思路。">
+<meta name="keywords" content="Java,SSM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM整合">
+<meta property="og:url" content="http://yoursite.com/2020/02/13/SSM整合/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="Java SSM 框架整合思路。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-13T05:35:11.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
-<meta name="twitter:description" content="Yolia的博客">
+<meta name="twitter:title" content="SSM整合">
+<meta name="twitter:description" content="Java SSM 框架整合思路。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -156,39 +158,162 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SSM整合" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2019" class="archive-year">2019</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/12/27/Java比较器/" class="archive-article-date">
-  	<time datetime="2019-12-27T14:56:10.124Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-27</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/27/Java比较器/">Java比较器</a>
+    <h1 class="article-title" itemprop="name">
+      SSM整合
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/02/13/SSM整合/" class="archive-article-date">
+  	<time datetime="2020-02-13T05:35:40.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-13</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">639字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+
+            
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java SSM 框架整合思路。</p>
+<a id="more"></a>
+
+<ol>
+<li><p>环境搭建</p>
+<ul>
+<li>这里使用 XML + 注解的方式进行整合，便捷。</li>
+<li>创建数据库和表结构语句</li>
+<li>创建 maven 的工程</li>
+<li>编写实体类</li>
+<li>编写 dao 接口</li>
+<li>编写 service 接口和实体类</li>
+</ul>
+</li>
+<li><p>Spring 框架代码的编写</p>
+<ul>
+<li>创建 resource 的资源文件目录，为了管理 XML 配置文件</li>
+<li>编写 applicationContext.xml 的配置文件</li>
+<li>在项目中编写测试方法，进行测试</li>
+</ul>
+</li>
+<li><p>SpringMVC 框架代码的编写</p>
+<ul>
+<li>在 web.xml 中配置 DispatcherServlet 前端控制器</li>
+<li>在 web.xml 中配置 DispatcherServlet 过滤器解决中文乱码</li>
+<li>创建 springmvc.xml 的配置文件，编写配置文件</li>
+<li>创建 jsp 页面，并编写 controller 代码</li>
+<li>部署 Tomcat 进行测试</li>
+<li>测试</li>
+</ul>
+</li>
+<li><p>Spring 整合 SpringMVC 的框架</p>
+<ul>
+<li><p>Spring 整合 SpringMVC 的框架原理分析</p>
+<p>整合成功的表现：在 controller（SpringMVC）中能成功的调用 service（Spring）对象中的方法。要想在 controller 中调用 service 方法，就要注入 service 到 controller 中来，有 service对象才可以调用 service 方法，方法是这样没有错，但是有一个问题，就是启动 Tomcat 之后试想一下，在 web.xml 中配置有前端控制器，web 容器会帮我们加载 springmvc.xml 配置文件，在 springmvc.xml 配置文件中我们配置情况是只扫描 controller，别的不扫，而spring.xml 文件就从头到尾没有执行过，spring 中的配置扫描自然也不会去扫描，就相当于没有将 spring 交到 IOC 容器当中去，所以，现在的解决方案就是，在启动服务器时就加载 spring配置文件,怎么实现呢？这时候监听器 listener 就派上用场了</p>
+</li>
+<li><p>在 web.xml 中配置 ContextLoaderListener 监听器</p>
+</li>
+<li><p>controller 中注入 service 对象，调用 service 对象方法并测试</p>
+</li>
+</ul>
+</li>
+<li><p>MyBatis 框架代码的编写</p>
+<ul>
+<li>在 Accountdao 接口方法上添加注解，编写 SQL 语句</li>
+<li>创建 SqlMapConfig.xml 的配置文件并编写</li>
+<li>创建并编写 MyBatis 测试方法</li>
+</ul>
+</li>
+<li><p>Spring 整合 MyBatis 框架</p>
+<ul>
+<li>在 applicationContext.xml 中配置数据库连接池</li>
+<li>在 applicationContext.xml 中配置 SqlSessionFactory 工厂</li>
+<li>在 applicationContext.xml 中配置 Accountdao 接口所在包</li>
+<li>其实就是把 MyBatis 中的配置（SqlMapConfig.xml）转移到 Spring 中去，让它产生代理并存到 IOC 容器中</li>
+<li>完善 Service 层代码</li>
+<li>完善 Controller 层代码</li>
+<li>完善 list.jsp 页面</li>
+<li>测试</li>
+</ul>
+</li>
+<li><p>Spring 整合 MyBatis 框架配置事务（Spring 的声明式事务管理）</p>
+<ul>
+<li>在 applicationContext.xml 中配置 Spring 框架声明式事务管理</li>
+<li>完善 index.jsp 页面</li>
+<li>完善 Service 层、Controller 层代码</li>
+<li>测试</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,27 +323,132 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Comparable</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Comparator</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/13/SSM整合/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-      
-      
-    </div></section>
+
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/13/Java值传递和引用传递/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java值传递和引用传递</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  <!--gitalk-->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '451ac59cbef1f20b0629',
+    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
+    repo: 'yolia-ed.github.io',
+    owner: 'yolia-ed',
+    admin: 'yolia-ed',
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+
   
 
 
@@ -255,9 +485,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
