@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java����-�쳣 | Yolia</title>
+  <title>Java基础-异常 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="����Java�쳣��֪ʶ��">
+  <meta name="description" content="关于Java异常的知识。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java����-�쳣">
+<meta property="og:title" content="Java基础-异常">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-异常/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="����Java�쳣��֪ʶ��">
+<meta property="og:description" content="关于Java异常的知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-15T15:12:42.008Z">
+<meta property="og:updated_time" content="2020-02-18T13:45:09.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java����-�쳣">
-<meta name="twitter:description" content="����Java�쳣��֪ʶ��">
+<meta name="twitter:title" content="Java基础-异常">
+<meta name="twitter:description" content="关于Java异常的知识。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java����-�쳣
+      Java基础-异常
     </h1>
   
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">188字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -198,7 +198,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -215,35 +215,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>����Java�쳣��֪ʶ��</p>
+        <p>关于Java异常的知识。</p>
 <a id="more"></a>
 
-<p>�쳣��Java����������ʱ�ڷ����Ĳ�������������⣩��</p>
-<p>Java�Ͱ�����������˼��Բ�����������������Ͷ���ķ�װ��</p>
-<p>��������֣�<br>Error����ϵͳ�ײ㷢���ģ�����jvm��jvm����ʹ���ߡ���������Դ���ֱ���޸Ĵ��롣<br>Exception��jvm�����������߸�ʹ���ߡ����Խ�������ԵĴ���</p>
-<p>�ܽ᣺<br>1������ʱ������<br>2������������󡣽�������������װ�ɶ���<br>3��error��exception������</p>
-<p>�����䷢������ʱ��jvm�ͽ����һֱ�������װ���˶���<br>throw new ArrayIndexOutOfBoundsException(1)���������׸�������main������<br>mainû������ԵĴ���ʽ��main�ͼ��������׸�������jvm��jvm��ʹ����Ĭ�ϵĴ���ʽ��<br>�����������+��Ϣ+λ���ڿ���̨����ʾ�������õ����߿�������������</p>
-<p>�ڱ�д����ʱ����д��֪���ù����п��ܷ������⡣�������������������ڵ����ߴ��ݵĲ�����<br>�����¹����޷����С����Ƿ����������Ӧ���õ�����֪����������õ�������Ԥ�ȵĴ���ʽ��<br>�����ڶ��幦��ʱ����Ҫ�ڹ����϶��п��ܷ������������������<br>����������Ҫʹ�ùؼ��֡�throws�쳣�࣬������Ŀ�ģ������õ����߿��Խ��д���</p>
-<p>�쳣�Ĵ���</p>
-<p>���֣�<br>1���������ⲻ���о���Ĵ������Ǽ����׸������ߡ�</p>
-<p>2������ԵĴ���ʽ������</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">        //�п��ܷ����쳣�Ĵ��롣</span><br><span class="line">&#125;</span><br><span class="line">catch(�쳣��    ����)</span><br><span class="line">&#123;</span><br><span class="line">        //���������Ĳ��񣬴����쳣�Ĵ��롣</span><br><span class="line">&#125;</span><br><span class="line">finally</span><br><span class="line">&#123;</span><br><span class="line">        //һ���ᱻִ�еĴ��롣</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>异常：Java程序在运行时期发生的不正常情况（问题）。</p>
+<p>Java就按照面向对象的思想对不正常情况进行描述和对象的封装。</p>
+<p>问题分两种：<br>Error：由系统底层发生的，告诉jvm，jvm告诉使用者。不做针对性处理。直接修改代码。<br>Exception：jvm发生。并告诉给使用者。可以进行针对性的处理。</p>
+<p>总结：<br>1，运行时发生。<br>2，符合面向对象。将问题描述并封装成对象。<br>3，error和exception的区别。</p>
+<p>输出语句发生问题时，jvm就将这个一直的问题封装成了对象。<br>throw new ArrayIndexOutOfBoundsException(1)；将问题抛给调用者main函数。<br>main没有针对性的处理方式。main就继续往外抛给调用者jvm，jvm就使用了默认的处理方式。<br>将问题的名称+信息+位置在控制台上显示出来。让调用者看到并结束程序。</p>
+<p>在编写功能时，编写者知道该功能有可能发生问题。而这个问题很容易来自于调用者传递的参数。<br>而导致功能无法运行。这是发生的问题就应该让调用者知道。并最好让调用者有预先的处理方式。<br>所以在定义功能时，需要在功能上对有可能发生的问题进行声明。<br>声明问题需要使用关键字。throws异常类，声明的目的：就是让调用者可以进行处理。</p>
+<p>异常的处理。</p>
+<p>两种：<br>1，遇到问题不进行具体的处理，而是继续抛给调用者。</p>
+<p>2，针对性的处理方式：捕获。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">        //有可能发生异常的代码。</span><br><span class="line">&#125;</span><br><span class="line">catch(异常类    变量)</span><br><span class="line">&#123;</span><br><span class="line">        //这是真正的捕获，处理异常的代码。</span><br><span class="line">&#125;</span><br><span class="line">finally</span><br><span class="line">&#123;</span><br><span class="line">        //一定会被执行的代码。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>throw �� throws ��ʲô����</p>
-<p>1��λ�ò�ͬ��<br>throws���ں����ϣ�����������쳣�ࡣ���Ը������<br>throw���ں����ڣ�����������쳣����</p>
-<p>2�����ܲ�ͬ��<br>throws���������쳣���õ�����ֻ֪���ù����п��ܳ��ֵ����⣬���ɵ����߿��Ը���<br>Ԥ�ȵĴ���ʽ��<br>throw�׳������������ִ�е�throw���ܾͽ����ˣ���ת�������ߡ�����������������<br>Ҳ�׸������ߡ�</p>
-<p>throw����������ʱ�����治Ҫ����������䡣��Ϊִ�в�����</p>
-<p>�쳣��ϵ�����������<br>Exception��Error��Exception<br>�쳣��ϵ�����ص������ϵ�е����Լ�������Ķ��󣬶��߱��ſ����ԣ�<br>�����Ե���˼�ǿ��Ա�throws��throw��������</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1��û����Դ��Ҫ�ͷţ������Ǵ����쳣��</span><br><span class="line">try&#123; &#125;catch( )&#123; &#125;</span><br><span class="line"></span><br><span class="line">2��һ��try���catch��һ���Ӧ���Ǳ����õĺ������׳�����쳣��������ֱ���</span><br><span class="line">try&#123; &#125;catch( )&#123; &#125;catch( )&#123; &#125;catch( )&#123; &#125;</span><br><span class="line">ע�⣺�ڶ�catch�﷨������ĵط������catch�е��쳣������Ӹ��ࡣ</span><br><span class="line">?           �����catchһ��Ҫ����������档�������ʧ�ܡ�</span><br><span class="line"></span><br><span class="line">3����һ��Ҫ�����쳣����������Դ��Ҫ�ͷš�</span><br><span class="line">try&#123; &#125;finally&#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>throw 和 throws 有什么区别？</p>
+<p>1，位置不同。<br>throws用在函数上，后面跟的是异常类。可以跟多个。<br>throw用在函数内，后面跟的是异常对象。</p>
+<p>2，功能不同。<br>throws用来声明异常。让调用者只知道该功能有可能出现的问题，并由调用者可以给出<br>预先的处理方式。<br>throw抛出具体问题对象。执行到throw功能就结束了，跳转到调用者。并将具体的问题对象<br>也抛给调用者。</p>
+<p>throw语句独立存在时，下面不要定义其他语句。因为执行不到。</p>
+<p>异常体系的特殊情况：<br>Exception：Error、Exception<br>异常体系最大的特点就是体系中的类以及类产生的对象，都具备着可抛性，<br>可抛性的意思是可以被throws和throw所操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1，没有资源需要释放，仅仅是处理异常。</span><br><span class="line">try&#123; &#125;catch( )&#123; &#125;</span><br><span class="line"></span><br><span class="line">2，一个try多个catch，一般对应的是被调用的函数，抛出多个异常的情况。分别处理。</span><br><span class="line">try&#123; &#125;catch( )&#123; &#125;catch( )&#123; &#125;catch( )&#123; &#125;</span><br><span class="line">注意：在多catch语法上特殊的地方，如果catch中的异常类存在子父类。</span><br><span class="line">?           父类的catch一定要放子类的下面。否则编译失败。</span><br><span class="line"></span><br><span class="line">3，不一定要处理异常，但是有资源需要释放。</span><br><span class="line">try&#123; &#125;finally&#123; &#125;</span><br></pre></td></tr></table></figure>
 
-<p>�쳣��ԭ��<br>1�������ڲ����쳣throw�׳���������һ��Ҫthrows������<br>�ڲ���ʲô�������Ͼ�����ʲô��<br>������Ŀ�ľ���Ϊ���õ����ߴ�����������߲���������ʧ�ܡ�</p>
-<p>2�����������<br>��������ͨ��throw�׳���RuntimeException����������쳣����ʱ�������Ͽ���<br>����throws������<br> ��������Ŀ�ľ���Ϊ�˲��õ����ߴ����õ����ߵĳ���ֹͣ��Ҫ�Դ�������޸ġ�</p>
-<p>Exception�����֣�<br>1������ʱ�ᱻ�����쳣��<br>2������ʱ�쳣������ʱ����⣩RuntimeException</p>
-<p>С�᣺<br>�쳣����ʵ���ǽ������װ�ɶ��󡣲��׸������ߡ�<br> ��������ˣ�����Ҫ�����ߴ�����������or���񣩡�<br> ʲôʱ��������ʲôʱ�򲶻�<br>�����ڲ����Խ�����Ͳ��񣬲��ܽ�������߽���˻�������ߵ������������Ǿ�Ӧ��������</p>
-<p>�쳣������Դ���ʽ��</p>
-<p>try{}catch(){}finally{}�ļ�����Ϸ�ʽ��</p>
-<p>����ʱ��<br>���෽�����Ǹ��෽��ֻ���׳����෽���쳣���߸��쳣�����ࡣ<br>������෽���׳�����쳣������ֻ���׳������쳣���Ӽ���<br>ԭ�򣺾���������쳣����Ҫ�ڸ����쳣��������С�</p>
-<p>ע�⣺��һ�������ֻ��try����throws��<br>�����ǵķ���û���׳��쳣��<br>��ô�����ڸ���ʱ�����෽���з������쳣������throws�׳������ܱȸ���������⣩<br>��ֻ��try catch�޷�throws������</p>
+<p>异常的原则：<br>1，功能内部有异常throw抛出，功能上一定要throws声明。<br>内部抛什么，功能上就声明什么。<br>声明的目的就是为了让调用者处理，如果调用者不处理，编译失败。</p>
+<p>2，特殊情况：<br>当函数内通过throw抛出了RuntimeException及其子类的异常对象时，函数上可以<br>不用throws声明。<br> 不声明的目的就是为了不让调用者处理。让调用者的程序停止。要对代码进行修改。</p>
+<p>Exception分两种：<br>1，编译时会被检测的异常。<br>2，运行时异常（编译时不检测）RuntimeException</p>
+<p>小结：<br>异常：其实就是将问题封装成对象。并抛给调用者。<br> 如果声明了，就需要调用者处理（继续声明or捕获）。<br> 什么时候声明，什么时候捕获？<br>功能内部可以解决，就捕获，不能解决，或者解决了还必须告诉调用者问题这是就应该声明。</p>
+<p>异常的针对性处理方式。</p>
+<p>try{}catch(){}finally{}的几种组合方式。</p>
+<p>覆盖时：<br>子类方法覆盖父类方法只能抛出父类方法异常或者该异常的子类。<br>如果父类方法抛出多个异常，子类只能抛出父类异常的子集。<br>原则：就是子类的异常必须要在父类异常处理控制中。</p>
+<p>注意：有一种情况，只能try不能throws。<br>被覆盖的方法没有抛出异常。<br>那么子类在覆盖时，子类方法中发生了异常，不能throws抛出（不能比父类更有问题）<br>就只能try catch无法throws声明。</p>
 
       
 
@@ -348,11 +348,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/15/Java基础-IO流/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/15/Java基础-多态/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java����-IO��
+          Java基础-多态
         
       </div>
     </a>
@@ -523,10 +523,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -535,11 +531,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,15 +551,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,15 +559,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

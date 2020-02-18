@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java����-���Ͽ�� | Yolia</title>
+  <title>Java基础-集合框架 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="����Java���Ͽ�ܵ�֪ʶ��">
+  <meta name="description" content="关于Java集合框架的知识。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java����-���Ͽ��">
+<meta property="og:title" content="Java基础-集合框架">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-集合框架/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="����Java���Ͽ�ܵ�֪ʶ��">
+<meta property="og:description" content="关于Java集合框架的知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-15T15:26:41.442Z">
+<meta property="og:updated_time" content="2020-02-18T13:47:10.294Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java����-���Ͽ��">
-<meta name="twitter:description" content="����Java���Ͽ�ܵ�֪ʶ��">
+<meta name="twitter:title" content="Java基础-集合框架">
+<meta name="twitter:description" content="关于Java集合框架的知识。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java����-���Ͽ��
+      Java基础-集合框架
     </h1>
   
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">392字</span>
+        <span class="post-count">2k字</span>
       </span>
     </span>
 
@@ -198,7 +198,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
 </div>
@@ -215,70 +215,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>����Java���Ͽ�ܵ�֪ʶ��</p>
+        <p>关于Java集合框架的知识。</p>
 <a id="more"></a>
 
-<p>Collection<br>|–List�����򣨴����˳���ȡ����˳��һ�£����������������ظ�Ԫ�ء�<br>|–Set���������ظ�Ԫ�ء�</p>
-<p>ǿ��List�ӿ��е����з������������з�������Χ������������ġ�</p>
-<p>֧����ɾ�Ĳ顣</p>
-<p>List�����ľ������ࡣ����֮������������Ϊ�ڲ������ݽṹ���洢���ݵķ�ʽ����ͬ��<br>|–Vector�����ݽṹ�����顣�����ǿɱ䳤�ȵģ�����new�����鲢��ԭ���鸴�Ƶ������飩���߳�ͬ���ġ���ɾ�Ͳ�ѯ������<br>|–ArrayList��Ҳ������ṹ��Ҳ�ǳ��ȿɱ�ġ��̲߳�ͬ���ģ������Vector����ɾ�ٶȲ��졣��ѯ�ٶȺܿ졣<br>|–LinkedList������ṹ���̲߳�ͬ���ġ���ɾ�ٶȺܿ졣��ѯ�ٶȽ�����</p>
-<p>LinkedList������ķ�����</p>
-<p>1����ArrayList�д洢�Զ������Person(name, age);</p>
-<p>2��ȥ��ArrayList�����е��ظ�Ԫ��(String)<br>ȥ��ArrayList�����е��ظ�Ԫ��(Person, ͬ����ͬ������Ϊͬһ����)</p>
-<p>3������LinkedList     xxxFirst()     xxxLast()   ��дdemo<br>ʵ��һ���������ݽṹ��</p>
-<p>Set���ϣ��������ظ�Ԫ�ء���Collection�ķ�����ͬ��Set����ȡ������ֻ��һ������������<br>|–HashSet����ϣ��ɢ�У���ṹ����ͬ���ġ�<br>��α�֤Ψһ�ԣ�<br>Ԫ�ر��븲��hashCode��equals������<br>����hashCode������Ϊ�˸���Ԫ��������ص�ȷ����ϣֵ��<br>����equals��������Ϊ�˽����ϣֵ�ĳ�ͻ��</p>
-<p>Ϊʲô��дequals��Ҫ��дhashcode<br>HashMap �У����Ҫ�Ƚ�key�Ƿ���ȣ�Ҫͬʱʹ��������������<br>��Ϊ�Զ������� hashcode �����̳��� Object �࣬��hashcode��ΪĬ�ϵ��ڴ��ַ��������������ͬ������������󣬱Ƚ�Ҳ�ǲ���ȵġ�<br>HashMap �еıȽ� key �������ģ������ key �� hashcode() ���Ƚ���ֵ�Ƿ���ȣ�������ٱȽ� equals �����������Ϊ��������ȵġ��� equals ���������Ϊ���ǲ���ȡ�<br>���ֻ��д hashcode ������д equals ���������Ƚ� equals ʱֻ�ǿ������Ƿ�Ϊͬһ���󣨼��ڴ��ַ�ıȽϣ������Աض���������һ����д��<br>���� hashcode ��Ϊ�˶�ͬһ�� key �ܵõ���ͬ�� hashcode ������ HashMap ���ܶ�λ������ָ���� key ��.<br>���� equals ��Ϊ���� HashMap ������ǰ����� key �ϱ���Ķ�������ȵġ�<br>�������ǲ������ػ������� key ����Ӧ�������ֵ�ԡ�</p>
-<pre><code>|--TreeSet�����������ݽṹ�����Զ�Ԫ�ؽ������򡣲�ͬ���ġ�
-       ��α�֤Ԫ��Ψһ�ԣ�
-       �ο����ǱȽϷ����ķ���ֵ�Ƿ���0���ǣ������ظ�Ԫ�أ����档
-       ����ʽ����ҪԪ�ؾ߱��ȽϹ��ܡ�����Ԫ����Ҫʵ��Comparable�ӿڡ�
-            ����CompareTo������
+<p>Collection<br>|–List：有序（存入的顺序和取出的顺序一致）。有索引，允许重复元素。<br>|–Set：不允许重复元素。</p>
+<p>强调List接口中的特有方法：它的特有方法都是围绕着索引定义的。</p>
+<p>支持增删改查。</p>
+<p>List几个的具体子类。子类之所以区分是因为内部的数据结构（存储数据的方式）不同。<br>|–Vector：数据结构是数组。数组是可变长度的（不断new新数组并将原数组复制到新数组）。线程同步的。增删和查询都慢。<br>|–ArrayList：也是数组结构，也是长度可变的。线程不同步的，替代了Vector。增删速度不快。查询速度很快。<br>|–LinkedList：链表结构，线程不同步的。增删速度很快。查询速度较慢。</p>
+<p>LinkedList：特殊的方法。</p>
+<p>1，往ArrayList中存储自定义对象。Person(name, age);</p>
+<p>2，去除ArrayList集合中的重复元素(String)<br>去除ArrayList集合中的重复元素(Person, 同姓名同年龄视为同一个人)</p>
+<p>3，查阅LinkedList     xxxFirst()     xxxLast()   并写demo<br>实现一个队列数据结构。</p>
+<p>Set集合：不允许重复元素。和Collection的方法相同。Set集合取出方法只有一个：迭代器。<br>|–HashSet：哈希（散列）表结构，不同步的。<br>如何保证唯一性？<br>元素必须覆盖hashCode和equals方法。<br>覆盖hashCode方法是为了根据元素自身的特点确定哈希值。<br>覆盖equals方法，是为了解决哈希值的冲突。</p>
+<p>为什么重写equals还要重写hashcode<br>HashMap 中，如果要比较key是否相等，要同时使用这两个函数。<br>因为自定义的类的 hashcode 方法继承于 Object 类，其hashcode码为默认的内存地址，这样即便有相同含义的两个对象，比较也是不相等的。<br>HashMap 中的比较 key 是这样的：先求出 key 的 hashcode() ，比较其值是否相等，若相等再比较 equals ，若相等则认为它们是相等的。若 equals 不相等则认为它们不相等。<br>如果只重写 hashcode 而不重写 equals 方法，当比较 equals 时只是看他们是否为同一对象（即内存地址的比较），所以必定两个方法一起重写。<br>重载 hashcode 是为了对同一个 key 能得到相同的 hashcode ，这样 HashMap 就能定位到我们指定的 key 上.<br>重载 equals 是为了向 HashMap 表明当前对象和 key 上保存的对象是相等的。<br>这样我们才真正地获得了这个 key 所对应的这个键值对。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">|--TreeSet：二叉树数据结构。可以对元素进行排序。不同步的。</span><br><span class="line">       如何保证元素唯一性？</span><br><span class="line">       参考的是比较方法的返回值是否是0，是，就是重复元素，不存。</span><br><span class="line">       排序方式：需要元素具备比较功能。所以元素需要实现Comparable接口。</span><br><span class="line">	        覆盖CompareTo方法。</span><br><span class="line"></span><br><span class="line">需求中也有这样一种情况，元素具备的比较功能不是所需要的，也就是说不想按照</span><br><span class="line">自然排序的方法，而是按照自定义的排序方式，对元素进行排序。</span><br><span class="line">而且，存储到TreeSet中的元素万一没有比较功能，该如何排序？</span><br><span class="line">这时，就只能使用第二种比较方式--是让集合具备比较功能，定义一个比较器。</span><br><span class="line"></span><br><span class="line">实现Comparator接口，覆盖compare方法。将Comparator接口的对象作为</span><br><span class="line">参数传递给TreeSet集合的构造函数。</span><br><span class="line"></span><br><span class="line">比较器更为灵活。自然排序通常作为元素的默认排序。</span><br></pre></td></tr></table></figure>
 
-������Ҳ������һ�������Ԫ�ؾ߱��ıȽϹ��ܲ�������Ҫ�ģ�Ҳ����˵���밴��
-��Ȼ����ķ��������ǰ����Զ��������ʽ����Ԫ�ؽ�������
-���ң��洢��TreeSet�е�Ԫ����һû�бȽϹ��ܣ����������
-��ʱ����ֻ��ʹ�õڶ��ֱȽϷ�ʽ--���ü��Ͼ߱��ȽϹ��ܣ�����һ���Ƚ�����
-
-ʵ��Comparator�ӿڣ�����compare��������Comparator�ӿڵĶ�����Ϊ
-�������ݸ�TreeSet���ϵĹ��캯����
-
-�Ƚ�����Ϊ����Ȼ����ͨ����ΪԪ�ص�Ĭ������</code></pre><p>���ɣ�</p>
-<p>jdk1.2�Ժ���ֵļ��Ͽ���еĳ���������󣬴��ڵĹ��ɡ�<br>ǰ׺�������ݽṹ������׺����������ϵ����</p>
-<p>ArrayList������ṹ���������飬��֪����ѯ�죬����List����֪�������ظ���������ɾ�Ĳ顣</p>
-<p>LinkedList������ṹ����ɾ�졣xxxFirst    xxxLast    xxx��add  get  remove</p>
-<p>HashSet����ϣ��Ԫ�ر��븲��hashCode equals������֤���򡣿���Set����֪���������ظ���</p>
-<p>LinkedHashSet�� ����+��ϣ������ʵ��������Ϊ������</p>
-<p>TreeSet�����������������������뵽���ֱȽϷ�ʽ��һ������Ȼ����Comparable��һ���ǱȽ���Comparator��</p>
+<p>技巧：</p>
+<p>jdk1.2以后出现的集合框架中的常用子类对象，存在的规律。<br>前缀名是数据结构名，后缀名是所属体系名。</p>
+<p>ArrayList：数组结构。看到数组，就知道查询快，看到List，就知道可以重复。可以增删改查。</p>
+<p>LinkedList：链表结构。增删快。xxxFirst    xxxLast    xxx：add  get  remove</p>
+<p>HashSet：哈希表，元素必须覆盖hashCode equals，不保证有序。看到Set，就知道不可以重复。</p>
+<p>LinkedHashSet： 链表+哈希表。可以实现有序，因为有链表。</p>
+<p>TreeSet：二叉树，可以排序。排序想到两种比较方式：一种是自然排序Comparable，一种是比较器Comparator。</p>
 <hr>
-<p>���ͣ�<br>��jdk1.4�汾֮ǰ������ʲô���͵Ķ��󶼿��Դ洢��������ȡ��ʱ����Ҫ�õ��������������ʱ����Ҫ������ת�͡�<br>���Ƕ�������Ͳ�һ�£�����������ת�ͷ�����ClassCastException�쳣��</p>
-<pre><code>jdk1.5�Ժ����˸����⣬�ڶ��弯��ʱ����ֱ����ȷ�����д洢Ԫ�صľ������͡�
-�������������ڱ���ʱ���Ϳ��ԶԼ����д洢�Ķ������ͽ��м�顣
-һ���������Ͳ�ƥ�䣬�ͱ���ʧ�ܡ�����Ƿ��ͼ�����</code></pre><p>�ô���<br>1.������ʱ�ڵ�����ת�Ƶ��˱���ʱ�ڣ����Ը��õ��ó���Ա�������Ⲣ������⡣<br>2.����������ת�͵��鷳��</p>
-<p>�ܽ᣺���;���Ӧ���ڱ���ʱ�ڵ�һ�ȫ���ơ�</p>
-<p>���͵Ĳ�����������ͨ�����Ͷ�Ԫ�����ͽ��м�飬ֻҪ���ͨ�����ͻ�����class�ļ�������<br> class�ļ��У��ͽ����ͱ�ʶȥ���ˡ�</p>
-<p>���͵ı��֣����ͼ����ڼ��Ͽ����Ӧ�õķ�Χ�ܴ�<br>ʲôʱ����Ҫд���ͣ�<br>1��ֻҪ�����࣬���߽ӿ���������ʱ���ұ߶���&lt;&gt;������Ҫ���͡�<br> ��ʵ�ǣ������ڲ���ȷ����Ԫ�ص���������£������ṩ��һ������&lt;&gt;��<br>ʹ��������ʱ��ֻҪ�����������ʵ�δ��ݸ��ò������ɡ�<br>˵���ˣ����;��ǣ��������Ͳ�����</p>
-<p>�����ࡢ���ͷ�����<br>�ࣺclass Demo<w>{}        ���еķ���public void show(W w){}<br>������public <q> void print(Q w){}<br>��̬�����޷��������϶���ķ��͡������̬������Ҫ���巺�ͣ�����ֻ�ܶ����ڷ����ϡ�<br>public static <a> void staticShow(A a){}</a></q></w></p>
-<p>�����ڽӿ��ϵķ��͡�<br>interface Inter<t> {public void show(T t);}<br>ʵ�ֽӿڣ���ȷ����ʱ            ����ȷ����ʱ</t></p>
+<p>泛型：<br>在jdk1.4版本之前，容器什么类型的对象都可以存储。但是在取出时。需要用到对象的特有内容时，需要做向下转型。<br>但是对象的类型不一致，导致了向下转型发生了ClassCastException异常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdk1.5以后解决了该问题，在定义集合时，就直接明确集合中存储元素的具体类型。</span><br><span class="line">这样，编译器在编译时，就可以对集合中存储的对象类型进行检查。</span><br><span class="line">一旦发现类型不匹配，就编译失败。这就是泛型技术。</span><br></pre></td></tr></table></figure>
+
+<p>好处：<br>1.将运行时期的问题转移到了编译时期，可以更好的让程序员发现问题并解决问题。<br>2.避免了向下转型的麻烦。</p>
+<p>总结：泛型就是应用在编译时期的一项安全机制。</p>
+<p>泛型的擦除：编译器通过泛型对元素类型进行检查，只要检查通过，就会生成class文件，但在<br> class文件中，就将泛型标识去掉了。</p>
+<p>泛型的表现：泛型技术在集合框架中应用的范围很大。<br>什么时候需要写泛型？<br>1，只要看到类，或者接口在描述的时候右边定义&lt;&gt;，就需要泛型。<br> 其实是，容器在不明确操作元素的类型情况下，对外提供了一个参数&lt;&gt;。<br>使用容器是时，只要将具体的类型实参传递给该参数即可。<br>说白了，泛型就是，传递类型参数。</p>
+<p>泛型类、泛型方法。<br>类：class Demo<w>{}        类中的方法public void show(W w){}<br>方法：public <q> void print(Q w){}<br>静态方法无法访问类上定义的泛型。如果静态方法需要定义泛型，泛型只能定义在方法上。<br>public static <a> void staticShow(A a){}</a></q></w></p>
+<p>定义在接口上的泛型。<br>interface Inter<t> {public void show(T t);}<br>实现接口：明确类型时            不明确类型时</t></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class InterImpl implements Inter&lt;String&gt;&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void show(String t)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class InterImpl&lt;W&gt; implements Inter&lt;W&gt;&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void show(W t)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>����–ͨ���<br>�ڲ���ȷ�������͵�����£�����ʹ��ͨ�������ʾ��&lt;?&gt;</p>
-<p>���͵��޶���&lt;? extends E&gt;������E���ͻ�E�������͡�    �������� eg��TreeSet(Collection&lt;? extends E&gt;  c)<br>&lt;? super E&gt;������E���ͻ�E�ĸ����͡�        �������� eg��TreeSet(Comparator&lt;? super E&gt;  comparator)</p>
-<p>���ޣ�һ�������ϴ洢Ԫ��ʱ��������϶�����E����ͨ�������Ӧ�ô洢E���͵Ķ���<br>��E�������͵Ķ���E����Ҳ���Խ��ܡ�������ʱ���Խ����ʹ�E��Ϊ��extends E��<br>���ޣ�����������ȡ��Ԫ��ʱ��������E���ͽ��գ�Ҳ������E�ĸ����ͽ��ա�          </p>
-<p>Map��˫�м��ϣ�һ�δ�һ�ԣ���ֵ�ԡ�Ҫ��֤����Ψһ�ԡ�</p>
-<p>keySet��ȡ�����еļ������洢��set�����С�map����û�е����������ǿ��Խ�<br>map����ת��set���ϣ���ʹ�õ�������</p>
-<p>entrySet();  Map.Entry����ʵ����һ��Map�ӿ��е��ڲ��ӿڡ�</p>
-<p>values();   ���ش�ӳ���а�����ֵ��Collection��ͼ��Collection<v>��</v></p>
-<p>Map<br>|–Hashtable����ϣ����ͬ���ģ�������null����nullֵ��<br>|–HashMap����ϣ���ǲ�ͬ���ģ�����null����nullֵ��<br>|–TreeMap������������ͬ���ģ����Զ�map�����еļ���������</p>
+<p>泛型–通配符<br>在不明确具体类型的情况下，可以使用通配符来表示。&lt;?&gt;</p>
+<p>泛型的限定：&lt;? extends E&gt;：接收E类型或E的子类型。    泛型上限 eg：TreeSet(Collection&lt;? extends E&gt;  c)<br>&lt;? super E&gt;：接收E类型或E的父类型。        泛型下限 eg：TreeSet(Comparator&lt;? super E&gt;  comparator)</p>
+<p>上限：一般往集合存储元素时。如果集合定义了E类型通常情况下应该存储E类型的对象。<br>对E的子类型的对象E类型也可以接受。所以这时可以将泛型从E改为？extends E。<br>下限：当从容器中取出元素时，可以用E类型接收，也可以用E的父类型接收。          </p>
+<p>Map：双列集合，一次存一对，键值对。要保证键的唯一性。</p>
+<p>keySet，取出所有的键，并存储到set集合中。map集合没有迭代器。但是可以将<br>map集合转成set集合，再使用迭代器。</p>
+<p>entrySet();  Map.Entry：其实就是一个Map接口中的内部接口。</p>
+<p>values();   返回此映射中包含的值的Collection视图。Collection<v>。</v></p>
+<p>Map<br>|–Hashtable：哈希表，是同步的，不允许null键，null值。<br>|–HashMap：哈希表，是不同步的，允许null键，null值。<br>|–TreeMap：二叉树，不同步的，可以对map集合中的键进行排序。</p>
 <hr>
-<p>���Ͽ�ܵĹ�����<br>Collections������Ķ��ǲ���Collection�ľ�̬������<br>1����list����<br>sort( list );<br>//���򷽷��Ϸ��͵�����</p>
-<pre><code>2������
-reverseOrder
+<p>集合框架的工具类<br>Collections：定义的都是操作Collection的静态方法。<br>1，对list排序。<br>sort( list );<br>//排序方法上泛型的由来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2，逆序。</span><br><span class="line">reverseOrder</span><br><span class="line"></span><br><span class="line">3，max  min</span><br><span class="line"></span><br><span class="line">4，二分查找</span><br><span class="line"></span><br><span class="line">5，将非同步集合转成同步集合。</span><br></pre></td></tr></table></figure>
 
-3��max  min
-
-4�����ֲ���
-
-5������ͬ������ת��ͬ�����ϡ�</code></pre><p>Arrays��������������Ĺ����࣬���� ���Ǿ�̬�ġ�</p>
+<p>Arrays：用来操作数组的工具类，方法 都是静态的。</p>
 
       
 
@@ -387,14 +370,14 @@ reverseOrder
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java����-�ӿ�
+          Java基础-接口
         
       </div>
     </a>
   
   
     <a href="/2020/02/15/Java基础-基本对象包装/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java����-���������װ</div>
+      <div class="article-nav-title">Java基础-基本对象包装</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -558,10 +541,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -570,11 +549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,15 +569,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,15 +577,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

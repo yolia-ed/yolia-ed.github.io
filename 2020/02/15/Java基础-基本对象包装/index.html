@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java����-���������װ | Yolia</title>
+  <title>Java基础-基本对象包装 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java-���������װ�� ����Java���������װ��֪ʶ��">
+  <meta name="description" content="关于Java基本对象包装的知识。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java����-���������װ">
+<meta property="og:title" content="Java基础-基本对象包装">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-基本对象包装/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Java-���������װ�� ����Java���������װ��֪ʶ��">
+<meta property="og:description" content="关于Java基本对象包装的知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-15T15:01:53.946Z">
+<meta property="og:updated_time" content="2020-02-18T13:44:02.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java����-���������װ">
-<meta name="twitter:description" content="Java-���������װ�� ����Java���������װ��֪ʶ��">
+<meta name="twitter:title" content="Java基础-基本对象包装">
+<meta name="twitter:description" content="关于Java基本对象包装的知识。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java����-���������װ
+      Java基础-基本对象包装
     </h1>
   
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">193字</span>
+        <span class="post-count">492字</span>
       </span>
     </span>
 
@@ -198,7 +198,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -215,23 +215,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java-���������װ��</p>
-<p>����Java���������װ��֪ʶ��</p>
+        <p>关于Java基本对象包装的知识。</p>
 <a id="more"></a>
 
-<p>���������װ���ǽ���������ֵ��װ���˶���<br>�ô��������ڶ����ж������������Ϊ�Ի������ݽ��в�����  </p>
-<p>byte����Byte��-2^7 ~ 2^7-1����-128 ~ 127��1�ֽڡ�Byte��ĩβ��B<br>short����Short��-2^15 ~ 2^15-1����-32768 ~ 32767��2�ֽڡ�Short��ĩβ��S<br>int����Integer���з���int��-2^31 ~ 2^31-1��    ��-2147483648 ~ 2147483647��4�ֽڡ�Integer���޷���int��0~2^32-1��<br>long����Long��-2^63 ~ 2^63-1����-9223372036854774808 ~ 9223372036854774807��8�ֽڡ�Long��ĩβ��L����Ҳ���Բ���L��<br>float����Float��4�ֽڡ�Float��ĩβ��F����Ҳ���Բ���F��<br>double����Double��8�ֽڡ�Double��<br>char����Charcter    ��2�ֽڡ�Character��<br>boolean����Boolean        </p>
-<p>int �ķ�Χ��ֵ��ֻ��int�������������int��Ӧ�Ķ�������ʡ�</p>
-<p>�����������Ͷ����װ�����Ҫ���ܣ��ڻ������ͺ�String����֮�以��ת����</p>
-<p>�ַ���ת�ɻ�����������<br>ʹ�õ���parse�������ͣ��ַ�������parseInt   parseByte   parseDouble    parseBoolean<br>Integer.parseInt(“22”);<br>integer.parseInt(“110”,2);  ���6      ���Խ��������Ƶ��ַ���ת��ʮ��������</p>
-<p>��������ת���ַ���<br>integer.toString(2);</p>
-<p>Ϊ�˶��������и���Ĳ��������Խ�������װ�ɶ���ͨ��Integer�ķ�����ɡ�<br>int –&gt; Integer</p>
-<p>Integer i1  =  new Integer(4); //���췽����<br>Integer i11 = new Integer(“4”); //���췽����<br>Integer i2 = Integer.valueOf(4); //��̬������</p>
+<p>基本对象包装，是将基本数据值封装成了对象。<br>好处：可以在对象中定义更多属性行为对基本数据进行操作。  </p>
+<p>byte——Byte。-2^7 ~ 2^7-1，即-128 ~ 127。1字节。Byte。末尾加B<br>short——Short。-2^15 ~ 2^15-1，即-32768 ~ 32767。2字节。Short。末尾加S<br>int——Integer。有符号int：-2^31 ~ 2^31-1，    即-2147483648 ~ 2147483647。4字节。Integer。无符号int：0~2^32-1。<br>long——Long。-2^63 ~ 2^63-1，即-9223372036854774808 ~ 9223372036854774807。8字节。Long。末尾加L。（也可以不加L）<br>float——Float。4字节。Float。末尾加F。（也可以不加F）<br>double——Double。8字节。Double。<br>char——Charcter    。2字节。Character。<br>boolean——Boolean        </p>
+<p>int 的范围最值，只有int最清楚。所以找int对应的对象最合适。</p>
+<p>基本数据类型对象包装类的重要功能：在基本类型和String类型之间互相转换。</p>
+<p>字符串转成基本数据类型<br>使用的是parse基本类型（字符串）：parseInt   parseByte   parseDouble    parseBoolean<br>Integer.parseInt(“22”);<br>integer.parseInt(“110”,2);  输出6      可以将其他进制的字符串转成十进制整数</p>
+<p>基本类型转成字符串<br>integer.toString(2);</p>
+<p>为了对整数进行更多的操作，可以将整数封装成对象。通过Integer的方法完成。<br>int –&gt; Integer</p>
+<p>Integer i1  =  new Integer(4); //构造方法。<br>Integer i11 = new Integer(“4”); //构造方法。<br>Integer i2 = Integer.valueOf(4); //静态方法。</p>
 <p>Integer–&gt;int<br>Integer x1 = new Integer(4);<br>int n1 = x1.intValue( );</p>
-<p>JDK1.5�Ժ��Զ�װ����䡣�����intһ���Ĳ���Integer��</p>
-<p>Integer i = new Integer(4);<br>//1.5<br>Integer i = 4; //�Զ�װ�䡣 Integer.valueOf(4);</p>
-<p>i = i + 6;  //�ұߵ�i�Զ����䡣i.intValue() + 6   ������Ľ����һ��װ�丳ֵ��i��</p>
-<p>jdk1.5�Ժ��Զ�װ���ֵ�����byte��Χ֮�ڣ���ͬ��ֵ���ᵥ�����ٿռ䣬�����ظ�ʹ�á�<br>��-128—-&gt;127��<br>Integer m = 128;<br>Integer n = 128;<br>m == n     false      ��Ϊ127��Ϊtrue��<br>m.equals(n)  true    Integer��д��equals�������Ƚ�ֵ��</p>
+<p>JDK1.5以后，自动装箱拆箱。像操作int一样的操作Integer。</p>
+<p>Integer i = new Integer(4);<br>//1.5<br>Integer i = 4; //自动装箱。 Integer.valueOf(4);</p>
+<p>i = i + 6;  //右边的i自动拆箱。i.intValue() + 6   运算完的结果又一次装箱赋值给i。</p>
+<p>jdk1.5以后，自动装箱的值如果在byte范围之内，相同的值不会单独开辟空间，而是重复使用。<br>（-128—-&gt;127）<br>Integer m = 128;<br>Integer n = 128;<br>m == n     false      若为127即为true。<br>m.equals(n)  true    Integer重写了equals方法，比较值。</p>
 
       
 
@@ -340,14 +339,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java����-���Ͽ��
+          Java基础-集合框架
         
       </div>
     </a>
   
   
     <a href="/2020/02/15/Java基础-多线程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java����-���߳�</div>
+      <div class="article-nav-title">Java基础-多线程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -511,10 +510,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -523,11 +518,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,15 +538,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,15 +546,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

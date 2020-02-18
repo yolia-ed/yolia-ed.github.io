@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java����-��̬ | Yolia</title>
+  <title>Java基础-多态 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="����Java��̬��֪ʶ��">
+  <meta name="description" content="关于Java多态的知识。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java����-��̬">
+<meta property="og:title" content="Java基础-多态">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-多态/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="����Java��̬��֪ʶ��">
+<meta property="og:description" content="关于Java多态的知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-15T15:09:17.546Z">
+<meta property="og:updated_time" content="2020-02-18T13:49:42.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java����-��̬">
-<meta name="twitter:description" content="����Java��̬��֪ʶ��">
+<meta name="twitter:title" content="Java基础-多态">
+<meta name="twitter:description" content="关于Java多态的知识。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java����-��̬
+      Java基础-多态
     </h1>
   
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">46字</span>
+        <span class="post-count">536字</span>
       </span>
     </span>
 
@@ -215,36 +215,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>����Java��̬��֪ʶ��</p>
+        <p>关于Java多态的知识。</p>
 <a id="more"></a>
 
-<p>��̬��������̬��</p>
-<p>�ص�˵���ǣ�����Ķ�̬�ԡ�</p>
-<p>��̬�ڳ����е����֣���������û��߽ӿڵ�����ָ��������Ķ���</p>
-<p>��̬�ĺô�������˴������չ�ԡ�</p>
-<p>��̬�ı׶ˣ�����ʹ����������з�����</p>
-<p>��̬��ǰ�᣺</p>
+<p>多态：多种形态。</p>
+<p>重点说的是：对象的多态性。</p>
+<p>多态在程序中的体现：父类的引用或者接口的引用指向了子类的对象。</p>
+<p>多态的好处：提高了代码的扩展性。</p>
+<p>多态的弊端：不能使用子类的特有方法。</p>
+<p>多态的前提：</p>
 <ol>
-<li>�����й�ϵ���̳У�ʵ�֡�</li>
-<li>ͨ���и��ǡ�</li>
+<li>必须有关系，继承，实现。</li>
+<li>通常有覆盖。</li>
 </ol>
-<p>����ת�ͺô��������������ͣ�����˴������չ�ԡ�<br>�׶ˣ�ֻ��ʹ�ø����еĹ��ܣ�����ʹ���������й��ܡ����ܱ��޶��ˡ�</p>
-<p>�������Ҫ��������ͣ�ͨ�������չ�ԣ�����ʹ�ø���Ĺ��ܼ�����ɲ���������������ת�͡�</p>
-<p>�����Ҫʹ���������й��ܣ�</p>
-<p>����ת�͵ĺô�������ʹ�������͵����й��ܡ�<br>�׶ˣ���Ծ���������͡�����ת���з��ա�<br>���׷���ClassCastException��ֻҪת�����ͺͶ������Ͳ�ƥ��ͻᷢ����<br>��Ҫ��ȫ������Ҫ�����жϡ��ж�һ�������Ƿ�ƥ��ĳһ�����ͣ� ��Ҫʹ��һ���ؼ���instanceof ����  instanceof  ����</p>
-<p>��̬�жԳ�Ա�ĵ��á�</p>
-<p>1����Ա������<br>���Ӹ����г���ͬ����Ա����ʱ��<br>��̬����ʱ��ֻ�����øó�Ա������������������еĳ�Ա������</p>
-<pre><code>��˵�����۱�������У������Ⱥŵ���ߡ�</code></pre><p>2����Ա������<br>����һģһ������ʱ��<br>��̬���ã�<br>����ʱ���������ñ�����������еķ�����<br>����ʱ�������Ƕ�����������еķ�����</p>
-<pre><code>��˵�����뿴��ߣ����п��ұߡ�
+<p>向上转型好处：隐藏了子类型，提高了代码的扩展性。<br>弊端：只能使用父类中的功能，不能使用子类特有功能。功能被限定了。</p>
+<p>如果不需要面对子类型，通过提高扩展性，或者使用父类的功能即可完成操作，就是用向上转型。</p>
+<p>如果想要使用子类特有功能？</p>
+<p>向下转型的好处：可以使用子类型的特有功能。<br>弊端：面对具体的子类型。向下转型有风险。<br>容易发生ClassCastException。只要转换类型和对象类型不匹配就会发生。<br>想要安全，必须要进行判断。判断一个对象是否匹配某一个类型， 需要使用一个关键字instanceof 对象  instanceof  类型</p>
+<p>多态中对成员的调用。</p>
+<p>1，成员变量。<br>当子父类中出现同名成员变量时。<br>多态调用时，只看调用该成员变量的引用所属的类中的成员变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">简单说，无论编译或运行，都看等号的左边。</span><br></pre></td></tr></table></figure>
 
-��Ա������̬�󶨵���ǰ������</code></pre><p>3����̬������</p>
-<pre><code>����һģһ������ʱ��
-��̬���ã�
-����������ǿ����ñ�����������еķ����� 
-��˵���������п���ߡ�
+<p>2，成员函数。<br>出现一模一样函数时，<br>多态调用，<br>编译时看的是引用变量所属的类中的方法。<br>运行时，看的是对象所属的类中的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">简单说：编译看左边，运行看右边。</span><br><span class="line"></span><br><span class="line">成员方法动态绑定到当前对象上</span><br></pre></td></tr></table></figure>
 
-�������þ�̬�����ǲ���Ҫ����ġ�ֱ���������á�
-����������������������ԡ�  </code></pre>
+<p>3，静态函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">出现一模一样函数时，</span><br><span class="line">多态调用，</span><br><span class="line">编译和运行是看引用变量所属的类中的方法。 </span><br><span class="line">简单说：编译运行看左边。</span><br><span class="line"></span><br><span class="line">真正调用静态方法是不需要对象的。直接类名调用。</span><br><span class="line">所以上述情况，多用于面试。</span><br></pre></td></tr></table></figure>
       
 
       
@@ -352,14 +348,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java����-���߳�
+          Java基础-多线程
         
       </div>
     </a>
   
   
-    <a href="/2020/02/15/Java基础-抽象类/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java����-������</div>
+    <a href="/2020/02/15/Java基础-异常/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java基础-异常</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -523,10 +519,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -535,11 +527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,15 +547,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,15 +555,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

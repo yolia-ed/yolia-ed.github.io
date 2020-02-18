@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java����-�ӿ� | Yolia</title>
+  <title>Java基础-接口 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="����Java�ӿڵ����֪ʶ��">
+  <meta name="description" content="关于Java接口的相关知识。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java����-�ӿ�">
+<meta property="og:title" content="Java基础-接口">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-接口/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="����Java�ӿڵ����֪ʶ��">
+<meta property="og:description" content="关于Java接口的相关知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-15T15:05:18.669Z">
+<meta property="og:updated_time" content="2020-02-18T13:46:14.821Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java����-�ӿ�">
-<meta name="twitter:description" content="����Java�ӿڵ����֪ʶ��">
+<meta name="twitter:title" content="Java基础-接口">
+<meta name="twitter:description" content="关于Java接口的相关知识。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java����-�ӿ�
+      Java基础-接口
     </h1>
   
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">65字</span>
+        <span class="post-count">301字</span>
       </span>
     </span>
 
@@ -215,17 +215,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>����Java�ӿڵ����֪ʶ��</p>
+        <p>关于Java接口的相关知识。</p>
 <a id="more"></a>
 
-<p><strong>�ӿ��еĳ�Ա��class���岻֮ͬ����</strong><br>�ӿ��г����ĳ�Ա���������֣�1��ȫ�ֳ����� 2�����󷽷���<br>���Ҷ��й̶������η������ԣ���Ա����public���η���</p>
+<p><strong>接口中的成员和class定义不同之处：</strong><br>接口中常见的成员函数有两种：1，全局常量， 2，抽象方法。<br>而且都有固定的修饰符。共性：成员都是public修饰符。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">interface Inter</span><br><span class="line">&#123;</span><br><span class="line">	public static final int NUM = 4;</span><br><span class="line">	public static void show1();</span><br><span class="line">	public static void show2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>�ӿڵ��ص㣺</strong><br>1���ӿڲ�����ʵ������<br>2����Ҫ�����˽ӿ��е����г��󷽷������࣬�ſ���ʵ������<br>?      ���򣬸����໹��һ�������ࡣ<br>3���ӿ���������ʵ�ֵġ�</p>
-<p>�ӿ�����֮��Ĺ�ϵ��ʵ�ֹ�ϵ��</p>
-<p>Java�в�ֱ��֧�ֶ�̳У����ǶԸû��ƽ��и�����<br>ͨ���ӿ���������⡣</p>
-<p>��������������Ĺ��Ի������ܡ�<br>�ӿ����ڶ���Ķ�������Ķ��⹦�ܡ�</p>
-<p><strong>������ͽӿڵ�����</strong><br>1��������֮���Ǽ̳й�ϵ��is a��<br>?      ����ӿ���ʵ�ֹ�ϵ��like a��<br>2�� �������п��Զ������ͷǳ��󷽷����������ֱ��ʹ�ã����߸���ʹ�á�<br>?       �ӿ��ж��嶼�ǳ��󷽷�������ʵ�ֲ����á�</p>
+<p><strong>接口的特点：</strong><br>1，接口不可以实例化。<br>2，需要覆盖了接口中的所有抽象方法的子类，才可以实例化。<br>否则，该子类还是一个抽象类。<br>3，接口是用来被实现的。</p>
+<p>接口与类之间的关系是实现关系。</p>
+<p>Java中不直接支持多继承，而是对该机制进行改良。<br>通过接口来解决问题。</p>
+<p>类用于描述事物的共性基本功能。<br>接口用于定义的都是事物的额外功能。</p>
+<p><strong>抽象类和接口的区别？</strong><br>1，类与类之间是继承关系，is a。<br>类与接口是实现关系。like a。<br>2， 抽象类中可以定义抽象和非抽象方法，子类可以直接使用，或者覆盖使用。<br>接口中定义都是抽象方法，必须实现才能用。</p>
 
       
 
@@ -334,14 +334,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java����-�ڲ���
+          Java基础-内部类
         
       </div>
     </a>
   
   
     <a href="/2020/02/15/Java基础-集合框架/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java����-���Ͽ��</div>
+      <div class="article-nav-title">Java基础-集合框架</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -505,10 +505,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -517,11 +513,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,15 +533,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,15 +541,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java����-�ڲ��� | Yolia</title>
+  <title>Java基础-内部类 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="����Java�ڲ����֪ʶ��">
+  <meta name="description" content="关于Java内部类的知识。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java����-�ڲ���">
+<meta property="og:title" content="Java基础-内部类">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-内部类/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="����Java�ڲ����֪ʶ��">
+<meta property="og:description" content="关于Java内部类的知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-15T15:01:07.502Z">
+<meta property="og:updated_time" content="2020-02-18T13:40:40.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java����-�ڲ���">
-<meta name="twitter:description" content="����Java�ڲ����֪ʶ��">
+<meta name="twitter:title" content="Java基础-内部类">
+<meta name="twitter:description" content="关于Java内部类的知识。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java����-�ڲ���
+      Java基础-内部类
     </h1>
   
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">68字</span>
+        <span class="post-count">432字</span>
       </span>
     </span>
 
@@ -215,21 +215,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>����Java�ڲ����֪ʶ��</p>
+        <p>关于Java内部类的知识。</p>
 <a id="more"></a>
 
-<p>�ڲ��ࣺ���ඨ�嵽����һ�������ڲ���<br>?               A��Ҫֱ�ӷ���B���еĳ�Աʱ�����Խ�A�ඨ�嵽B���С�<br>?               ��ΪB����ڲ�����ڡ�</p>
-<p>���ʹ���<br>?                �ڲ������ֱ�ӷ����ⲿ���еĳ�Ա��<br>?                �ⲿ��Ҫ������ڲ��ֻ࣬�ܴ����ڲ���Ķ��������ʡ�</p>
-<p>�ڲ����൱���ⲿ���е�һ����Ա�����Ϳ��Ա���Ա���η������Ρ�public  private static</p>
-<p>�Ǿ�̬����˽�е��ڲ�����ʷ�ʽ��<br>����ڲ���Ȩ���Ƿ�˽�еġ��Ϳ������ⲿ���������б����ʵ����Ϳ���ͨ�������ⲿ�������ɡ�<br>���������ڲ������<br>Outer.Inner in = new Outer().new Inner();<br>in.show();</p>
-<p>��̬����˽�е��ڲ�����ʷ�ʽ�����ʷǾ�̬��Ա��<br>Outer.Inner in = new Outer.Inner();<br>in.show();</p>
-<p>��̬����˽�е��ڲ�����ʷ�ʽ2�����ʾ�̬��Ա��<br>Outer.Inner.show();</p>
-<p>��̬�ڲ��࣬�൱��һ���ⲿ�ࡣ<br>�ڷǾ�̬���ڲ�����ֻ�����徲̬�ĳ��������ܶ���������̬��Ա��</p>
-<p>Ϊʲô�ڲ���Ϳ���ֱ�ӷ����ⲿ���еĳ�Ա��<br>��Ϊ�ڲ���������ⲿ�����á��ⲿ����.this</p>
-<p>���ڲ��ඨ�嵽�˾ֲ�λ���ϡ�ע�⣺�ֲ��ڲ��ֻ࣬�ܷ��ʱ�final���εľֲ�������</p>
-<p>�����ڲ��ࣺ����д���ڲ��ࡣ</p>
-<p>ǰ�᣺�ڲ�����Ҫ�̳л���ʵ���ⲿ������߽ӿڡ�</p>
-<p>��ʽ��new ���� or �ӿ�����������������ݣ�<br>�����ڲ�����ʵ����һ���������</p>
+<p>内部类：将类定义到了另一个的类内部。<br> A类要直接访问B类中的成员时，可以将A类定义到B类中。<br>作为B类的内部类存在。</p>
+<p>访问规则：<br>内部类可以直接访问外部类中的成员。<br>外部类要想访问内部类，只能创建内部类的对象来访问。</p>
+<p>内部类相当于外部类中的一个成员。它就可以被成员修饰符所修饰。public  private static</p>
+<p>非静态，非私有的内部类访问方式：<br>如果内部类权限是非私有的。就可以在外部其他程序中被访问到。就可以通过创建外部类对象完成。<br>创建的是内部类对象。<br>Outer.Inner in = new Outer().new Inner();<br>in.show();</p>
+<p>静态，非私有的内部类访问方式，访问非静态成员。<br>Outer.Inner in = new Outer.Inner();<br>in.show();</p>
+<p>静态，非私有的内部类访问方式2，访问静态成员。<br>Outer.Inner.show();</p>
+<p>静态内部类，相当于一个外部类。<br>在非静态的内部类中只允许定义静态的常量。不能定义其他静态成员。</p>
+<p>为什么内部类就可以直接访问外部类中的成员。<br>因为内部类持有了外部的引用。外部类名.this</p>
+<p>将内部类定义到了局部位置上。注意：局部内部类，只能访问被final修饰的局部变量。</p>
+<p>匿名内部类：简化书写的内部类。</p>
+<p>前提：内部类需要继承或者实现外部的类或者接口。</p>
+<p>格式：new 父类 or 接口名（）（子类的内容）<br>匿名内部类其实就是一个子类对象。</p>
 
       
 
@@ -334,9 +334,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/02/18/Java基础-抽象类/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java基础-抽象类
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/02/15/Java基础-接口/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java����-�ӿ�</div>
+      <div class="article-nav-title">Java基础-接口</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -500,10 +509,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -512,11 +517,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,15 +537,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,15 +545,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

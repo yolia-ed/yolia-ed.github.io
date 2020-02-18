@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java����-���߳� | Yolia</title>
+  <title>Java基础-多线程 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="����Java���̵߳�֪ʶ��">
+  <meta name="description" content="关于Java多线程的知识。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java����-���߳�">
+<meta property="og:title" content="Java基础-多线程">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-多线程/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="����Java���̵߳�֪ʶ��">
+<meta property="og:description" content="关于Java多线程的知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-15T15:19:10.075Z">
+<meta property="og:updated_time" content="2020-02-18T13:42:04.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java����-���߳�">
-<meta name="twitter:description" content="����Java���̵߳�֪ʶ��">
+<meta name="twitter:title" content="Java基础-多线程">
+<meta name="twitter:description" content="关于Java多线程的知识。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java����-���߳�
+      Java基础-多线程
     </h1>
   
 
@@ -189,7 +189,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">509字</span>
+        <span class="post-count">2.8k字</span>
       </span>
     </span>
 
@@ -198,7 +198,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
 </div>
@@ -215,105 +215,106 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>����Java���̵߳�֪ʶ��</p>
+        <p>关于Java多线程的知识。</p>
 <a id="more"></a>
 
-<p>���̣�����Ӧ�ó������ڴ��з���Ŀռ䡣�����������еĳ���</p>
-<p>�̣߳��ǽ����и������ִ�е�ִ�е�Ԫ��Ҳ��Ϊִ��·����<br> һ��������������һ���߳��ڸ���ý��̵����С�<br>���һ�������г����˶�����̣��ͳƸó���Ϊ���̳߳���</p>
-<p>���̼߳���������ಿ�ݴ���ͬʱִ�е����󡣺����ʹ��cpu��Դ��</p>
-<p>���̵߳����и���cpu���л���ɵġ���ô�л�cpu˵���㡣<br>���Զ��߳�������һ������ԣ�cpu�Ŀ����л���ɵģ���</p>
-<p>jvm�еĶ��̡߳�<br>�����������̣߳�һ���Ǹ����Զ���������еġ���main������ʼִ�е��̳߳�֮Ϊ���̡߳�<br> һ���Ǹ����������յġ�</p>
-<p>ͨ��ʵ�飬�ᷢ��ÿ�ν����һ����ͬ����Ϊ�������ɵġ�</p>
-<p>����ÿһ���̶߳������еĴ������ݡ������֮Ϊ�̵߳�����<br>֮���Դ���һ���߳̾���Ϊ��ȥ����ָ����������롣</p>
-<p>���̵߳����񶼷�װ���ض��������С�<br>���磺<br>���߳����е����񶼶�����main�����С�<br>���������߳�����������������finalize������</p>
-<p>��ν���һ��ִ��·���أ�</p>
-<p>ͨ������api�ĵ�java.lang.Thread��</p>
-<p>������������д����̵߳����ַ�ʽ��</p>
+<p>进程：就是应用程序在内存中分配的空间。（正在运行中的程序）</p>
+<p>线程：是进程中负责程序执行的执行单元。也称为执行路径。<br> 一个进程中至少有一个线程在负责该进程的运行。<br>如果一个进程中出现了多个进程，就称该程序为多线程程序。</p>
+<p>多线程技术：解决多部份代码同时执行的需求。合理的使用cpu资源。</p>
+<p>多线程的运行根据cpu的切换完成的。怎么切换cpu说的算。<br>所以多线程运行有一个随机性（cpu的快速切换造成的）。</p>
+<p>jvm中的多线程。<br>至少有两个线程：一个是负责自定义代码运行的。从main方法开始执行的线程称之为主线程。<br> 一个是负责垃圾回收的。</p>
+<p>通过实验，会发现每次结果不一定相同，因为随机性造成的。</p>
+<p>而且每一个线程都有运行的代码内容。这个称之为线程的任务。<br>之所以创建一个线程就是为了去运行指定的任务代码。</p>
+<p>而线程的任务都封装在特定的区域中。<br>比如：<br>主线程运行的任务都定义在main方法中。<br>垃圾回收线程在收垃圾都会运行finalize方法。</p>
+<p>如何建立一个执行路径呢？</p>
+<p>通过查阅api文档java.lang.Thread类</p>
+<p>该类的描述中有创建线程的两种方式：</p>
 <ol>
-<li><p>�̳�Thread�ࡣ</p>
+<li><p>继承Thread类。</p>
 </li>
-<li><p>�̳�Thread�ࡣ</p>
+<li><p>继承Thread类。</p>
 </li>
-<li><p>����run������</p>
+<li><p>覆盖run方法。</p>
 </li>
-<li><p>�������������Ǵ����̶߳���</p>
+<li><p>创建子类对象就是创建线程对象。</p>
 </li>
-<li><p>����Thread���е�start�����Ϳ���ִ���̡߳��������run������</p>
-<pre><code>start���������̺߳󣬶���ִ��run������˵��run�����д洢�����߳�Ҫ���еĴ��롣
-���ԣ���ס���Զ����̵߳�������붼�洢��run�����С�</code></pre></li>
-</ol>
-<p>����start�͵���run����������</p>
-<p>����start�Ὺ���̣߳��ÿ�����߳�ȥִ��run�����е��߳�����<br>ֱ�ӵ���run�������̲߳�δ����ȥִ��run������ֻ�����̡߳�</p>
-<p>�����̵߳ĵڶ��ַ�ʽ��ʵ��Runnable�ӿڡ�<br>1������һ����ʵ��Runnable��<br>2������Runnable�ӿ��е�run���������߳�Ҫ���е��������洢���÷����С�<br>3��ͨ��Thread�ഴ���̶߳��󣬲���ʵ����Runnable�ӿڵĶ�����ΪThread��Ĺ��캯���Ĳ������д��ݡ�<br>4������Thread���start�����������̡߳�</p>
-<p>ʵ��Runnable�ӿڵĺô���<br>1�������˼̳�Thread��ĵ��̳еľ����ԡ�<br>2��Runnable�ӿڳ��ָ�����������󣬽��̵߳������ж���ķ�װ��<br>3��Runnable�ӿڳ��֣��������̶߳�����߳����������ԡ�<br>���ԣ��Ժ󴴽��̶߳�ʹ�õڶ��ַ�ʽ��</p>
-<p>���̵߳İ�ȫ���⡣</p>
-<p>������ԭ��<br>1���߳��������д�����������ݡ�<br>2���߳��������ж����Թ������ݵĲ�����<br>һ���߳��ڲ����������ݵĹ����У������̲߳��������㣬��������ݵĴ���</p>
-<p>�����˼�룺<br>ֻҪ�ܱ�֤���������������ݵĴ�����ĳһʱ��Σ���һ���߳���ִ�У�<br>��ִ���ڼ䲻���������̲߳������㡣</p>
-<p>��α�֤��<br>�õ���ͬ������顣</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">synchronized������</span><br><span class="line">&#123;</span><br><span class="line">	��Ҫ��ͬ���Ĵ��롣</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>调用Thread类中的start方法就可以执行线程。并会调用run方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start（）开启线程后，都会执行run方法。说明run方法中存储的是线程要运行的代码。</span><br><span class="line">所以，记住，自定义线程的任务代码都存储在run方法中。</span><br></pre></td></tr></table></figure>
 
-<p>ͬ����Ŀǰ����±�֤��һ��ֻ����һ���߳���ִ�С������߳̽�������<br>�����ͬ���������ơ�</p>
-<p>�ô�������˶��̵߳İ�ȫ���⡣</p>
-<p>�׶ˣ�����Ч�ʡ�</p>
-<p>�п��ܳ�������һ�������<br>���̰߳�ȫ������ֺ󣬼�����ͬ�����ƣ�û���뵽����ȫ�������ɣ���ô�죿</p>
-<p>���ǿ϶���ͬ���������⡣</p>
-<p>ֻҪ������ͬ����ǰ�ᣬ�Ϳ��Խ����</p>
-<p>ͬ����ǰ�᣺<br>����߳���ͬ���б���ʹ��ͬһ����������ǶԶ���߳�ͬ����</p>
-<p>ͬ����������ʵ�����ں����ϼ�����ͬ���ؼ��ֽ������Ρ�<br>ͬ���������������֣�1��ͬ������顣2��ͬ��������</p>
-<p>�������߳��Ƿ���ڰ�ȫ������<br>1���߳��������Ƿ��й�������ݡ�<br>2���Ƿ���������������ݵĴ��롣</p>
-<p>ͬ������ʹ�õ�����ʲô�أ�������Ҫ��������ã��ĸ�����ȷ�������Ƕ���this����ʾ��<br>ͬ������ʹ�õ�������this��</p>
-<p>��֤ͬ������ʹ�õ�����this��</p>
-<p>��֤����<br>�������̡߳�<br>һ���̸߳���ִ��ͬ������飨ʹ����������<br>��һ���߳�ʹ��ͬ��������ʹ��this������<br>����ִ�е�������һ���Ķ�����Ʊ���������û��ʹ����ͬ������˵������û��ͬ������������ݴ���</p>
-<p>��ô����һ���߳�һֱ��ͬ��������У�һ���߳���ͬ�������أ�<br>����ͨ���л��ķ�ʽ��������һ��Boolean��ǣ���</p>
-<p>���ͬ��������static���Σ�</p>
-<p>static������������أ���ʱ��һ���и���Ķ��󡣵���һ����һ��������ֽ����ļ�����<br>�������򵥵ı�ʾ��ʽ����  ����.class    Class</p>
-<p>����ģʽ�Ŀ������ʡ�</p>
-<p>����ʽ��<br>����ڶ��̲߳�������ȫ��</p>
-<p>����ʽ���ӳټ���ģʽ��<br>�ڶ��̲߳�������ʱ��������̰߳�ȫ���⡣<br>����ͬ���Ϳ��Խ�����⡣������ͬ������������ͬ������鶼�С�<br>���ǣ�Ч�ʵ��ˡ����ж����Ĵ����϶ࣩ<br>���Ч�ʵ͵����⡣����ͨ��if�Ե��������˫���жϵ����ơ�</p>
+</li>
+</ol>
+<p>调用start和调用run方法的区别？</p>
+<p>调用start会开启线程，让开启的线程去执行run方法中的线程任务。<br>直接调用run方法，线程并未开启，去执行run方法的只有主线程。</p>
+<p>创建线程的第二种方式。实现Runnable接口。<br>1，定义一个类实现Runnable。<br>2，覆盖Runnable接口中的run方法，将线程要运行的任务代码存储到该方法中。<br>3，通过Thread类创建线程对象，并将实现了Runnable接口的对象作为Thread类的构造函数的参数进行传递。<br>4，调用Thread类的start方法，开启线程。</p>
+<p>实现Runnable接口的好处：<br>1，避免了继承Thread类的单继承的局限性。<br>2，Runnable接口出现更符合面向对象，将线程单独进行对象的封装。<br>3，Runnable接口出现，降低了线程对象和线程任务的耦合性。<br>所以，以后创建线程都使用第二种方式。</p>
+<p>多线程的安全问题。</p>
+<p>产生的原因：<br>1，线程任务中有处理到共享的数据。<br>2，线程任务中有多条对共享数据的操作。<br>一个线程在操作共享数据的过程中，其他线程参与了运算，造成了数据的错误。</p>
+<p>解决的思想：<br>只要能保证多条操作共享数据的代码在某一时间段，被一条线程所执行，<br>在执行期间不允许其他线程参与运算。</p>
+<p>如何保证？<br>用到了同步代码块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">synchronized（对象）</span><br><span class="line">&#123;</span><br><span class="line">	需要被同步的代码。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同步在目前情况下保证了一次只能有一个线程在执行。其他线程进不来。<br>这就是同步的锁机制。</p>
+<p>好处：解决了多线程的安全问题。</p>
+<p>弊端：减低效率。</p>
+<p>有可能出现这样一种情况：<br>多线程安全问题出现后，加入了同步机制，没有想到，安全问题依旧！怎么办？</p>
+<p>这是肯定是同步出了问题。</p>
+<p>只要遵守了同步的前提，就可以解决。</p>
+<p>同步的前提：<br>多个线程在同步中必须使用同一个锁。这才是对多个线程同步。</p>
+<p>同步函数。其实就是在函数上加上了同步关键字进行修饰。<br>同步表现形势有两种：1，同步代码块。2，同步函数。</p>
+<p>分析多线程是否存在安全隐患。<br>1，线程任务中是否有共享的数据。<br>2，是否多条操作共享数据的代码。</p>
+<p>同步函数使用的锁是什么呢？函数需要被对象调用，哪个对象不确定，但是都用this来表示。<br>同步函数使用的锁就是this。</p>
+<p>验证同步函数使用的锁是this。</p>
+<p>验证需求：<br>启动两个线程。<br>一个线程负责执行同步代码块（使用明锁）。<br>另一个线程使用同步函数（使用this锁）。<br>两个执行的任务是一样的都是卖票。如果他们没有使用相同的锁，说明他们没有同步。会出现数据错误。</p>
+<p>怎么能让一个线程一直在同步代码块中，一个线程在同步函数呢？<br>可以通过切换的方式。（定义一个Boolean标记）。</p>
+<p>如果同步函数被static修饰？</p>
+<p>static方法随着类加载，这时不一定有该类的对象。但是一定有一个该类的字节码文件对象。<br>这个对象简单的表示方式就是  类名.class    Class</p>
+<p>单例模式的开发访问。</p>
+<p>饿汉式。<br>相对于多线程并发，安全！</p>
+<p>懒汉式。延迟加载模式。<br>在多线程并发访问时，会出现线程安全问题。<br>加了同步就可以解决问题。无论是同步函数，还是同步代码块都行。<br>但是，效率低了。（判断锁的次数较多）<br>解决效率低的问题。可以通过if对单例对象的双重判断的形势。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Single</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Single s = <span class="keyword">null</span>;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Single</span><span class="params">( )</span></span>&#123; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Single <span class="title">getInstance</span><span class="params">( )</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(s == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        <span class="keyword">synchronized</span>(Single<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">	      				</span>&#123;</span><br><span class="line">							<span class="keyword">if</span>(s==<span class="keyword">null</span>)</span><br><span class="line">							s = <span class="keyword">new</span> Single();</span><br><span class="line"> 	      				&#125;   </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> s;  </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>ͬ��������ͬ������顣</p>
-<p>ͬ�������ʹ�õ�������Ķ�����Ϊ����<br>ͬ������ֻ��ʹ��this��Ϊ����</p>
-<p>���˵��һ������ֻ��Ҫһ���������ǿ��Կ���ͬ��������ʹ��this��д���򵥡�<br>���ǣ�һ�����������Ҫ����������ж������ʹ��ͬһ������</p>
-<p>����ʹ��ͬ������顣</p>
-<p>������ͬ��Ƕ�ס�</p>
+<p>同步函数，同步代码块。</p>
+<p>同步代码块使用的是任意的对象作为锁。<br>同步函数只能使用this作为锁。</p>
+<p>如果说：一个类中只需要一个锁，这是可以考虑同步函数，使用this，写法简单。<br>但是，一个类中如果需要多个锁，还有多个类中使用同一个锁。</p>
+<p>建议使用同步代码块。</p>
+<p>死锁：同步嵌套。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> flag;</span><br><span class="line">	Task(<span class="keyword">boolean</span> flag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.flag = flag;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(flag)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">				<span class="keyword">synchronized</span>(MyLock.LOCKA)</span><br><span class="line">				&#123;</span><br><span class="line">					System.out.println(<span class="string">"if.........locka"</span>);</span><br><span class="line">					<span class="keyword">synchronized</span>(MyLock.LOCKB)</span><br><span class="line">					&#123;</span><br><span class="line">						System.out.println(<span class="string">"if.........lockb"</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">				<span class="keyword">synchronized</span>(MyLock.LOCKB)</span><br><span class="line">				&#123;</span><br><span class="line">					System.out.println(<span class="string">"else .........lockb"</span>);</span><br><span class="line">					<span class="keyword">synchronized</span>(MyLock.LOCKA)</span><br><span class="line">					&#123;</span><br><span class="line">						System.out.println(<span class="string">"else .........locka"</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyLock</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Object LOCKA = <span class="keyword">new</span> Object();</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Object LOCKB = <span class="keyword">new</span> Object();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeadLockTest</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Task t1 = <span class="keyword">new</span> Task(<span class="keyword">true</span>);</span><br><span class="line">		Task t2 = <span class="keyword">new</span> Task(<span class="keyword">false</span>);</span><br><span class="line">		<span class="keyword">new</span> Thread(t1).start();</span><br><span class="line">		<span class="keyword">new</span> Thread(t2).start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>���̼߳��ͨ�š�����̶߳��ڴ���ͬһ����Դ�����Ǵ��������ȴ��һ����<br>�����ߣ������ߡ�</p>
-<p>ͨ��ͬ���������ÿ���������ѵ����⡣</p>
-<p>���ǳ���������������û�����ѵ����������������һ��������һ�������������</p>
-<p>ʹ���˵ȴ����ѻ��ơ�<br>wait()���÷����������̴߳��ڶ���״̬�������߳���ʱ�洢���̳߳��С�<br>notify()������ָ���̳߳��е�����һ���̡߳�<br>notifyAll()������ָ���̳߳��е������̡߳�</p>
-<p>��Щ��������ʹ����ͬ���У���Ϊ������������ͬ�����ϵ��̵߳�״̬�ġ�</p>
-<p>��ʹ����Щ����ʱ�������ʶ���������ڵ�������ʶ��ʽ����   ������.wait( ) ;   ������.notify( ) ;    ������.notifyAll( ) ;</p>
-<p>��ͬ����notify( )�����Ի�ȡ��ͬ����wait( ) ;</p>
+<p>多线程间的通信。多个线程都在处理同一个资源，但是处理的任务却不一样。<br>生产者，消费者。</p>
+<p>通过同步，解决了每生产就消费的问题。</p>
+<p>但是出现了连续的生产没有消费的情况，和需求生产一个，消费一个的情况不符。</p>
+<p>使用了等待唤醒机制。<br>wait()：该方法可以让线程处于冻结状态，并将线程临时存储到线程池中。<br>notify()：唤醒指定线程池中的任意一个线程。<br>notifyAll()：唤醒指定线程池中的所有线程。</p>
+<p>这些方法必须使用在同步中，因为它们用来操作同步锁上的线程的状态的。</p>
+<p>在使用这些方法时，必须标识它们所属于的锁。标识方式就是   锁对象.wait( ) ;   锁对象.notify( ) ;    锁对象.notifyAll( ) ;</p>
+<p>相同锁的notify( )，可以获取相同锁的wait( ) ;</p>
 <hr>
-<p>�����������ѡ�</p>
-<p>����1��<br>�ظ����ɣ��ظ����ѡ�<br>ԭ�򣺾������ӵģ��ȣ��ʸ񣩷��������ֱ����ѵ��߳�û���жϱ�ǾͿ�ʼ����������or���ѣ��ˡ�<br>�������ظ������ɺ����ѵķ�����</p>
-<pre><code>������Ǿ��Ǳ����ѵ��̱߳����жϱ�ǡ�
-           ʹ��whileѭ�����ɡ�</code></pre><p>����2��<br>�����ˡ����е��̶߳����ڶ���״̬��<br>ԭ�򣺱����߳��ڻ���ʱ����һ�λ����˱����̡߳��������߳�ѭ���жϱ�ǣ��м����ȴ���<br>���������е��̶߳��ȴ��ˡ�</p>
-<pre><code>�����ϣ��������������˶Է��̣߳��Ϳ��Խ����
-           ����ʹ��notifyAll( )������
-           �ǲ���ȫ���������ǵġ����б��������жԷ������Ǳ����Ѻ󣬻��жϱ�Ǽ����ȴ���
-           �����Է������߳̿���ִ���ˡ�</code></pre><p>�Ѿ�ʵ���˶����������ѡ�</p>
-<p>������ЩС���⣬Ч���е�ͣ���ΪnotifyAllҲ�����˱��������˲���Ҫ���жϡ�</p>
-<p>��������������ѵ�Ч�����⡣<br>ʹ����JDK1.5 java.util.concurrent.locks���еĶ���<br>Lock�ӿڣ����ĳ��ֱ�synchronized�и���Ĳ�����<br>lock��������ȡ����<br>unlock�������ͷ�����</p>
-<p>ͬ����������ͬ������������������ʽ�ġ�<br>JDK1.5 Lock�ӿڣ�������������˼�룬����������װ����һ������<br> ���ṩ�˶�������ʾ������</p>
-<p>Lock�ӿھ���ͬ���������<br>1���������е�ͬ������ΪLock�ӿڵ���ʽ��</p>
-<p>�滻������ʧ���ˡ���Ϊwaitû����ͬ������û���������ͬ������<br>ͬ�������ˡ��������Ѿ�������������󣬶���Lock���͵Ķ���<br>��ô���������󶨵ļ������������ǲ���Ҳ�����ˣ�����ר�ź�Lock�������İ󶨵ļ�����������?<br>����api��Condition�ӿ������Object�еļ�����������</p>
-<p>��ǰ������������װ��ÿһ�������С�<br>���ڽ�������������װ��Condition�����С�<br>������Ϊ��await    signal  signalAll</p>
-<p>����������Condition��κ�Lock�󶨣�<br>����ͨ��Lock�ӿڵ�newCondition����������ɡ�</p>
-<p>���ǣ��������ɣ�һ�������˱�����Ч���Ծɵͣ�<br>�����������Lock�󶨵ļ��������󡣴����������������߼������������߼�������<br>������ϣ�Ӧ�û���һ�������������ѡ�<br>�������Ӧ�û���������һ����</p>
-<p>wait������sleep����������</p>
-<p>��ͬ���������̴߳��ڶ���״̬</p>
-<p>��ͬ��<br>1��wait����������ָ��ʱ�䣬Ҳ���Բ�ָ����<br>sleep����������ָ��ʱ��</p>
-<p>2��wait�������ͷ�cpu��Դ���ͷ�����<br>sleep�������ͷ�cpu��Դ�����ͷ�����</p>
-<p>�쳣����ʾ�������ĸ��߳��ϡ�<br>�쳣������߳�����Ҳ���ǿ��Խ��������̡߳�</p>
-<p>���ֹͣ�̣߳�</p>
-<p>ԭ����run����������<br>�߳�����ͨ������ѭ������Ϊ�����߳̾���Ϊ��ִ����ҪһЩʱ��Ĵ��롣</p>
-<pre><code>ֻҪ����סѭ�����Ϳ��Խ���run�������Ϳ���ֹͣ�̡߳�
+<p>多生产多消费。</p>
+<p>问题1：<br>重复生成，重复消费。<br>原因：经过复杂的（等，资格）分析，发现被唤醒的线程没有判断标记就开始工作（生成or消费）了。<br>导致了重复的生成和消费的发生。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解决：那就是被唤醒的线程必须判断标记。</span><br><span class="line">           使用while循环即可。</span><br></pre></td></tr></table></figure>
 
-����ѭ��Ū����Ǽ��ɡ����������</code></pre>
+<p>问题2：<br>死锁了。所有的线程都处于冻结状态。<br>原因：本方线程在唤醒时，又一次唤醒了本方线程。而本方线程循环判断标记，有继续等待。<br>而导致所有的线程都等待了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">解决：希望本方如果唤醒了对方线程，就可以解决。</span><br><span class="line">           可以使用notifyAll( )方法。</span><br><span class="line">           那不是全唤醒了吗？是的。既有本方，又有对方。但是本方醒后，会判断标记继续等待。</span><br><span class="line">           这样对方就有线程可以执行了。</span><br></pre></td></tr></table></figure>
+
+<p>已经实现了多生产多消费。</p>
+<p>但是有些小问题，效率有点低，因为notifyAll也唤醒了本方。做了不必要的判断。</p>
+<p>解决多生产多消费的效率问题。<br>使用了JDK1.5 java.util.concurrent.locks包中的对象。<br>Lock接口：它的出现比synchronized有更多的操作。<br>lock（）：获取锁。<br>unlock（）：释放锁。</p>
+<p>同步代码块或者同步函数的锁操作是隐式的。<br>JDK1.5 Lock接口，按照面向对象的思想，将锁单独封装成了一个对象。<br> 并提供了对锁的显示操作。</p>
+<p>Lock接口就是同步的替代。<br>1，将程序中的同步更换为Lock接口的形式。</p>
+<p>替换完运行失败了。因为wait没有了同步区域，没有了所属的同步锁。<br>同步升级了。其中锁已经不再是任意对象，而是Lock类型的对象。<br>那么和任意对象绑定的监视器方法，是不是也升级了，有了专门和Lock类型锁的绑定的监视器方法呢?<br>查阅api。Condition接口替代了Object中的监视器方法。</p>
+<p>以前监视器方法封装到每一个对象中。<br>现在将监视器方法封装到Condition对象中。<br>方法名为：await    signal  signalAll</p>
+<p>监视器对象Condition如何和Lock绑定？<br>可以通过Lock接口的newCondition（）方法完成。</p>
+<p>但是，问题依旧，一样唤醒了本方。效率仍旧低！<br>解决：创建和Lock绑定的监视器对象。创建两个。（生产者监视器和消费者监视器）<br>生产完毕，应该唤醒一个消费者来消费。<br>消费完后，应该唤醒生产者一个。</p>
+<p>wait（）和sleep（）的区别</p>
+<p>相同：可以让线程处于冻结状态</p>
+<p>不同：<br>1，wait（）；可以指定时间，也可以不指定。<br>sleep（）；必须指定时间</p>
+<p>2，wait（）；释放cpu资源，释放锁。<br>sleep（）；释放cpu资源，不释放锁。</p>
+<p>异常会提示发生在哪个线程上。<br>异常会结束线程任务，也就是可以结束所在线程。</p>
+<p>如何停止线程？</p>
+<p>原理：让run方法结束。<br>线程任务通常都有循环。因为开启线程就是为了执行需要一些时间的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">只要控制住循环，就可以结束run方法，就可以停止线程。</span><br><span class="line"></span><br><span class="line">控制循环弄个标记即可。定义变量。</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -421,14 +422,14 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java����-���������װ
+          Java基础-基本对象包装
         
       </div>
     </a>
   
   
     <a href="/2020/02/15/Java基础-多态/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java����-��̬</div>
+      <div class="article-nav-title">Java基础-多态</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -592,10 +593,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Comparable</a>
               </li>
              
@@ -604,11 +601,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,15 +621,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,15 +629,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
