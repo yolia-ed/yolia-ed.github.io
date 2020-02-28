@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Java | Yolia</title>
+  <title>关于SpringBoot注解 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/tags/Java/index.html">
+  <meta name="description" content="了解注解的基本原理，手动造一个简单的注解。">
+<meta name="keywords" content="SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于SpringBoot注解">
+<meta property="og:url" content="http://yoursite.com/2020/02/25/关于SpringBoot注解/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="了解注解的基本原理，手动造一个简单的注解。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-25T08:37:57.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
-<meta name="twitter:description" content="Yolia的博客">
+<meta name="twitter:title" content="关于SpringBoot注解">
+<meta name="twitter:description" content="了解注解的基本原理，手动造一个简单的注解。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -156,270 +158,280 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
+            <article id="post-关于SpringBoot注解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于SpringBoot注解
+    </h1>
+  
+
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/02/25/关于SpringBoot注解/" class="archive-article-date">
+  	<time datetime="2020-02-25T08:40:24.052Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-25</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.6k字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">6分</span>
+      </span>
+    </span>
+</div>
+
             
-  
-  
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
+        <p>了解注解的基本原理，手动造一个简单的注解。</p>
+<a id="more"></a>
+
+<h5 id="1-注解的基本原理"><a href="#1-注解的基本原理" class="headerlink" title="1. 注解的基本原理"></a>1. 注解的基本原理</h5><p>注解其实就是用来做标注用的：可以在类、字段变量、方法、接口等位置进行一个特殊的标记，为后续做一些诸如：代码生成、数据校验、资源整合等工作做铺垫。（也就是做标记用的）</p>
+<p>注解一旦对代码标注完成，后续我们就可以结合 Java 强大的反射机制，在运行时动态的获取到注解的标注信息，从而可以执行很多其他逻辑，完成我们想要的自动化工作。（反射的重要性）</p>
+<h5 id="2-注解的使用"><a href="#2-注解的使用" class="headerlink" title="2. 注解的使用"></a>2. 注解的使用</h5><p>假如现在在做一个成绩录入系统，用 SpringBoot 框架写了一个后台接口，用于接收前台浏览器传过来的 Student 对象，并插入后台数据库。</p>
+<p>我们将传入的 Student 对象定义为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer score;</span><br><span class="line">    <span class="keyword">private</span> String mobile;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后写一个 Post 请求的后台接口，来接收网页端传过来的 Student 对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StudentService studentService;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/add"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addStudent</span><span class="params">( @RequestBody Student student )</span> </span>&#123;</span><br><span class="line">        studentService.addStudent( student ); <span class="comment">//将student对象传入数据库</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"SUCCESS"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时就需要给上面代码中传入的 Student 对象做一些数据校验。比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/add"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addStudent</span><span class="params">( @RequestBody Student student )</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>( student == <span class="keyword">null</span> )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"传入的Student对象为null，请传值"</span>;</span><br><span class="line">    <span class="keyword">if</span>( student.getName() == <span class="keyword">null</span> || <span class="string">""</span>.equals(student.getName()) )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"传入的学生姓名为空，请传值"</span>;</span><br><span class="line">    <span class="keyword">if</span>( student.getScore() == <span class="keyword">null</span> )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"传入的学生成绩为null，请传值"</span>;</span><br><span class="line">    <span class="keyword">if</span>( student.getScore() &lt; ) || (student.getScore() &gt; <span class="number">100</span>) )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"传入的学生成绩有误，分数应该在0~100之间"</span>;</span><br><span class="line">    <span class="keyword">if</span>( student.getMobile() == <span class="keyword">null</span> || <span class="string">""</span>.equals(student.getMobile()) )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"传入的学生电话号码为空，请传值"</span>;</span><br><span class="line">    <span class="keyword">if</span>( student.getMobile().length() != <span class="number">11</span> )</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"传入的学生电话号码长度有误，应为11位"</span>;</span><br><span class="line">    </span><br><span class="line">    studentService.addStudent( student );</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"SUCCESS"</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后就发现这么写很麻烦，要是一个复杂的对象有非常多的字段，那就非常。。麻烦</p>
+<p>那么通过添加注解的方式，来方便的进行数据校验的工作，我们只需在传入的 Student 实体类的字段中加入对应注解即可解决：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@NotNull</span>(message = <span class="string">"传入的姓名为null，请传值"</span>)</span><br><span class="line">    <span class="meta">@NotEmpty</span>(message = <span class="string">"传入的姓名为空字符串，请传值"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@NotNull</span>(message = <span class="string">"传入的分数为null，请传值"</span>)</span><br><span class="line">    <span class="meta">@Min</span>(value = <span class="number">0</span>, message = <span class="string">"传入的学生成绩有误，分数应该在0~100之间"</span>)</span><br><span class="line">    <span class="meta">@Max</span>(value = <span class="number">100</span>, message = <span class="string">"传入的学生成绩有误，分数应该在0~100之间"</span>)</span><br><span class="line">    <span class="keyword">private</span> Integer score;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@NotNull</span>(message = <span class="string">"传入的电话为null，请传值"</span>)</span><br><span class="line">    <span class="meta">@NotEmpty</span>(message = <span class="string">"传入的电话为空字符串，请传值"</span>)</span><br><span class="line">    <span class="meta">@Length</span>(min = <span class="number">11</span>, max = <span class="number">11</span>, message = <span class="string">"传入的电话号码长度有误，必须为11位"</span>)</span><br><span class="line">    <span class="keyword">private</span> String mobile;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，还需要在入口处加上注解 @Valid 来开启对传入 Student 对象的验证工作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/add"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addStudent</span><span class="params">( @RequestBody  @Valid Student student )</span> </span>&#123;</span><br><span class="line">    studentService.addStudent( student ); <span class="comment">//将student对象传入数据库</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"SUCCESS"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了使返回的结果简洁一些，将具体参数校验的错误信息拿到返回给前端即可。</p>
+<p>需要为项目配置全局统一异常拦截器来格式化所有数据校验的返回结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(value = Exception<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">String</span> <span class="title">exceptionHandler</span>(<span class="title">HttpServletRequest</span> <span class="title">request</span>, <span class="title">Exception</span> <span class="title">e</span>)</span>&#123;</span><br><span class="line">        String failMsg = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (e <span class="keyword">instanceof</span> MethodArgumentNotValidException) &#123;</span><br><span class="line">            <span class="comment">//拿到参数校验具体异常信息提示</span></span><br><span class="line">            failMsg = ((MethodArgumentNotValidException) e)</span><br><span class="line">                .getBindingResult().getFieldError().getDefaultMessage();    </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> failMsg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>over。</p>
+<h5 id="3-手动写一个简单的注解"><a href="#3-手动写一个简单的注解" class="headerlink" title="3. 手动写一个简单的注解"></a>3. 手动写一个简单的注解</h5><p>以上面的 @Length 为例，动手实现一遍。</p>
+<p>第一步：首先定义注解 @Length</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.FIELD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Length &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">()</span></span>; <span class="comment">//允许字符串长度的最小值</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">()</span></span>; <span class="comment">//允许字符串长度的最大值</span></span><br><span class="line">    <span class="function">String <span class="title">errorMsg</span><span class="params">()</span></span>; <span class="comment">//错误提示信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面进行说明：</p>
+<p>1、注解的定义有点像定义接口 interface，但需要加一个 @ 符号。</p>
+<p>2、注解的成员变量只能使用基本类型、String 或者 enum 枚举，比如 int 可以，但 Integer 包装类型就不行。</p>
+<p>3、像上面 @Target、@Retention 这种加在注解定义上面的注解，称为“元注解”，元注解就是专门用于给注解添加注解的注解。。。也就是天生就有的注解，可以直接使用于注解的定义上。</p>
+<p>4、@Target(xxx) 用于说明该自定义注解可以用在什么位置，比如：</p>
+<ul>
+<li>ElementType.FIELD：说明自定义注解可以用于 类的变量</li>
+<li>ElementType.METHOD：用于类的方法</li>
+<li>ElementType.TYPE：用于类本身、接口或 enum 枚举类型</li>
+<li>等。。</li>
+</ul>
+<p>5、@Retention(xxx) 用于说明自定义注解的生命周期</p>
+<ul>
+<li>@Retention( RetentionPolicy.RUNTIME )：表示注解可以一直保留到运行时，因此可以通过反射获取注解信息。</li>
+<li>@Retention( RetentionPolicy.CLASS )：表示注解被编译进 class 文件，但运行时会忽略。</li>
+<li>@Retention( RetentionPolicy.SOURCE )：表示注解仅在源文件中有效，编译时就会被忽略。</li>
+</ul>
+<p>所以生命周期从长到短：RUNTIME &gt; CLASS &gt; SOURCE，一般来说，如果需要在运行时去动态获取注解的信息，还是得用 RUNTIME 。</p>
+<p>第二步：获取注解并对其进行验证</p>
+<p>用 Java 反射相关知识，在运行时获取注解所包含的信息。</p>
+<p>下面写了一个验证函数 validate()，代码中会逐行去用注释去解释想要达到的目的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">validate</span><span class="params">( Object object )</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</span><br><span class="line">    <span class="comment">// 首先通过反射获取 object 对象的类有哪些字段</span></span><br><span class="line">    <span class="comment">// 这里可以获取到 Student 对象的三个字段</span></span><br><span class="line">    Field[] fields = object.getClass().getDeclaredFields();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// for循环逐个字段校验，看哪个字段上标了注解</span></span><br><span class="line">    <span class="keyword">for</span> ( Field field : fields ) &#123;</span><br><span class="line">        <span class="comment">// if判断：检查该字段上有没有标注 @Length 注解</span></span><br><span class="line">        <span class="keyword">if</span> ( field.isAnnotationPresent(Length<span class="class">.<span class="keyword">class</span>) ) </span>&#123;</span><br><span class="line">            <span class="comment">// 通过反射获取到该字段上标注的 @Length 注解的详细信息</span></span><br><span class="line">            Length length = field.getAnnotation( Length<span class="class">.<span class="keyword">class</span> )</span>;</span><br><span class="line">            field.setAccessible( <span class="keyword">true</span> ); <span class="comment">// 让我们在反射时能访问到私有变量</span></span><br><span class="line">            <span class="comment">// 用反射获取字段的实际值</span></span><br><span class="line">            <span class="keyword">int</span> value = ( (String)field.get(object) ).length();</span><br><span class="line">            <span class="comment">// 将字段的实际值和注解上做标识的值进行比对</span></span><br><span class="line">            <span class="keyword">if</span> ( value &lt; length.min() || value &gt; length.max() ) &#123;</span><br><span class="line">                <span class="keyword">return</span> length.errorMsg();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第三步：使用注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Length</span>(min = <span class="number">11</span>, max = <span class="number">11</span>, errorMsg = <span class="string">"电话号码的长度必须为11位"</span>)</span><br><span class="line">    <span class="keyword">private</span> string mobile;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
-    <div class="archives">
+    <div class="article-info article-info-index">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/02/18/Java基础-IO流/" class="archive-article-date">
-  	<time datetime="2020-02-18T13:32:08.818Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/18/Java基础-IO流/">Java基础-IO流</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/25/关于SpringBoot注解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
 
-<a href="/2020/02/18/Java基础-抽象类/" class="archive-article-date">
-  	<time datetime="2020-02-18T13:24:13.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-18</time>
-</a>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/24/SpringBoot解决跨域/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot解决跨域</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/18/Java基础-抽象类/">Java基础-抽象类</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/02/15/Java基础-内部类/" class="archive-article-date">
-  	<time datetime="2020-02-15T15:32:26.063Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/15/Java基础-内部类/">Java基础-内部类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/02/15/Java基础-接口/" class="archive-article-date">
-  	<time datetime="2020-02-15T15:32:26.060Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/15/Java基础-接口/">Java基础-接口</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/02/15/Java基础-集合框架/" class="archive-article-date">
-  	<time datetime="2020-02-15T15:32:26.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/15/Java基础-集合框架/">Java基础-集合框架</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/02/15/Java基础-基本对象包装/" class="archive-article-date">
-  	<time datetime="2020-02-15T15:32:26.055Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/15/Java基础-基本对象包装/">Java基础-基本对象包装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-      
-    </div></section>
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/tags/Java/page/2/">2</a><a class="page-number" href="/tags/Java/page/3/">3</a><a class="page-number" href="/tags/Java/page/4/">4</a><a class="extend next" rel="next" href="/tags/Java/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+
+  <!--gitalk-->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '451ac59cbef1f20b0629',
+    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
+    repo: 'yolia-ed.github.io',
+    owner: 'yolia-ed',
+    admin: 'yolia-ed',
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+
   
 
 
@@ -456,9 +468,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
