@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Yolia</title>
+  <title>SpringBoot常用注解 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/archives/page/5/index.html">
+  <meta name="description" content="关于 SpringBoot 的一些常用注解和原理。">
+<meta name="keywords" content="SpringBoot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot常用注解">
+<meta property="og:url" content="http://yoursite.com/2020/03/07/SpringBoot常用注解/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="关于 SpringBoot 的一些常用注解和原理。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-07T14:16:43.548Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
-<meta name="twitter:description" content="Yolia的博客">
+<meta name="twitter:title" content="SpringBoot常用注解">
+<meta name="twitter:description" content="关于 SpringBoot 的一些常用注解和原理。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -156,280 +158,310 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
+            <article id="post-SpringBoot常用注解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SpringBoot常用注解
+    </h1>
+  
+
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/03/07/SpringBoot常用注解/" class="archive-article-date">
+  	<time datetime="2020-03-07T14:23:25.431Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2.2k字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+</div>
+
             
-  
-  
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
+        <p>关于 SpringBoot 的一些常用注解和原理。</p>
+<a id="more"></a>
+
+<h5 id="一、-启动注解-SpringBootApplication"><a href="#一、-启动注解-SpringBootApplication" class="headerlink" title="一、 启动注解 @SpringBootApplication"></a>一、 启动注解 @SpringBootApplication</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123; <span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = TypeExcludeFilter<span class="class">.<span class="keyword">class</span>),</span></span><br><span class="line"><span class="class">        @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>) &#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ... 此处省略源码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看源码可发现，@SpringBootApplication是一个复合注解，包含了@SpringBootConfiguration，@EnableAutoConfiguration，@ComponentScan这三个注解</p>
+<h5 id="1、-SpringBootConfiguration-注解，继承-Configuration注解，主要用于加载配置文件"><a href="#1、-SpringBootConfiguration-注解，继承-Configuration注解，主要用于加载配置文件" class="headerlink" title="1、@SpringBootConfiguration 注解，继承@Configuration注解，主要用于加载配置文件"></a>1、@SpringBootConfiguration 注解，继承@Configuration注解，主要用于加载配置文件</h5><p>@SpringBootConfiguration继承自@Configuration，二者功能也一致，标注当前类是配置类， 并会将当前类内声明的一个或多个以@Bean注解标记的方法的实例纳入到spring容器中，并且实例名就是方法名。</p>
+<h5 id="2、-EnableAutoConfiguration-注解，开启自动配置功能"><a href="#2、-EnableAutoConfiguration-注解，开启自动配置功能" class="headerlink" title="2、@EnableAutoConfiguration 注解，开启自动配置功能"></a>2、@EnableAutoConfiguration 注解，开启自动配置功能</h5><p>@EnableAutoConfiguration可以帮助SpringBoot应用将所有符合条件的@Configuration配置都加载到当前SpringBoot创建并使用的IoC容器。借助于Spring框架原有的一个工具类：SpringFactoriesLoader的支持，@EnableAutoConfiguration可以智能的自动配置功效才得以大功告成。</p>
+<h5 id="3、-ComponentScan-注解，主要用于组件扫描和自动装配"><a href="#3、-ComponentScan-注解，主要用于组件扫描和自动装配" class="headerlink" title="3、@ComponentScan 注解，主要用于组件扫描和自动装配"></a>3、@ComponentScan 注解，主要用于组件扫描和自动装配</h5><p>@ComponentScan的功能其实就是自动扫描并加载符合条件的组件或bean定义，最终将这些bean定义加载到容器中。我们可以通过basePackages等属性指定@ComponentScan自动扫描的范围，如果不指定，则默认Spring框架实现从声明@ComponentScan所在类的package进行扫描，默认情况下是不指定的，所以SpringBoot的启动类最好放在root package下。</p>
+<h5 id="二、Controller-相关注解"><a href="#二、Controller-相关注解" class="headerlink" title="二、Controller 相关注解"></a>二、Controller 相关注解</h5><h5 id="Controller"><a href="#Controller" class="headerlink" title="@Controller"></a>@Controller</h5><p>控制器，处理http请求。</p>
+<h5 id="RestController-复合注解（源码如下）"><a href="#RestController-复合注解（源码如下）" class="headerlink" title="@RestController 复合注解（源码如下）"></a>@RestController 复合注解（源码如下）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RestController &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 4.0.1</span></span><br><span class="line"><span class="comment">     该值可能表示对逻辑组件名称的建议，</span></span><br><span class="line"><span class="comment">     如果有自动检测到的组件，则将其转换为Spring bean。</span></span><br><span class="line"><span class="comment">     @返回建议的组件名称（如果有的话）（否则返回空字符串）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Controller<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从源码我们知道,@RestController注解相当于@ResponseBody+@Controller合在一起的作用,RestController使用的效果是将方法返回的对象直接在浏览器上展示成json格式。</p>
+<h5 id="1、-RequestBody"><a href="#1、-RequestBody" class="headerlink" title="1、@RequestBody"></a>1、@RequestBody</h5><p>通过HttpMessageConverter读取Request Body并反序列化为Object（泛指）对象</p>
+<h5 id="2、-RequestMapping"><a href="#2、-RequestMapping" class="headerlink" title="2、@RequestMapping"></a>2、@RequestMapping</h5><p>@RequestMapping 是 Spring Web 应用程序中最常被用到的注解之一。这个注解会将 HTTP 请求映射到 MVC 和 REST 控制器的处理方法上</p>
+<h5 id="3、-GetMapping用于将HTTP-get请求映射到特定处理程序的方法注解"><a href="#3、-GetMapping用于将HTTP-get请求映射到特定处理程序的方法注解" class="headerlink" title="3、@GetMapping用于将HTTP get请求映射到特定处理程序的方法注解"></a>3、@GetMapping用于将HTTP get请求映射到特定处理程序的方法注解</h5><p>注解简写：@RequestMapping(value = “/say”,method = RequestMethod.GET)等价于：@GetMapping(value = “/say”)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//GetMapping源码</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> GetMapping &#123;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是@RequestMapping(method = RequestMethod.GET)的缩写</p>
+<p>4、@PostMapping用于将HTTP post请求映射到特定处理程序的方法注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(method = RequestMethod.POST)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> PostMapping &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是@RequestMapping(method = RequestMethod.POST)的缩写</p>
+<h5 id="三、获取请求参数值"><a href="#三、获取请求参数值" class="headerlink" title="三、获取请求参数值"></a>三、获取请求参数值</h5><h5 id="1、-PathVariable：获取-url-中的数据"><a href="#1、-PathVariable：获取-url-中的数据" class="headerlink" title="1、@PathVariable：获取 url 中的数据"></a>1、@PathVariable：获取 url 中的数据</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/User"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getUser/&#123;uid&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUser</span><span class="params">(@PathVariable(<span class="string">"uid"</span>)</span>Integer id, Model model) </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"id:"</span>+id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"user"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、-RequestParam：获取请求参数的值"><a href="#2、-RequestParam：获取请求参数的值" class="headerlink" title="2、@RequestParam：获取请求参数的值"></a>2、@RequestParam：获取请求参数的值</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/User"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span></span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getUser"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUser</span><span class="params">(@RequestParam(<span class="string">"uid"</span>)</span>Integer id, Model model) </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"id:"</span>+id);</span><br><span class="line">    	<span class="keyword">return</span> <span class="string">"user"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请求示例：http://localhost:8080/User/getUser?uid=123</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3、-RequestHeader-把-Request-请求-header-部分的值绑定到方法的参数上"><a href="#3、-RequestHeader-把-Request-请求-header-部分的值绑定到方法的参数上" class="headerlink" title="3、@RequestHeader 把 Request 请求 header 部分的值绑定到方法的参数上"></a>3、@RequestHeader 把 Request 请求 header 部分的值绑定到方法的参数上</h5><h5 id="4、-CookieValue-把-Request-header-中关于-cookie-的值绑定到方法的参数上"><a href="#4、-CookieValue-把-Request-header-中关于-cookie-的值绑定到方法的参数上" class="headerlink" title="4、@CookieValue 把 Request header 中关于 cookie 的值绑定到方法的参数上"></a>4、@CookieValue 把 Request header 中关于 cookie 的值绑定到方法的参数上</h5><h5 id="四、注入-bean-相关"><a href="#四、注入-bean-相关" class="headerlink" title="四、注入 bean 相关"></a>四、注入 bean 相关</h5><h5 id="1、-Repository"><a href="#1、-Repository" class="headerlink" title="1、@Repository"></a>1、@Repository</h5><p>DAO层注解，DAO层中接口继承JpaRepository&lt;T,ID extends Serializable&gt;,需要在build.gradle中引入相关jpa的一个jar自动加载。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Repository注解源码</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Repository &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     该值可能表示对逻辑组件名称的建议，</span></span><br><span class="line"><span class="comment">     如果有自动检测到的组件，则将其转换为Spring bean。</span></span><br><span class="line"><span class="comment">     @返回建议的组件名称（如果有）（否则为空字符串）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、-Service"><a href="#2、-Service" class="headerlink" title="2、@Service"></a>2、@Service</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Service &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     该值可能表示对逻辑组件名称的建议，</span></span><br><span class="line"><span class="comment">     如果有自动检测到的组件，则将其转换为Spring bean。</span></span><br><span class="line"><span class="comment">     @返回建议的组件名称（如果有）（否则为空字符串）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>@Service是@Component注解的一个特例，作用在类上</li>
+<li>@Service注解作用域默认为单例</li>
+<li>使用注解配置和类路径扫描时，被@Service注解标注的类会被Spring扫描并注册为Bean</li>
+<li>@Service用于标注服务层组件,表示定义一个bean</li>
+<li>@Service使用时没有传参数，Bean名称默认为当前类的类名，首字母小写</li>
+<li>@Service(“serviceBeanId”)或@Service(value=”serviceBeanId”)使用时传参数，使用value作为Bean名字</li>
+</ul>
+<h5 id="3、-Scope作用域注解"><a href="#3、-Scope作用域注解" class="headerlink" title="3、@Scope作用域注解"></a>3、@Scope作用域注解</h5><p>@Scope作用在类上和方法上，用来配置 spring bean 的作用域，它标识 bean 的作用域</p>
+<p>@Scope源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Scope &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Alias for &#123;<span class="doctag">@link</span> #scopeName&#125;.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> #scopeName</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(<span class="string">"scopeName"</span>)</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(<span class="string">"value"</span>)</span><br><span class="line">    <span class="function">String <span class="title">scopeName</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">ScopedProxyMode <span class="title">proxyMode</span><span class="params">()</span> <span class="keyword">default</span> ScopedProxyMode.DEFAULT</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>属性介绍</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">value</span><br><span class="line">    singleton   表示该bean是单例的。(默认)</span><br><span class="line">    prototype   表示该bean是多例的，即每次使用该bean时都会新建一个对象。</span><br><span class="line">    request     在一次http请求中，一个bean对应一个实例。</span><br><span class="line">    session     在一个httpSession中，一个bean对应一个实例。</span><br><span class="line">    </span><br><span class="line">proxyMode</span><br><span class="line">    DEFAULT         不使用代理。(默认)</span><br><span class="line">    NO              不使用代理，等价于DEFAULT。</span><br><span class="line">    INTERFACES      使用基于接口的代理(jdk dynamic proxy)。</span><br><span class="line">    TARGET_CLASS    使用基于类的代理(cglib)。</span><br></pre></td></tr></table></figure>
+
+<h5 id="4、-Entity实体类注解"><a href="#4、-Entity实体类注解" class="headerlink" title="4、@Entity实体类注解"></a>4、@Entity实体类注解</h5><p>@Table(name =”数据库表名”)，这个注解也注释在实体类上，对应数据库中相应的表。<br>@Id、@Column注解用于标注实体类中的字段，pk字段标注为@Id，其余@Column。</p>
+<h5 id="5、-Bean产生一个bean的方法"><a href="#5、-Bean产生一个bean的方法" class="headerlink" title="5、@Bean产生一个bean的方法"></a>5、@Bean产生一个bean的方法</h5><p>@Bean明确地指示了一种方法，产生一个bean的方法，并且交给Spring容器管理。支持别名@Bean(“xx-name”)</p>
+<h5 id="6、-Autowired-自动导入"><a href="#6、-Autowired-自动导入" class="headerlink" title="6、@Autowired 自动导入"></a>6、@Autowired 自动导入</h5><ul>
+<li>@Autowired注解作用在构造函数、方法、方法参数、类字段以及注解上</li>
+<li>@Autowired注解可以实现Bean的自动注入</li>
+</ul>
+<h5 id="7、-Component"><a href="#7、-Component" class="headerlink" title="7、@Component"></a>7、@Component</h5><p>把普通pojo实例化到spring容器中，相当于配置文件中的</p>
+<p>虽然有了@Autowired,但是我们还是要写一堆bean的配置文件,相当麻烦,而@Component就是告诉spring,我是pojo类,把我注册到容器中吧,spring会自动提取相关信息。那么我们就不用写麻烦的xml配置文件了</p>
+<h5 id="五、导入配置文件"><a href="#五、导入配置文件" class="headerlink" title="五、导入配置文件"></a>五、导入配置文件</h5><h5 id="1、-PropertySource注解"><a href="#1、-PropertySource注解" class="headerlink" title="1、@PropertySource注解"></a>1、@PropertySource注解</h5><p>引入单个properties文件：</p>
+<p>@PropertySource(value = {“classpath : xxxx/xxx.properties”})</p>
+<p>引入多个properties文件：</p>
+<p>@PropertySource(value = {“classpath : xxxx/xxx.properties”，”classpath : xxxx.properties”})</p>
+<h5 id="2、-ImportResource导入xml配置文件"><a href="#2、-ImportResource导入xml配置文件" class="headerlink" title="2、@ImportResource导入xml配置文件"></a>2、@ImportResource导入xml配置文件</h5><p>可以额外分为两种模式 相对路径classpath，绝对路径（真实路径）file</p>
+<p>注意：单文件可以不写value或locations，value和locations都可用</p>
+<p>相对路径（classpath）</p>
+<ul>
+<li>引入单个xml配置文件：@ImportSource(“classpath : xxx/xxxx.xml”)</li>
+<li>引入多个xml配置文件：@ImportSource(locations={“classpath : xxxx.xml” , “classpath : yyyy.xml”})</li>
+</ul>
+<p>绝对路径（file）</p>
+<ul>
+<li>引入单个xml配置文件：@ImportSource(locations= {“file : d:/hellxz/dubbo.xml”})</li>
+<li>引入多个xml配置文件：@ImportSource(locations= {“file : d:/hellxz/application.xml” , “file : d:/hellxz/dubbo.xml”})</li>
+</ul>
+<p>取值：使用@Value注解取配置文件中的值</p>
+<p>@Value(“${properties中的键}”)<br>private String xxx;</p>
+<h5 id="3、-Import-导入额外的配置信息"><a href="#3、-Import-导入额外的配置信息" class="headerlink" title="3、@Import 导入额外的配置信息"></a>3、@Import 导入额外的配置信息</h5><p>功能类似XML配置的，用来导入配置类，可以导入带有@Configuration注解的配置类或实现了ImportSelector/ImportBeanDefinitionRegistrar。</p>
+<p>使用示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@Import</span>(&#123;SmsConfig<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DemoApplication<span class="class">.<span class="keyword">class</span>, <span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="六、事务注解-Transactional"><a href="#六、事务注解-Transactional" class="headerlink" title="六、事务注解 @Transactional"></a>六、事务注解 @Transactional</h5><p>在Spring中，事务有两种实现方式，分别是编程式事务管理和声明式事务管理两种方式</p>
+<ul>
+<li>编程式事务管理： 编程式事务管理使用TransactionTemplate或者直接使用底层的PlatformTransactionManager。对于编程式事务管理，spring推荐使用TransactionTemplate。</li>
+<li>声明式事务管理： 建立在AOP之上的。其本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，在执行完目标方法之后根据执行情况提交或者回滚事务，通过@Transactional就可以进行事务操作，更快捷而且简单。推荐使用</li>
+</ul>
+<h5 id="七、全局异常处理"><a href="#七、全局异常处理" class="headerlink" title="七、全局异常处理"></a>七、全局异常处理</h5><h5 id="1、-ControllerAdvice-统一处理异常"><a href="#1、-ControllerAdvice-统一处理异常" class="headerlink" title="1、@ControllerAdvice 统一处理异常"></a>1、@ControllerAdvice 统一处理异常</h5><p>@ControllerAdvice 注解定义全局异常处理类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionHandler</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、-ExceptionHandler-注解声明异常处理方法"><a href="#2、-ExceptionHandler-注解声明异常处理方法" class="headerlink" title="2、@ExceptionHandler 注解声明异常处理方法"></a>2、@ExceptionHandler 注解声明异常处理方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(Exception<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    @<span class="title">ResponseBody</span></span></span><br><span class="line"><span class="class">    <span class="title">String</span> <span class="title">handleException</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Exception Deal!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
-    <div class="archives">
+    <div class="article-info article-info-index">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/06/Java知识点/" class="archive-article-date">
-  	<time datetime="2020-01-06T15:48:56.187Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-06</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/06/Java知识点/">hashcode&amp;equals</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+</div>
 
-<a href="/2020/01/04/ArrayList/" class="archive-article-date">
-  	<time datetime="2020-01-03T16:44:06.308Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/ArrayList/">ArrayList</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/03/HashMap遍历/" class="archive-article-date">
-  	<time datetime="2020-01-03T14:59:20.777Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-03</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/03/HashMap遍历/">HashMap遍历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/02/HashMap/" class="archive-article-date">
-  	<time datetime="2020-01-02T15:24:04.408Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/02/HashMap/">HashMap</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/01/01/关于String长度/" class="archive-article-date">
-  	<time datetime="2020-01-01T09:44:35.131Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/01/关于String长度/">关于String长度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-      
-    
-    
-      
-        </div></section>
-      
-      
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2019" class="archive-year">2019</a>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/07/SpringBoot常用注解/" alt="微信分享二维码">
     </div>
-    <div class="archives">
+</div>
+
+<div class="mask js-mask"></div>
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2019/12/30/Java反射/" class="archive-article-date">
-  	<time datetime="2019-12-30T09:55:48.911Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-30</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/30/Java反射/">Java反射</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-      
-      
-    </div></section>
+
+  
+<nav id="article-nav">
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/6/">Next &raquo;</a>
-    </nav>
+    <a href="/2020/02/28/Spring常用注解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring常用注解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  <!--gitalk-->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '451ac59cbef1f20b0629',
+    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
+    repo: 'yolia-ed.github.io',
+    owner: 'yolia-ed',
+    admin: 'yolia-ed',
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+
   
 
 
@@ -466,8 +498,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
