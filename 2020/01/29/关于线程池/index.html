@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Yolia">
 <meta property="og:description" content="创建线程池的方式">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-11T15:34:33.521Z">
+<meta property="og:updated_time" content="2020-03-12T11:54:50.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于线程池">
 <meta name="twitter:description" content="创建线程池的方式">
@@ -181,7 +181,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">768字</span>
+        <span class="post-count">872字</span>
       </span>
     </span>
 
@@ -190,7 +190,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -236,8 +236,8 @@
 <p>目前Executors 的四个功能线程池已经不建议使用了，而是建议直接通过使用 ThreadPoolExecutor 的方式，这样的处理方式能更加明确线程池的运行规则，规避资源耗尽的风险。</p>
 <p>Executors 的四个功能线程的弊端：</p>
 <ul>
-<li>FixedThreadPool 和 SingleThreadExecutor ：主要问题是堆积的请求处理队列均采用LinkedBlockingQueue，可能会耗费非常大的内存，甚至 OOM（内存溢出）。</li>
-<li>CachedThreadPool 和 ScheduledThreadPool ：主要问题是线程最大数是 Integer.MAX_VALUE，可能会创建数量非常多的线程，甚至OOM。</li>
+<li>FixedThreadPool 和 SingleThreadExecutor ：主要问题是堆积的请求处理队列均采用LinkedBlockingQueue，没有设置容量大小，默认是Integer.MAX_VALUE，可以认为是无界的，线程池中多余的线程会被缓存到LinkedBlockingQueue中，最终内存撑爆。。。。 OOM（内存溢出）。</li>
+<li>CachedThreadPool 和 ScheduledThreadPool ：SynchronousQueue() 只能存一个队列，可以认为所有放到线程池中的线程，不会缓存到队列中，而是直接运行的，主要问题是线程最大数是 Integer.MAX_VALUE，这个数量级可以认为是无限大了，如果线程池中执行的线程没有及时结束，并且不断的有线程加入并执行，最终内存会撑爆，，，，，OOM。</li>
 </ul>
 
       
@@ -539,6 +539,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -547,7 +551,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+                <a href="javascript:void(0)" class="js-tag color4">SSM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,11 +563,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSM</a>
+                <a href="javascript:void(0)" class="js-tag color5">wordpress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,11 +579,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wordpress</a>
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,15 +591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
