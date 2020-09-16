@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Mybatis | Yolia</title>
+  <title>mybatis标签 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yolia的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yolia">
-<meta property="og:url" content="http://yoursite.com/tags/Mybatis/index.html">
+  <meta name="description" content="对常用 mybatis 标签的总结。">
+<meta name="keywords" content="mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis标签">
+<meta property="og:url" content="http://yoursite.com/2020/09/17/mybatis标签/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="Yolia的博客">
+<meta property="og:description" content="对常用 mybatis 标签的总结。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-16T16:21:16.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yolia">
-<meta name="twitter:description" content="Yolia的博客">
+<meta name="twitter:title" content="mybatis标签">
+<meta name="twitter:description" content="对常用 mybatis 标签的总结。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -148,65 +150,295 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mybatis标签" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-  <section class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-
-<a href="/2020/02/05/mybatis日志/" class="archive-article-date">
-  	<time datetime="2020-02-05T05:14:09.894Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/05/mybatis日志/">Mybatis日志</a>
+    <h1 class="article-title" itemprop="name">
+      mybatis标签
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        
+  <!-- 不蒜子统计 -->
+  <span class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+
+<a href="/2020/09/17/mybatis标签/" class="archive-article-date">
+  	<time datetime="2020-09-16T16:21:34.029Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-17</time>
+</a>
+
+
+        <!-- 开始添加字数统计-->
+        
+            <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1k字</span>
+      </span>
+    </span>
+
+  <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+</div>
+
+            
+        <!-- 添加完成 -->
+
+        
+
+
+      </header>
+
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对常用 mybatis 标签的总结。</p>
+<a id="more"></a>
+
+<p>mybatis 标签主要分为以下几种：</p>
+<p>1、定义 sql 语句</p>
+<p>select 、insert 、delete 、update</p>
+<ul>
+<li><p>select 标签</p>
+<p>属性值</p>
+<p>id：唯一的标识符</p>
+<p>parameterType：传给此语句的参数的全路径名或别名</p>
+<p>resultType：语句返回值类型或别名</p>
+<p>如果是集合，填的是集合的泛型，而不是集合本身</p>
+<p>resultType 与 resultMap 不能一起使用</p>
+</li>
+<li><p>insert 标签</p>
+<p>属性值</p>
+<p>id：唯一标识符</p>
+<p>parameterType：传给此语句参数的全路径名或别名</p>
+</li>
+<li><p>delete 标签</p>
+<p>属性值和 insert 标签相同</p>
+</li>
+<li><p>update 标签</p>
+<p>属性值和 insert 标签相同</p>
+</li>
+</ul>
+<p>2、配置 Java 对象属性与查询结果集中列名对应关系</p>
+<p>resultMap </p>
+<ul>
+<li><p>resultMap 标签</p>
+<p>此标签是建立 sql 查询结果字段与实体属性的映射关系信息，将查询结果转换为 Java 对象，方便进一步操作，将结果集的列与 Java 对象中的属性对应起来，并将值填充进去。（与 Java 对象对应的列不是数据库中表的列名，而是查询后结果集的列名）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">type</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"id"</span> <span class="attr">column</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"NAME"</span> <span class="attr">property</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">""</span> <span class="attr">property</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">""</span> <span class="attr">property</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">""</span> <span class="attr">property</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">""</span> <span class="attr">property</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>id：resultMap 的标志</p>
+<p>type：返回值的类名</p>
+<p>子标签，id：设置主键字段与属性的映射关系</p>
+<p>result：设置普通字段与属性的映射关系</p>
+</li>
+</ul>
+<p>3、控制动态 sql 拼接</p>
+<p>if 、foreach 、choose</p>
+<ul>
+<li><p>if 标签</p>
+<p>常用于 where 语句，update 语句，insert 语句中，通过判断参数值来决定是否使用某个查询条件，判断是否更新某个字段，或判断是否插入某个字段值。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"name != null and name != ''"</span>&gt;</span></span><br><span class="line">    and name = #&#123;Name&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>foreach 标签</p>
+<p>用来构建 in 条件，可以在 sql 中对集合进行迭代。一般用于批量删除、添加等</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">resultMap</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    select name,sex from student where id in</span><br><span class="line">    <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">open</span>=<span class="string">"("</span> <span class="attr">separator</span>=<span class="string">","</span> <span class="attr">close</span>=<span class="string">")"</span>&gt;</span></span><br><span class="line">        #&#123;item&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>collection：这个值有 list、array、map 三种。</p>
+<p>item：在迭代过程中每一个元素的别名</p>
+<p>index：在迭代过程中每次迭代到的位置（下标）</p>
+<p>open：前缀</p>
+<p>close：后缀</p>
+<p>separator：分隔符，表示迭代时每个元素之间以什么分隔</p>
+</li>
+<li><p>choose 标签</p>
+<p>如果我们不想应用所有的条件，而是只想从多个选项中选择一个，那么使用这个标签。</p>
+<p>按顺序判断 when 中的条件是否成立，如果有一个成立，则 choose 结束。如果所有都不成立，则执行 otherwise 中的 sql。类似于 Java 的 switch 语句，choose 为 switch，when 为 case，otherwise 为 default。if 是与（and）的关系，而 choose 是或（or）的关系。</p>
+</li>
+</ul>
+<p>4、格式化输出</p>
+<p>where 、set 、trim</p>
+<ul>
+<li><p>where 标签</p>
+<p>为了避免出现 “where and” 的情况，除了将 “where” 改为 “where 1=1”，还可以使用 where 标签。</p>
+<p>就是如果where标签中包含的标签有返回值的话，它就插入一个 “where” </p>
+<p>而且，如果标签返回的内容是 and 或 or开头的，它会剔除掉第一个 and 或 or。</p>
+</li>
+<li><p>set 标签</p>
+<p>如果没有使用 if 标签时，当一个参数为 null，都会导致错误。当在 update 语句中使用 if 标签时，如果最后的  if 没有执行，则会导致逗号多余的错误。使用 set 标签可以动态的配置 set 关键字，剔除追加到条件末尾的任何不想关的逗号。</p>
+<p>使用 set + if 标签后，如果某项为 null 则不进行更新，而是保持数据库原值。</p>
+</li>
+<li><p>trim 标签</p>
+<p>格式化输出，也可以通过 trim 标签设定或忽略前后缀来实现。</p>
+</li>
+</ul>
+<p>5、配置关联关系</p>
+<p>collection 、association</p>
+<p>6、定义常量及引用</p>
+<p>sql 、include</p>
+<ul>
+<li><p>sql 标签</p>
+<p>当多种类型的查询语句的查询字段或者查询条件相同时，可以将其定义为常量，用的时候直接调用就行。</p>
+</li>
+<li><p>include 标签</p>
+<p>用来引用定义的常量</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">""</span> /&gt;</span> from xxx</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/17/mybatis标签/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-      
-      
-    </div></section>
+
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/11/反射获取实体类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">反射获取实体类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  <!--gitalk-->
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '451ac59cbef1f20b0629',
+    clientSecret: '45452d7f4fe21266244cbbb0976a54c39529559b',
+    repo: 'yolia-ed.github.io',
+    owner: 'yolia-ed',
+    admin: 'yolia-ed',
+    id: document.title
+  })
+  gitalk.render('gitalk-container')
+</script>
+
   
 
 
@@ -243,9 +475,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
