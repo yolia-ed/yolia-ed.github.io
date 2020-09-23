@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java基础-基本对象包装 | Yolia</title>
+  <title>关于MySQL的字符类型 | Yolia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于Java基本对象包装的知识。">
-<meta name="keywords" content="Java">
+  <meta name="description" content="MySQL 中 char、varchar 和 text 的一些区别。">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础-基本对象包装">
-<meta property="og:url" content="http://yoursite.com/2020/02/15/Java基础-基本对象包装/index.html">
+<meta property="og:title" content="关于MySQL的字符类型">
+<meta property="og:url" content="http://yoursite.com/2020/09/24/关于MySQL的字符类型/index.html">
 <meta property="og:site_name" content="Yolia">
-<meta property="og:description" content="关于Java基本对象包装的知识。">
+<meta property="og:description" content="MySQL 中 char、varchar 和 text 的一些区别。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-18T13:44:02.468Z">
+<meta property="og:updated_time" content="2020-09-23T16:42:09.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java基础-基本对象包装">
-<meta name="twitter:description" content="关于Java基本对象包装的知识。">
+<meta name="twitter:title" content="关于MySQL的字符类型">
+<meta name="twitter:description" content="MySQL 中 char、varchar 和 text 的一些区别。">
   
     <link rel="alternative" href="/atom.xml" title="Yolia" type="application/atom+xml">
   
@@ -150,14 +150,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java基础-基本对象包装" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-关于MySQL的字符类型" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java基础-基本对象包装
+      关于MySQL的字符类型
     </h1>
   
 
@@ -169,8 +169,8 @@
         </span>
 
 
-<a href="/2020/02/15/Java基础-基本对象包装/" class="archive-article-date">
-  	<time datetime="2020-02-15T15:32:26.055Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
+<a href="/2020/09/24/关于MySQL的字符类型/" class="archive-article-date">
+  	<time datetime="2020-09-23T16:42:38.279Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-24</time>
 </a>
 
 
@@ -181,7 +181,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">492字</span>
+        <span class="post-count">847字</span>
       </span>
     </span>
 
@@ -190,7 +190,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
 </div>
@@ -207,22 +207,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于Java基本对象包装的知识。</p>
+        <p>MySQL 中 char、varchar 和 text 的一些区别。</p>
 <a id="more"></a>
 
-<p>基本对象包装，是将基本数据值封装成了对象。<br>好处：可以在对象中定义更多属性行为对基本数据进行操作。  </p>
-<p>byte——Byte。-2^7 ~ 2^7-1，即-128 ~ 127。1字节。Byte。末尾加B<br>short——Short。-2^15 ~ 2^15-1，即-32768 ~ 32767。2字节。Short。末尾加S<br>int——Integer。有符号int：-2^31 ~ 2^31-1，    即-2147483648 ~ 2147483647。4字节。Integer。无符号int：0~2^32-1。<br>long——Long。-2^63 ~ 2^63-1，即-9223372036854774808 ~ 9223372036854774807。8字节。Long。末尾加L。（也可以不加L）<br>float——Float。4字节。Float。末尾加F。（也可以不加F）<br>double——Double。8字节。Double。<br>char——Charcter    。2字节。Character。<br>boolean——Boolean        </p>
-<p>int 的范围最值，只有int最清楚。所以找int对应的对象最合适。</p>
-<p>基本数据类型对象包装类的重要功能：在基本类型和String类型之间互相转换。</p>
-<p>字符串转成基本数据类型<br>使用的是parse基本类型（字符串）：parseInt   parseByte   parseDouble    parseBoolean<br>Integer.parseInt(“22”);<br>integer.parseInt(“110”,2);  输出6      可以将其他进制的字符串转成十进制整数</p>
-<p>基本类型转成字符串<br>integer.toString(2);</p>
-<p>为了对整数进行更多的操作，可以将整数封装成对象。通过Integer的方法完成。<br>int –&gt; Integer</p>
-<p>Integer i1  =  new Integer(4); //构造方法。<br>Integer i11 = new Integer(“4”); //构造方法。<br>Integer i2 = Integer.valueOf(4); //静态方法。</p>
-<p>Integer–&gt;int<br>Integer x1 = new Integer(4);<br>int n1 = x1.intValue( );</p>
-<p>JDK1.5以后，自动装箱拆箱。像操作int一样的操作Integer。</p>
-<p>Integer i = new Integer(4);<br>//1.5<br>Integer i = 4; //自动装箱。 Integer.valueOf(4);</p>
-<p>i = i + 6;  //右边的i自动拆箱。i.intValue() + 6   运算完的结果又一次装箱赋值给i。</p>
-<p>jdk1.5以后，自动装箱的值如果在byte范围之内，相同的值不会单独开辟空间，而是重复使用。<br>（-128—-&gt;127）<br>Integer m = 128;<br>Integer n = 128;<br>m == n     false      若为127即为true。<br>m.equals(n)  true    Integer重写了equals方法，比较值。</p>
+<ol>
+<li><p>检索效率</p>
+<p>数据检索效率来看 char &gt; varchar &gt; text</p>
+<ul>
+<li>char：存储定长数据方便，char 字段上的索引效率极高，必须在括号里定义长度，可以有默认值。比如定义 char(10)，不论你要存储的数据是否达到了 10 个字节，都要占用 10 字节的空间（自动空格填充），且在检索的时候，后面的空格会隐藏掉，所以检索出来的数据需要用 trim 之类的方法去掉空格。</li>
+<li>varchar：存储变长数据，必须在括号定义长度，可以有默认值。保存数据不进行空格的自动填充，而且如果数据存在空格的话，当值保存和检索时尾部的空格会保留的。（varchar 类型的实际长度是它值的实际长度加 1，这一个字节用于保存实际使用了多大的长度。</li>
+<li>text：存储可变长度的非 Unicode 数据，最大长度为 2^31-1 个字符。不能有默认值。存储或检索时，不存在大小写转换，后面如果指定长度，不会报错误，但是这个长度是不起作用的。也就是插入数据时超过你指定的长度时还是可以正常插入的。</li>
+</ul>
+</li>
+<li><p>存储空间</p>
+<p>在使用 UTF-8 字符集的时候</p>
+<ul>
+<li>基本拉丁字母、数字和标点符号使用一个字节</li>
+<li>大多数的欧洲和中东手写字母适合两个字节序列：扩展的拉丁字母（包括发音符号、长音符号、重音符号、低音符号和其他音符）、西里尔字母、希腊语、亚美尼亚语、希伯来语、阿拉伯语、叙利亚语和其它语言</li>
+<li>韩语、中文和日本象形文字使用三个字节序列</li>
+</ul>
+</li>
+</ol>
+<h5 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h5><p>经常变化的字段用 varchar；</p>
+<p>固定长度的用 char；</p>
+<p>尽量使用 varchar；</p>
+<p>超过 255 字节的只能用 varchar 或者 text；</p>
+<p>能用 varchar 的地方不用 text；（text比较浪费内存）</p>
+<p>能够用数字类型的字段尽量选择数字类型而不用字符串类型的（电话号码），这会降低查询和连接的性能，并会增加存储开销。这是因为引擎在处理查询和连接回逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了</p>
+<h5 id="Other："><a href="#Other：" class="headerlink" title="Other："></a>Other：</h5><p>Mysql记录行数据是有限的。大小为64k,即65535个字节，而varchar要用1-2字节来存储字段长度，小于255的1字节，大于255的2字节。<br>　　Mysql 5.0后,英文字符固定都是一个字节，汉字字符根据编码方式占不同字节，Utf-8占3个字节，gbk占了2个字节。<br>　　第一，当编码方式为utf-8时，varchar存到21845就存不下了.也就是最大长度是21844.根据上面信息可以推算出 （ 65535-2 ）/3=21844余1（21845就是字符的个数）。</p>
+<p>MySQL 的 text 类型说明。</p>
+<p>tinytext 存储字节数 256</p>
+<p>text 存储字节数 65535</p>
+<p>mediumtext 存储字节数 16777215</p>
+<p>longtext 存储字节数 4294967295</p>
+<p>在 MySQL 4.0 版本以下，varchar(100)，指的是 100 <strong>字节</strong>，也就是 utf8 汉字的 33 个。</p>
+<p>在 MySQL 5.0 版本以上，varchar(100)，指的是 100 <strong>字符</strong>，也就是 utf8 汉字的 100 个。</p>
 
       
 
@@ -236,7 +255,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
         		</li>
       		
 		</ul>
@@ -292,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/15/Java基础-基本对象包装/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/24/关于MySQL的字符类型/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,18 +325,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/15/Java基础-集合框架/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java基础-集合框架
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/02/15/Java基础-多线程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java基础-多线程</div>
+    <a href="/2020/09/17/mybatis标签/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mybatis标签</div>
       <i class="icon-circle-right"></i>
     </a>
   
